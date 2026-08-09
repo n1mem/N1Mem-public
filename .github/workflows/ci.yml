@@ -9,7 +9,11 @@ jobs:
   verify:
     runs-on: ubuntu-latest
     steps:
+      # lfs: false 确保 checkout 拿到 git blob 真实内容（这些冻结 JSON 曾被 GitHub
+      # 误标记为 LFS 对象，若启用 LFS 会拉到指针/空文件导致校验失败）
       - uses: actions/checkout@v4
+        with:
+          lfs: false
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -18,12 +22,17 @@ jobs:
       - name: Run integrity verification
         run: python verify_public.py
 
-  # 可选：LLM-as-judge 复现（需仓库 Secrets 配置 OPENROUTER_API_KEY 才跑）
+  # 可选：LLM-as-judge 复现（需仓库 Secrets 配置 OPENROUTER_API_KEY 才跑）。
+  # 该 job 依赖外部 API + 网络，不稳定，故 continue-on-error 不阻塞整体 CI 状态；
+  # 完整性校验以 verify job 为准。
   llm-judge-repro:
     runs-on: ubuntu-latest
     if: ${{ secrets.OPENROUTER_API_KEY != '' }}
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
+        with:
+          lfs: false
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
