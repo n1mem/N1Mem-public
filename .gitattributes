@@ -1,0 +1,6 @@
+# 冻结产物（LoCoMo / LongMemEval / LME-V2 / MAB 的签名结果 JSON/JSONL）：
+# 声明为二进制（-text），禁止 Git 换行符 CRLF<->LF 归一化与 LFS 接管，
+# 保证本地(Windows CRLF) / GitHub / CI(Linux) 三端字节级一致，SHA256 校验稳定通过。
+repro_byok/**/*.json -text -filter
+repro_byok/**/*.jsonl -text -filter
+claim_card.json -text -filter
