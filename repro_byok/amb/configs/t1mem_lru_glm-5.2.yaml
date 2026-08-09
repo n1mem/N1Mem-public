@@ -1,0 +1,35 @@
+# T1Mem MAB Best-Per-Dimension Configs
+# LRU = Long_Range_Understanding (Detective QA + InfBench summarization)
+# Config: v12b-opt (thinking OFF, retrieve_num=10)
+# Frozen score: 59.48% = mean(87.32, 31.63) across 2 tasks (171 questions)
+#
+# Detective QA: 71 questions, choice-letter matching accuracy = 87.32%
+# InfBench En.Sum: 100 questions, official rougeLsum F1 = 31.63%
+#   (InfiniteBench paper specifies rougeLsum, NOT rougeL, for En.Sum)
+
+agent_name: t1mem_rag_glm52_lru
+model: glm-5.2
+temperature: 0.7
+input_length_limit: 10000000
+buffer_length: 200
+output_dir: ./outputs/t1mem-lru
+
+max_tokens_override: 2000
+
+# Retrieval config (LRU best: same as TTL)
+retrieve_num: 10
+chunk_size: 4096
+
+# T1Mem hybrid RRF weights
+t1mem_text_weight: 0.6
+t1mem_vec_weight: 0.4
+
+# LRU best: thinking OFF (same as TTL)
+# Note: thinking ON gives Detective 90.14% (vs 87.32% OFF), but the -2.8pp loss
+# on Detective is far smaller than the +11pp gain on ICL classification (TTL).
+# Since TTL and LRU share the opt config, we use thinking OFF for both.
+t1mem_disable_thinking: true
+
+# Summarization mode: skip concise-answer post-processing for InfBench
+# (would destroy multi-paragraph summaries)
+t1mem_summarization: true

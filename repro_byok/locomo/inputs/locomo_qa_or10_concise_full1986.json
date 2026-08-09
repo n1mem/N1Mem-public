@@ -1,0 +1,375 @@
+{
+  "meta": {
+    "method": "optionA_official_protocol_concise",
+    "models": [
+      "qwen"
+    ],
+    "prompt": "concise (short answer) + adversarial->Not mentioned",
+    "context": "full conversation sessions (~150K), no retrieval",
+    "generated_at": "2026-07-29T13:27:14",
+    "n_questions": 40,
+    "is_slice": true
+  },
+  "per_question": [
+    {
+      "question_id": "conv-41_q135",
+      "topic": "open_domain",
+      "question": "Why does Maria think it's important for younger generations to visit military memorials?",
+      "gold": "To remember and appreciate those who served",
+      "concise": {
+        "qwen": "To remember and appreciate those who served"
+      }
+    },
+    {
+      "question_id": "conv-42_q237",
+      "topic": "adversarial",
+      "question": "What did Nate make for one of the ladies at his writing club?",
+      "gold": "Not answerable",
+      "concise": {
+        "qwen": "Not mentioned in the conversation"
+      }
+    },
+    {
+      "question_id": "conv-50_q39",
+      "topic": "temporal_reasoning",
+      "question": "Would Dave prefer working on a Dodge Charger or a Subaru Forester?",
+      "gold": "Dodge Charger",
+      "concise": {
+        "qwen": "Dodge Charger"
+      }
+    },
+    {
+      "question_id": "conv-43_q25",
+      "topic": "single_hop",
+      "question": "What similar sports collectible do Tim and John own?",
+      "gold": "signed basketball",
+      "concise": {
+        "qwen": "signed basketball"
+      }
+    },
+    {
+      "question_id": "conv-49_q136",
+      "topic": "open_domain",
+      "question": "According to Evan, what is important for Sam to believe in concerning his weight?",
+      "gold": "Your worth is not defined by your weight",
+      "concise": {
+        "qwen": "Your worth is not defined by your weight"
+      }
+    },
+    {
+      "question_id": "conv-42_q169",
+      "topic": "open_domain",
+      "question": "What does Joanna do while she writes?",
+      "gold": "have a stuffed animal dog named Tilly with her",
+      "concise": {
+        "qwen": "Tilly"
+      }
+    },
+    {
+      "question_id": "conv-42_q99",
+      "topic": "open_domain",
+      "question": "What are Joanna's plans for her finished screenplay in January 2022?",
+      "gold": "submit it to film festivals and get producers and directors to check it out",
+      "concise": {
+        "qwen": "submit it to some film festivals, get producers and directors to check it out"
+      }
+    },
+    {
+      "question_id": "conv-26_q83",
+      "topic": "open_domain",
+      "question": "What did Melanie realize after the charity race?",
+      "gold": "self-care is important",
+      "concise": {
+        "qwen": "self-care"
+      }
+    },
+    {
+      "question_id": "conv-48_q158",
+      "topic": "open_domain",
+      "question": "What did Jolene participate in recently that provided her with a rewarding experience?",
+      "gold": "presenting at a virtual conference",
+      "concise": {
+        "qwen": "virtual conference"
+      }
+    },
+    {
+      "question_id": "conv-42_q224",
+      "topic": "adversarial",
+      "question": "What did Joanna discover at the museum in Woodhaven?",
+      "gold": "Not answerable",
+      "concise": {
+        "qwen": "Not mentioned in the conversation"
+      }
+    },
+    {
+      "question_id": "conv-30_q53",
+      "topic": "open_domain",
+      "question": "What did Gina say about creating an experience for her customers?",
+      "gold": "making them want to come back",
+      "concise": {
+        "qwen": "make 'em feel like they're in a cool oasis, make 'em wanna come back"
+      }
+    },
+    {
+      "question_id": "conv-43_q83",
+      "topic": "open_domain",
+      "question": "What kind of articles has Tim been writing about for the online magazine?",
+      "gold": "different fantasy novels, characters, themes, and book recommendations",
+      "concise": {
+        "qwen": "fantasy novels, characters, themes, book recommendations"
+      }
+    },
+    {
+      "question_id": "conv-47_q5",
+      "topic": "single_hop",
+      "question": "What are John and James' favorite games?",
+      "gold": "John's favorite game is CS:GO, and James's is Apex Legends.",
+      "concise": {
+        "qwen": "CS:GO, Apex Legends"
+      }
+    },
+    {
+      "question_id": "conv-26_q42",
+      "topic": "temporal_reasoning",
+      "question": "Would Melanie be more interested in going to a national park or a theme park?",
+      "gold": "National park; she likes the outdoors",
+      "concise": {
+        "qwen": "national park"
+      }
+    },
+    {
+      "question_id": "conv-44_q2",
+      "topic": "single_hop",
+      "question": "What kind of indoor activities has Andrew pursued with his girlfriend?",
+      "gold": "boardgames, volunteering at pet shelter, wine tasting, growing flowers",
+      "concise": {
+        "qwen": "board games, wine tasting"
+      }
+    },
+    {
+      "question_id": "conv-26_q74",
+      "topic": "multi_hop",
+      "question": "When did Melanie's family go on a roadtrip?",
+      "gold": "The weekend before 20 October 2023",
+      "concise": {
+        "qwen": "this past weekend"
+      }
+    },
+    {
+      "question_id": "conv-41_q54",
+      "topic": "multi_hop",
+      "question": "When did Maria take up community work with her church friends?",
+      "gold": "August 4, 2023",
+      "concise": {
+        "qwen": "Yesterday"
+      }
+    },
+    {
+      "question_id": "conv-50_q163",
+      "topic": "adversarial",
+      "question": "What was the necklace Dave received meant to remind him of?",
+      "gold": "Not answerable",
+      "concise": {
+        "qwen": "Not mentioned in the conversation"
+      }
+    },
+    {
+      "question_id": "conv-44_q57",
+      "topic": "multi_hop",
+      "question": "When did Andrew adopt Scout?",
+      "gold": "few days before November 2023",
+      "concise": {
+        "qwen": "the other day"
+      }
+    },
+    {
+      "question_id": "conv-47_q51",
+      "topic": "single_hop",
+      "question": "Which new games did John start play during the course of the conversation with James?",
+      "gold": "AC Valhalla, Witcher 3, FIFA 23, Dungeons of the Dragons, futuristic dystopian game",
+      "concise": {
+        "qwen": "AC Valhalla, chess, The Witcher 3, Dungeons of the Dragon, FIFA 23"
+      }
+    },
+    {
+      "question_id": "conv-43_q222",
+      "topic": "adversarial",
+      "question": "What is Tim trying out to improve his strength and flexibility after recovery from ankle injury?",
+      "gold": "Not answerable",
+      "concise": {
+        "qwen": "Not mentioned in the conversation"
+      }
+    },
+    {
+      "question_id": "conv-47_q177",
+      "topic": "adversarial",
+      "question": "What did James use to play when he was younger to let off steam?",
+      "gold": "Not answerable",
+      "concise": {
+        "qwen": "Not mentioned in the conversation"
+      }
+    },
+    {
+      "question_id": "conv-48_q22",
+      "topic": "multi_hop",
+      "question": "When did Deborah meet Anna?",
+      "gold": "31 January, 2023",
+      "concise": {
+        "qwen": "2023-01-31"
+      }
+    },
+    {
+      "question_id": "conv-47_q160",
+      "topic": "adversarial",
+      "question": "What is Max good at doing according to John?",
+      "gold": "Not answerable",
+      "concise": {
+        "qwen": "catching frisbees"
+      }
+    },
+    {
+      "question_id": "conv-43_q232",
+      "topic": "adversarial",
+      "question": "What is one cause that John opposes with his influence and resources?",
+      "gold": "Not answerable",
+      "concise": {
+        "qwen": "Not mentioned in the conversation"
+      }
+    },
+    {
+      "question_id": "conv-50_q32",
+      "topic": "single_hop",
+      "question": "Where did Dave return from with new knowledge of different techniques of car restoration?",
+      "gold": "San Francisco",
+      "concise": {
+        "qwen": "San Francisco"
+      }
+    },
+    {
+      "question_id": "conv-41_q0",
+      "topic": "multi_hop",
+      "question": "Who did Maria have dinner with on May 3, 2023?",
+      "gold": "her mother",
+      "concise": {
+        "qwen": "Her mom"
+      }
+    },
+    {
+      "question_id": "conv-43_q210",
+      "topic": "adversarial",
+      "question": "What has Tim been able to help the younger players achieve?",
+      "gold": "Not answerable",
+      "concise": {
+        "qwen": "Not mentioned in the conversation"
+      }
+    },
+    {
+      "question_id": "conv-47_q56",
+      "topic": "single_hop",
+      "question": "Which of James's family members have visited him in the last year?",
+      "gold": "mother, sister",
+      "concise": {
+        "qwen": "sister, mother"
+      }
+    },
+    {
+      "question_id": "conv-49_q41",
+      "topic": "multi_hop",
+      "question": "Which classes did Evan join in mid-August 2023?",
+      "gold": "painting classes",
+      "concise": {
+        "qwen": "painting classes"
+      }
+    },
+    {
+      "question_id": "conv-44_q5",
+      "topic": "multi_hop",
+      "question": "When did Audrey see a hummingbird?",
+      "gold": "first week of May 2023",
+      "concise": {
+        "qwen": "Last week"
+      }
+    },
+    {
+      "question_id": "conv-26_q27",
+      "topic": "temporal_reasoning",
+      "question": "Would Caroline pursue writing as a career option?",
+      "gold": "LIkely no; though she likes reading, she wants to be a counselor",
+      "concise": {
+        "qwen": "No"
+      }
+    },
+    {
+      "question_id": "conv-30_q16",
+      "topic": "multi_hop",
+      "question": "When did Jon go to a fair to get more exposure for his dance studio?",
+      "gold": "24 April, 2023",
+      "concise": {
+        "qwen": "2023-04-24"
+      }
+    },
+    {
+      "question_id": "conv-47_q20",
+      "topic": "single_hop",
+      "question": "How many charity tournaments has John organized till date?",
+      "gold": "two",
+      "concise": {
+        "qwen": "2"
+      }
+    },
+    {
+      "question_id": "conv-50_q7",
+      "topic": "temporal_reasoning",
+      "question": "Does Dave's shop employ a lot of people?",
+      "gold": "Yes",
+      "concise": {
+        "qwen": "Not mentioned"
+      }
+    },
+    {
+      "question_id": "conv-43_q65",
+      "topic": "single_hop",
+      "question": "What fantasy movies does Tim like?",
+      "gold": "Lord of the Rings, Harry Potter, and Star Wars.",
+      "concise": {
+        "qwen": "Harry Potter and the Philosopher's Stone, Lord of the Rings, Star Wars"
+      }
+    },
+    {
+      "question_id": "conv-43_q70",
+      "topic": "temporal_reasoning",
+      "question": "Which Star Wars-related locations would Tim enjoy during his visit to Ireland?",
+      "gold": "Skellig Michael, Malin Head, Loop Head, Ceann Sibéal, and Brow Head because they are Star Wars filming locations.",
+      "concise": {
+        "qwen": "The Cliffs of Moher"
+      }
+    },
+    {
+      "question_id": "conv-26_q69",
+      "topic": "temporal_reasoning",
+      "question": "What personality traits might Melanie say Caroline has?",
+      "gold": "Thoughtful, authentic, driven",
+      "concise": {
+        "qwen": "brave, courageous, empathetic, understanding, kind, caring, mature, strong, inspiring"
+      }
+    },
+    {
+      "question_id": "conv-41_q64",
+      "topic": "temporal_reasoning",
+      "question": "What job might Maria pursue in the future?",
+      "gold": "Shelter coordinator, Counselor",
+      "concise": {
+        "qwen": "volunteer"
+      }
+    },
+    {
+      "question_id": "conv-41_q45",
+      "topic": "temporal_reasoning",
+      "question": "Would John be open to moving to another country?",
+      "gold": "No, he has goals specifically in the U.S. like joining the military and running for office.",
+      "concise": {
+        "qwen": "Unknown"
+      }
+    }
+  ]
+}

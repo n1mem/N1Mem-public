@@ -1,0 +1,16 @@
+# T1Mem BYOK Reproduction Package — dependencies
+#
+# No third-party dependencies required.
+# The judge client (common/openrouter_judge.py) uses only the Python
+# standard library (urllib, ssl, json, threading, concurrent.futures, hashlib).
+#
+# Requirements:
+#   - Python 3.8+  (tested on 3.13)
+#   - Network egress to https://openrouter.ai/api/v1  (for the judge)
+#   - Your own OPENROUTER_API_KEY  (BYOK)
+#
+# For the FULL end-to-end mode (regenerating reader hypotheses instead of
+# using the frozen ones), you additionally need T1Mem's runtime:
+#   - a local BGE-M3 ONNX embedding service (port 8114/8115, no key)
+#   - a 百炼 (DashScope) key for the reader  (your own, BYOK)
+# See the top-level README.md "Full end-to-end mode" section.

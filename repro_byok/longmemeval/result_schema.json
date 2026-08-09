@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "T1Mem BYOK — LongMemEval judge result",
+  "description": "Schema produced by longmemeval/run_judge_byok.py. Mirrors T1Mem's published LME judge-result layout.",
+  "type": "object",
+  "required": ["meta", "results"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["pillar", "judge_model", "total_judged", "passed", "score_pct"],
+      "properties": {
+        "package": {"type": "string"},
+        "pillar": {"const": "longmemeval"},
+        "mode": {"type": "string"},
+        "judge_model": {"type": "string"},
+        "judge_endpoint": {"type": "string"},
+        "frozen_hypotheses_file": {"type": "string"},
+        "gold_file": {"type": "string"},
+        "total_judged": {"type": "integer", "minimum": 0},
+        "passed": {"type": "integer", "minimum": 0},
+        "failed": {"type": "integer", "minimum": 0},
+        "score_pct": {"type": "number", "minimum": 0, "maximum": 100},
+        "elapsed_s": {"type": "number"},
+        "judge_call_success": {"type": "integer"},
+        "judge_call_fail": {"type": "integer"},
+        "total_cost_usd": {"type": "number"},
+        "note": {"type": "string"}
+      }
+    },
+    "type_accuracy": {"type": "object", "additionalProperties": {"type": "number"}},
+    "source_stats": {"type": "object", "additionalProperties": {"type": "integer"}},
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["question_id", "passed", "hypothesis_results"],
+        "properties": {
+          "question_id": {"type": "string"},
+          "question_type": {"type": "string"},
+          "passed": {"type": "boolean"},
+          "passed_source": {"type": ["string", "null"]},
+          "hypothesis_results": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["source", "votes", "passed"],
+              "properties": {
+                "source": {"type": "string"},
+                "votes": {"type": "array", "items": {"type": "boolean"}, "minItems": 5, "maxItems": 5},
+                "vote_count": {"type": "integer"},
+                "passed": {"type": "boolean"},
+                "hyp_preview": {"type": "string"}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

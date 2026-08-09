@@ -1,0 +1,12 @@
+{
+  "artifact": "locomo_or10_gpt4o-mini_frozen",
+  "frozen_at": "2026-07-29 09:41:03",
+  "hypotheses_file": "locomo_qa_or10_full1986.json",
+  "hypotheses_sha256": "f2efb508990cd3d002edd05509cb48fd8da7401ce738c81ac952cd1ef2668f44",
+  "result_file": "locomo_qa_or10_full1986_frozen_result.json",
+  "result_sha256": "e43963dfe045d3866cce4e1a14eca0febdf52a50b83500959235dc0bc1abb4a5",
+  "judge_model": "openai/gpt-4o-mini",
+  "score_pct": 93.35,
+  "n_questions": 1986,
+  "passed": 1854
+}

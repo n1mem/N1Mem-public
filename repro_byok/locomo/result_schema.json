@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "T1Mem BYOK — LoCoMo judge result",
+  "description": "Schema produced by locomo/run_judge_byok.py. Mirrors T1Mem's published frozen-result layout so a BYOK score is directly comparable.",
+  "type": "object",
+  "required": ["meta", "results"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["pillar", "judge_model", "total_judged", "passed", "score_pct"],
+      "properties": {
+        "package": {"type": "string"},
+        "pillar": {"const": "locomo"},
+        "mode": {"type": "string"},
+        "judge_model": {"type": "string"},
+        "judge_endpoint": {"type": "string"},
+        "frozen_hypotheses_file": {"type": "string"},
+        "total_judged": {"type": "integer", "minimum": 0},
+        "passed": {"type": "integer", "minimum": 0},
+        "failed": {"type": "integer", "minimum": 0},
+        "score_pct": {"type": "number", "minimum": 0, "maximum": 100},
+        "elapsed_s": {"type": "number"},
+        "estimated_judge_calls": {"type": "integer"},
+        "judge_call_success": {"type": "integer"},
+        "judge_call_fail": {"type": "integer"},
+        "total_cost_usd": {"type": "number"},
+        "hyp_truncate": {"type": "integer"}
+      }
+    },
+    "type_accuracy": {
+      "type": "object",
+      "additionalProperties": {"type": "number"}
+    },
+    "source_stats": {
+      "type": "object",
+      "additionalProperties": {"type": "integer"}
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["question_id", "passed", "hypothesis_results"],
+        "properties": {
+          "question_id": {"type": "string"},
+          "topic": {"type": "string"},
+          "passed": {"type": "boolean"},
+          "passed_source": {"type": ["string", "null"]},
+          "hypothesis_results": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["source", "votes", "passed"],
+              "properties": {
+                "source": {"type": "string"},
+                "votes": {"type": "array", "items": {"type": "boolean"}, "minItems": 5, "maxItems": 5},
+                "vote_count": {"type": "integer"},
+                "passed": {"type": "boolean"},
+                "hyp_preview": {"type": "string"}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

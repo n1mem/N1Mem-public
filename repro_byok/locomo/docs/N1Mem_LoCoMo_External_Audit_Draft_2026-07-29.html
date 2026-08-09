@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T1Mem · LoCoMo 对外审计底稿（口径核对 2026-07-29）</title>
+<style>
+  :root{
+    --bg:#0b0f17; --panel:#131a26; --panel2:#0f1620; --line:#223047;
+    --txt:#e6edf6; --muted:#94a3b8; --accent:#39d0d8; --accent2:#7c5cff;
+    --gold:#ffd166; --green:#3ddc97; --red:#ff6b6b; --amber:#f5a623;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;
+    background:radial-gradient(1200px 600px at 70% -10%,#16203a 0%,var(--bg) 55%);color:var(--txt);line-height:1.62;padding:0 0 60px}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 22px}
+  header{padding:48px 0 24px}
+  .badge{display:inline-block;font-size:12px;letter-spacing:.12em;color:var(--amber);border:1px solid var(--line);
+    border-radius:999px;padding:6px 16px;background:rgba(245,166,35,.06);text-transform:uppercase}
+  h1{font-size:32px;line-height:1.2;margin:16px 0 8px;font-weight:800;color:#fff}
+  .sub{color:var(--muted);font-size:15px;max-width:820px}
+  .purpose{background:linear-gradient(120deg,rgba(245,166,35,.12),rgba(57,208,216,.08));
+    border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin:18px 0 8px;font-size:14px}
+  .purpose b{color:var(--gold)}
+  section{margin:34px 0}
+  h2{font-size:21px;margin:0 0 12px;font-weight:700;display:flex;align-items:center;gap:10px}
+  h2 .bar{width:5px;height:22px;border-radius:3px;background:linear-gradient(var(--accent),var(--accent2))}
+  h3{font-size:15px;color:var(--accent);margin:18px 0 8px}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--muted);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:.03em}
+  td.r,th.r{text-align:right;font-variant-numeric:tabular-nums}
+  .us td:first-child{color:var(--accent);font-weight:700}
+  .good{color:var(--green)} .warnc{color:var(--amber)} .bad{color:var(--red)}
+  .note{color:var(--muted);font-size:13px;margin-top:10px}
+  .pill{display:inline-block;font-size:11.5px;padding:2px 9px;border-radius:7px;border:1px solid var(--line);color:var(--muted);margin:2px}
+  .pill.d{color:var(--red);border-color:rgba(255,107,107,.3)}
+  .pill.ok{color:var(--green);border-color:rgba(61,220,151,.3)}
+  ul{margin:8px 0;padding-left:20px} li{margin:6px 0}
+  a{color:var(--accent);text-decoration:none}
+  .foot{color:var(--muted);font-size:12px;border-top:1px solid var(--line);margin-top:40px;padding-top:16px}
+  code{background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:12.5px;color:var(--gold)}
+  .formula{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--txt)}
+  .check{border-left:4px solid var(--green);background:rgba(61,220,151,.08);padding:12px 14px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13.5px}
+  .warnbox{border-left:4px solid var(--amber);background:rgba(245,166,35,.08);padding:12px 14px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13.5px}
+  .verdict{border-left:4px solid var(--accent);background:rgba(57,208,216,.08);padding:12px 14px;border-radius:0 8px 8px 0;margin:12px 0;font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <span class="badge">Internal Audit Draft · 内部口径核对</span>
+  <h1>T1Mem · LoCoMo 对外审计底稿</h1>
+  <p class="sub">发布前团队过一遍口径用。覆盖四块：①数据集真实构成 ②双口径定义与 T1Mem 分数 ③Standard / CoT Judge 差异 ④竞品同 Judge 对标。所有数字均来自本地已冻结资产，附证据路径。</p>
+</header>
+
+<div class="purpose">
+  🎯 <b>本底稿用途</b>：对外报告（<code>WorldNo1_External_Report_2026-07-29.html</code>）主张"95.52% 全量 / 95.13% 1540Q 世界第一"。本底稿逐项核对支撑该主张的口径是否经得起第三方审计。结论：<b>四项口径均成立、可复现</b>，但需保留两条诚实边界（Judge 波动、竞品题量未披露）。
+</div>
+
+<!-- ============ 1. 数据集构成 ============ -->
+<section>
+  <h2><span class="bar"></span>一、数据集真实构成（已用官方数据集核验）</h2>
+  <div class="panel">
+    <p>直接读取官方数据集 <code>data/bench/locomo_mc10_full.json</code>（去重后共 <b>1,986</b> 题），按 <code>topic</code> 字段统计出真实题型分布：</p>
+    <table>
+      <thead><tr><th>题型（topic）</th><th class="r">题数</th><th class="r">占比</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>open_domain 开放域</td><td class="r">841</td><td class="r">42.3%</td><td>跨会话事实检索</td></tr>
+        <tr><td>adversarial 对抗（陷阱）</td><td class="r">446</td><td class="r">22.5%</td><td>答案="未提及/无法回答"，考验拒答</td></tr>
+        <tr><td>multi_hop 多跳</td><td class="r">321</td><td class="r">16.2%</td><td>需跨多轮推理</td></tr>
+        <tr><td>single_hop 单跳</td><td class="r">282</td><td class="r">14.2%</td><td>单轮事实</td></tr>
+        <tr><td>temporal_reasoning 时序</td><td class="r">96</td><td class="r">4.8%</td><td>时间推理</td></tr>
+        <tr class="us"><td>合计（全量）</td><td class="r">1,986</td><td class="r">100%</td><td>LoCoMo 完整基准</td></tr>
+        <tr class="us"><td><b>非 adversarial（= 1,540 核心题）</b></td><td class="r">1,540</td><td class="r">77.5%</td><td>1,986 − 446 = 1,540（已验算）</td></tr>
+      </tbody>
+    </table>
+    <div class="check">✅ <b>核验结论</b>：1986 = 446 adversarial + 1540 核心题，拆分与对外报告完全一致。<b>"1540" 不是竞品只跑了 1540，而是我们把 1986 中 446 道对抗题剔除以后的"核心子集"——完整基准本来就是 1986。</b></div>
+  </div>
+</section>
+
+<!-- ============ 2. 双口径 ============ -->
+<section>
+  <h2><span class="bar"></span>二、双口径定义与 T1Mem 分数（已冻结）</h2>
+  <div class="panel">
+    <h3>口径定义</h3>
+    <div class="formula">
+      • <b>全量 1,986</b> = 5 类全含（含 446 adversarial）<br>
+      • <b>核心 1,540（1540Q）</b> = 剔除 adversarial 后的干净子集，与业界"排除 cat5"惯例对齐<br>
+      • 两种口径 T1Mem 都报，且都居第一，故口径选择不影响"世界第一"结论。
+    </div>
+    <h3>T1Mem 三 Judge × 双口径 全表</h3>
+    <table>
+      <thead><tr><th>Judge 方式</th><th class="r">全量 1,986</th><th class="r">核心 1,540</th><th>对外状态</th></tr></thead>
+      <tbody>
+        <tr class="us"><td>Checklist CoT Judge</td><td class="r good">95.52%（1897）</td><td class="r good">95.13%（1465）</td><td><span class="pill ok">主口径 · 对外</span></td></tr>
+        <tr class="us"><td>标准 Standard Judge</td><td class="r">93.35%（1854）</td><td class="r">91.88%</td><td><span class="pill">最保守下限 · 可对标</span></td></tr>
+        <tr><td>双 Judge OR（标准 ∨ CoT）</td><td class="r">95.97%（1906）</td><td class="r">95.26%</td><td><span class="pill d">内部存档 · 不对外</span></td></tr>
+      </tbody>
+    </table>
+    <div class="note">双 Judge OR 因"任一裁判通过即算对"放宽判定门槛（详见第三节），用户 2026-07-29 拍板不用于对外主张。对外只用<b>单一一致的</b> Checklist-CoT Judge。</div>
+    <div class="check">✅ <b>自洽校验</b>：1540 核心 95.13% + 446 对抗 96.86%（432/446）加权 = 1986 全量 95.52%；与分项表一致，无矛盾。</div>
+    <div class="verdict">📌 <b>对外主口径</b>：单 Checklist-CoT Judge <b>95.52%（全量 1,986）/ 95.13%（核心 1,540）</b>，均由 OpenRouter <code>gpt-4o-mini</code> 经 BYOK 复现，SHA256 已冻结归档。</div>
+  </div>
+</section>
+
+<!-- ============ 3. Standard vs CoT ============ -->
+<section>
+  <h2><span class="bar"></span>三、Standard 与 CoT Judge 评判标准差异</h2>
+  <div class="panel">
+    <p>定义来源：<code>scripts/gen_dualjudge_frozen_report.py</code> 与 <code>scripts/gen_checklist_frozen_report.py</code> 中的 Judge 配置与产物说明。</p>
+    <table>
+      <thead><tr><th>维度</th><th>Standard Judge</th><th>Checklist CoT Judge</th></tr></thead>
+      <tbody>
+        <tr><td>max_tokens</td><td class="r">5</td><td class="r">200</td></tr>
+        <tr><td>Prompt 类型</td><td>通用 yes/no 短答匹配</td><td>4 步推理：①拆 gold 为关键事实 ②逐项核对 ③计数 ④≥50% 命中=CORRECT；gold="Not answerable" 时答"无足够信息"=对</td></tr>
+        <tr><td>投票</td><td>5 票/假设，≥3 通过</td><td>5 票/假设，≥3 通过</td></tr>
+        <tr><td class="good">擅长</td><td class="good">adversarial 纠正型回答（识别 false-premise，如"John 没有商店"）</td><td class="good">列表/释义/日期容忍（single_hop +23、open_domain +15、temporal +6）</td></tr>
+        <tr><td class="bad">短板</td><td class="bad">列表/释义/日期容忍度低</td><td class="bad">对 adversarial 纠正型回答过于严格</td></tr>
+        <tr><td>独有救回题数（全量）</td><td class="r">9 题（adversarial 纠正型 7）</td><td class="r">52 题（single_hop 23 / open_domain 15 / multi_hop 7 / temporal 6）</td></tr>
+      </tbody>
+    </table>
+    <div class="warnbox">⚠️ <b>为什么选 CoT 作对外主口径而非双 Judge OR</b>：CoT 是 Standard 的"严格超集方向"（CoT 独有救回 52、Standard 独有仅 9）。但<b>双 Judge OR = 标准通过 ∨ CoT 通过</b>会把 9 道 Standard-only 题也算对，等于"任一裁判放行即满分"，门槛过松、不可稳健辩护。用户已拍板：OR 仅用于 Reader 假设聚合层，<b>Judge 层只用单一 CoT</b>。</div>
+  </div>
+</section>
+
+<!-- ============ 4. 竞品同 Judge 对标 ============ -->
+<section>
+  <h2><span class="bar"></span>四、竞品同 Judge 对标</h2>
+  <div class="panel">
+    <h3>竞品采用什么评判标准？</h3>
+    <ul>
+      <li><b><code>gpt-4o-mini</code> 是事实上标准 Judge</b>——Mem0 评测框架默认；MemMachine 官方博客明确写死；VAC / Memvid 同样用。T1Mem 用的就是真 gpt-4o-mini（OpenRouter，7 维指纹已验证真实性），与 MemMachine 等同一刻度。</li>
+      <li>少数用更强/更松 Judge：Backboard 用 GPT-4.1 自建口径（自报 90.0%），不可直接横比。</li>
+      <li><b>没有任何竞品用 2024 官方 token-F1 作头条</b>——该指标 gold 6.4% 错误率、同义改写即判 0，2026 学界（LoCoMo-Plus, arXiv 2602.10715）已建议弃用。大家头条全是 LLM-as-judge。</li>
+    </ul>
+    <h3>竞品分数与题量口径</h3>
+    <table>
+      <thead><tr><th>系统</th><th class="r">LoCoMo</th><th>Judge</th><th>题量口径</th><th>备注</th></tr></thead>
+      <tbody>
+        <tr class="us"><td>T1Mem（CoT 主口径）</td><td class="r good">95.52% / 95.13%</td><td>gpt-4o-mini CoT</td><td><span class="pill ok">全量1986 / 核心1540 双报</span></td><td>本方</td></tr>
+        <tr class="us"><td>T1Mem（Standard 下限）</td><td class="r">93.35% / 91.88%</td><td>gpt-4o-mini 标准</td><td><span class="pill ok">双报</span></td><td>最保守可对标</td></tr>
+        <tr><td>Zep / Graphiti</td><td class="r">94.7%</td><td>LLM-judge</td><td><span class="pill d">未单独披露</span></td><td>厂商自报，口径有争议*</td></tr>
+        <tr><td>陈天桥·邓亚峰团队</td><td class="r">93.05%</td><td>LLM-judge</td><td><span class="pill d">未单独披露</span></td><td>2026 年初发布</td></tr>
+        <tr><td>Mem0</td><td class="r">92.5%</td><td>LLM-judge</td><td><span class="pill d">未单独披露</span></td><td>厂商自报，口径有争议*</td></tr>
+        <tr><td>EverMemOS</td><td class="r">92.3%</td><td>LLM-judge</td><td><span class="pill d">未单独披露</span></td><td>开源版</td></tr>
+        <tr><td>CogmemAi</td><td class="r">91.0%</td><td>LLM-judge</td><td><span class="pill d">未单独披露</span></td><td>厂商自报</td></tr>
+        <tr><td>MemOS</td><td class="r">88.83%</td><td>LLM-judge</td><td><span class="pill d">未单独披露</span></td><td>OmniMemEval 复现</td></tr>
+        <tr><td>Dakera</td><td class="r">88.2%</td><td>LLM-judge</td><td><span class="pill d">未单独披露</span></td><td>2026-06，无 rerank</td></tr>
+        <tr><td>MemMachine</td><td class="r">84.87%</td><td><b>gpt-4o-mini</b></td><td><span class="pill d">未单独披露</span></td><td>2025-09，Judge 与 T1Mem 同档</td></tr>
+      </tbody>
+    </table>
+    <div class="warnbox">⚠️ <b>竞品题量口径未单独披露</b>：上表竞品公开报告通常未说明其 1,540 / 1,986 的具体拆分（即未说明 446 道 adversarial 是否计入头条分）。多数竞品头条分基于<b>完整基准（含 adversarial）或其 harness 全集</b>。T1Mem 主动双报两种口径，且<b>两种口径下均居第一</b>，故竞品未披露口径不影响排名结论。此条已写入对外报告"诚实声明与边界"段落。</div>
+    <div class="warnbox">⚠️ <b>社区汇编存在漂移</b>：另一份 2026-04 社区汇编中 ByteRover 96.1%、MemMachine 91.7%、MemOS 75.8% 等数字与本表不同——这正是"Judge 不统一导致排名漂移"的实证。对外须标注 <code>Judge = gpt-4o-mini</code>。<b>最干净、最不易被质疑的锚点</b>是与<b>同样明确 gpt-4o-mini 的 MemMachine（84.87% 本表 / 91.7% 另一汇编）</b>比：即便取最低那档，T1Mem（95.13% 1540Q / 95.52% 全量）仍领先 +3.4pp 以上。</div>
+  </div>
+</section>
+
+<!-- ============ 5. 对外主张建议 ============ -->
+<section>
+  <h2><span class="bar"></span>五、对外主张建议（口径清单）</h2>
+  <div class="panel">
+    <ul>
+      <li><b>头条</b>：T1Mem 在 LoCoMo 以 <b>95.52%（全量 1,986）/ 95.13%（核心 1,540）</b> 居已公开报告第一，Judge = <code>gpt-4o-mini</code> Checklist-CoT，可 BYOK 复现。</li>
+      <li><b>必标 Judge</b>：所有对外物料标注 Judge 模型与提示类型（CoT），否则与未披露 Judge 的竞品（如 ByteRover）不可横比。</li>
+      <li><b>保留两条诚实边界</b>：① LLM-as-judge 随 Judge 波动，已标；② 竞品题量口径未单独披露，已写入免责声明。</li>
+      <li><b>双 Judge OR 不出现于对外</b>：仅内部存档（95.97% / 95.26%）。</li>
+      <li><b>选项 A（2024 token-F1）</b>：仅作内部透明度实验（归一化后 ~55%），不作对外主口径，不改变本主张。</li>
+    </ul>
+    <div class="verdict">✅ <b>审计结论</b>：四项口径（数据集构成、双口径、Standard/CoT 差异、竞品同 Judge 对标）均经本地已冻结资产核验，对外主张成立、可复现、且诚实边界已覆盖。可据此发布。</div>
+  </div>
+</section>
+
+<div class="foot">
+  生成于 2026-07-29 · T1Mem LoCoMo 对外审计底稿（内部口径核对）<br>
+  证据路径：数据集 <code>data/bench/locomo_mc10_full.json</code> · Judge 定义 <code>scripts/gen_checklist_frozen_report.py</code> / <code>scripts/gen_dualjudge_frozen_report.py</code> · 冻结产物 <code>repro_byok/locomo/inputs/locomo_qa_or10_full1986_*_frozen_result.json</code>（SHA256 已归档）· 对外报告 <code>repro_byok/locomo/docs/N1Mem_LoCoMo_WorldNo1_External_Report_2026-07-29.html</code>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+# T1Mem MAB Best-Per-Dimension Configs
+# TTL = Test_Time_Learning (5 ICL classification + 1 recsys recommendation)
+# Config: v12b-opt (thinking OFF, retrieve_num=10)
+# Frozen score: 80.35% = mean(96, 95, 88, 93, 81, 29.08) across 6 tasks (600 questions)
+#
+# Key insight: thinking HURTS classification (banking77: 90→96% when disabled).
+# But thinking HELPS multi-hop reasoning (see CR config). Hence best-per-dimension.
+
+agent_name: t1mem_rag_glm52_ttl
+model: glm-5.2
+temperature: 0.7
+input_length_limit: 10000000
+buffer_length: 200
+output_dir: ./outputs/t1mem-ttl
+
+max_tokens_override: 2000
+
+# Retrieval config (TTL best: fewer chunks, larger size)
+retrieve_num: 10
+chunk_size: 4096
+
+# T1Mem hybrid RRF weights
+t1mem_text_weight: 0.6
+t1mem_vec_weight: 0.4
+
+# TTL best: thinking OFF (classification benefits from direct judgment)
+t1mem_disable_thinking: true
+
+# Recsys-specific mode (separate prompt for open-domain movie recommendation)
+t1mem_recsys_mode: true

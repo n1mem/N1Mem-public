@@ -1,0 +1,6 @@
+{
+  "file": "locomo_qa_or10_full1986_official_f1_result.json",
+  "sha256": "ef4f8ed2777c647a9b24d6485181e47caea3596ea4a72611053eadcdab409185",
+  "overall_mean_f1": 0.233384944612286,
+  "n_questions": 1986
+}

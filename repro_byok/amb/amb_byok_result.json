@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "package": "T1Mem-BYOK",
+    "pillar": "amb",
+    "mode": "dry-run-scaffold",
+    "harness": "MemoryAgentBench (ICLR'26, official)",
+    "agent": "T1Mem (multi-model reader + OR, local BGE-M3 retrieval)",
+    "note": "Scores are NULL in dry-run. Run the official harness with your own keys to fill them."
+  },
+  "dimensions": {
+    "AR": {
+      "score": null,
+      "n_tasks": null
+    },
+    "CR": {
+      "score": null,
+      "n_tasks": null
+    },
+    "TTL": {
+      "score": null,
+      "n_tasks": null
+    },
+    "LRU": {
+      "score": null,
+      "n_tasks": null
+    }
+  },
+  "overall_simple_mean": null,
+  "overall_weighted": null
+}

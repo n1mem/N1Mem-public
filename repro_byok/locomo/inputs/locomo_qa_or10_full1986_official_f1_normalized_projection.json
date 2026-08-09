@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "method": "concise-normalized projection (first-sentence + MC-style adversarial rejection)",
+    "note": "NOT the verbatim official score. Emulates official short-answer + multiple-choice protocol.",
+    "overall_mean_f1": 0.4640409893286867
+  },
+  "per_type": {
+    "open_domain": {
+      "n": 841,
+      "mean": 0.40921598256404135
+    },
+    "adversarial": {
+      "n": 446,
+      "mean": 0.9596412556053812
+    },
+    "multi_hop": {
+      "n": 321,
+      "mean": 0.1976550603821574
+    },
+    "single_hop": {
+      "n": 282,
+      "mean": 0.23067978296516634
+    },
+    "temporal_reasoning": {
+      "n": 96,
+      "mean": 0.21808114887045313
+    }
+  }
+}

@@ -1,0 +1,47 @@
+N1Mem Public Repository — License & Boundary Notice
+===================================================
+
+This repository (the "Public Repo") contains T1Mem's BENCHMARK EVIDENCE and
+REPRODUCIBILITY package (BYOK). It is NOT the T1Mem product source code.
+
+1. OPEN-SOURCE CONTENTS (licensed under the MIT License below)
+   - Evaluation / scoring scripts (judge, official F1, aggregation)
+   - Frozen result artifacts (answers + scores), SHA256-signed
+   - Reproduction guides, configuration templates, documentation
+   - Architecture design documents (descriptions only, NO source code)
+
+2. PROPRIETARY CONTENTS (NOT in this repo, NOT licensed here)
+   The T1Mem CORE ENGINE is a closed-source commercial / patent asset and is
+   explicitly EXCLUDED from this repository. It includes, without limitation:
+   - Five-dimensional memory model and time-axis architecture
+   - Structured Fact Extraction (SFE) and OR aggregation
+   - Multi-model Reader (Qwen / GLM / DeepSeek + ensemble)
+   - Retrieval engine internals (BGE-M3 + BM25 + RRF + temporal)
+   These run ONLY inside the T1Mem core, invoked as a black box.
+
+3. EXTERNAL BENCHMARKS
+   MemoryAgentBench (ICLR'26) and LoCoMo (snap-research) are third-party
+   works; their respective licenses apply to their own datasets/code.
+
+----------------------------------------------------------------------
+MIT License (applies to the OPEN-SOURCE CONTENTS listed in §1 only)
+----------------------------------------------------------------------
+Copyright (c) 2026 深圳市网鹏科技有限公司 (Shenzhen Wangpeng Technology Co., Ltd.)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of the open-source materials in this repository, to deal in them without
+restriction, including without limitation the rights to use, copy, modify,
+merge, publish, distribute, sublicense, and/or sell copies, subject to the
+following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the open-source materials.
+
+THE OPEN-SOURCE MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO
+EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES
+OR OTHER LIABILITY ARISING FROM OUT OF OR IN CONNECTION WITH THE MATERIALS.
+
+NOTE: This license does NOT grant any right to the proprietary T1Mem core
+engine, which remains the exclusive property of Shenzhen Wangpeng Technology.

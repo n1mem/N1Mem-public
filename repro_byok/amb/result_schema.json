@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "T1Mem BYOK — MemoryAgentBench result",
+  "description": "Schema for the MemoryAgentBench (ICLR'26) four-dimension result, emitted by amb/run_agent_byok.py (or the official harness via our adapter).",
+  "type": "object",
+  "required": ["meta", "dimensions"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["pillar", "harness", "agent"],
+      "properties": {
+        "package": {"type": "string"},
+        "pillar": {"const": "amb"},
+        "mode": {"type": "string"},
+        "harness": {"type": "string"},
+        "agent": {"type": "string"},
+        "note": {"type": "string"}
+      }
+    },
+    "dimensions": {
+      "type": "object",
+      "required": ["AR", "CR", "TTL", "LRU"],
+      "properties": {
+        "AR": {"$ref": "#/definitions/dim"},
+        "CR": {"$ref": "#/definitions/dim"},
+        "TTL": {"$ref": "#/definitions/dim"},
+        "LRU": {"$ref": "#/definitions/dim"}
+      }
+    },
+    "overall_simple_mean": {"type": ["number", "null"]},
+    "overall_weighted": {"type": ["number", "null"]}
+  },
+  "definitions": {
+    "dim": {
+      "type": "object",
+      "properties": {
+        "score": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+        "n_tasks": {"type": ["integer", "null"], "minimum": 0}
+      }
+    }
+  }
+}

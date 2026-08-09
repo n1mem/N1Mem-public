@@ -1,0 +1,42 @@
+# T1Mem MAB Best-Per-Dimension Configs
+# CR = Conflict_Resolution (factconsolidation, 6 subsets: mh/sh × 6k/32k/64k)
+# Config: v12 (thinking ON, retrieve_num=15, KV prefix cache)
+# Frozen score: F1 = 90.29% (6 subsets × 100 questions = 600 total)
+#
+# IMPORTANT: CR uses a separate config per context-size variant:
+#   - mh_6k:  context_max_length=6000
+#   - mh_32k: context_max_length=32768
+#   - mh_64k: context_max_length=65536
+#   - sh_6k:  context_max_length=6000
+#   - sh_32k: context_max_length=32768
+#   - sh_64k: context_max_length=65536
+# Run all 6 and average the F1 scores.
+
+agent_name: t1mem_rag_glm52_cr
+model: glm-5.2
+temperature: 0.7
+input_length_limit: 10000000
+buffer_length: 200
+output_dir: ./outputs/t1mem-cr
+
+max_tokens_override: 2000
+
+# Retrieval config (CR best: moderate retrieve_num)
+retrieve_num: 15
+chunk_size: 4096
+
+# T1Mem hybrid RRF weights
+t1mem_text_weight: 0.6
+t1mem_vec_weight: 0.4
+
+# CR mode: thinking ON (multi-hop reasoning requires chain-of-thought)
+t1mem_disable_thinking: false
+
+# CR-specific: fact consolidation with recency tracking
+t1mem_cr_mode: true
+t1mem_cr_extract: true
+t1mem_recency_weight: 0.1
+t1mem_consolidation: true
+
+# KV prefix caching: pre-build fact pool at init → 98.9% input token reduction
+t1mem_cr_prefix_cache: true

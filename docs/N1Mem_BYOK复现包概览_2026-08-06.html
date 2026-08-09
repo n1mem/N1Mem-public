@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>N1Mem · BYOK 复现包概览</title>
+<style>
+  :root { --bg:#0d1117; --panel:#161b22; --panel2:#1c2330; --bd:#30363d;
+          --fg:#e6edf3; --mut:#9aa7b4; --acc:#58a6ff; --grn:#3fb950; --org:#f0883e; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg);
+         font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+         line-height:1.6; padding:32px; }
+  .wrap { max-width:980px; margin:0 auto; }
+  h1 { font-size:28px; margin:0 0 4px; }
+  h2 { font-size:19px; margin:30px 0 12px; border-left:4px solid var(--acc); padding-left:10px; }
+  .sub { color:var(--mut); margin-bottom:20px; }
+  .panel { background:var(--panel); border:1px solid var(--bd); border-radius:10px; padding:18px 20px; margin:14px 0; }
+  .pill { display:inline-block; padding:2px 10px; border-radius:999px; font-size:12px; margin-right:6px; }
+  .tag-byok { background:rgba(63,185,80,.15); color:var(--grn); border:1px solid rgba(63,185,80,.4); }
+  .grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+  .card { background:var(--panel2); border:1px solid var(--bd); border-radius:10px; padding:16px; }
+  .card h3 { margin:0 0 8px; font-size:15px; color:var(--acc); }
+  .score { font-size:26px; font-weight:700; color:var(--grn); }
+  .score-sub { font-size:12.5px; color:var(--mut); margin-top:2px; }
+  .meta { color:var(--mut); font-size:12.5px; }
+  table { width:100%; border-collapse:collapse; margin:10px 0; font-size:13.5px; }
+  th, td { border:1px solid var(--bd); padding:8px 10px; text-align:left; }
+  th { background:var(--panel2); color:var(--mut); font-weight:600; }
+  code { background:#0b0f14; border:1px solid var(--bd); border-radius:5px; padding:1px 6px; font-size:12.5px; color:#c9d1d9; }
+  pre { background:#0b0f14; border:1px solid var(--bd); border-radius:8px; padding:14px 16px;
+        overflow:auto; font-size:12.5px; color:#c9d1d9; }
+  .ok { color:var(--grn); } .warn { color:var(--org); }
+  ul { margin:8px 0 8px 2px; padding-left:20px; } li { margin:5px 0; }
+  .foot { color:var(--mut); font-size:12px; margin-top:26px; border-top:1px solid var(--bd); padding-top:14px; }
+  a { color:var(--acc); }
+  .fix { background:rgba(88,166,255,.08); border:1px solid var(--acc); border-radius:8px; padding:12px 14px; font-size:13px; margin:12px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>N1Mem · BYOK 复现包概览</h1>
+  <div class="sub">Bring-Your-Own-Key 复现交付物 <span class="pill tag-byok">零密钥泄露</span> · 2026-08-06（四榜口径）</div>
+
+  <div class="panel">
+    <p><b>这是什么：</b>用<b>你自己的 API key</b>，独立验证 N1Mem 在<b>四榜</b>记忆基准上的公开成绩。
+    N1Mem <b>不持有、不经手、不代付</b>任何 key / 费用。包内发布的是<b>冻结的 Reader 假设或冻结结果文件</b>（可 SHA256 校验）
+    + 与内部<b>完全一致</b>的 Judge prompt 与 OR 逻辑 + 一个只读取你环境变量 key 的复现脚本。</p>
+  </div>
+
+  <h2>① 复现的四根支柱</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>支柱 1 · LongMemEval QA</h3>
+      <div class="score">99.2–99.4%</div>
+      <div class="score-sub">双通道真 GPT-4o Judge · 500 题</div>
+      <div class="meta">冻结假设 <code>longmemeval/inputs/t1mem_hypotheses_500.jsonl</code><br/>多模型 OR 聚合 · 世界第 1</div>
+    </div>
+    <div class="card">
+      <h3>支柱 2 · LoCoMo QA</h3>
+      <div class="score">95.52%</div>
+      <div class="score-sub">OR10 + Checklist-CoT Judge · 1,986 题</div>
+      <div class="meta">保守下限 Standard Judge 93.35%<br/>官方 token-F1 双数披露：简洁 65.34% / 遗留 23.34%</div>
+    </div>
+    <div class="card">
+      <h3>支柱 3 · MemoryAgentBench</h3>
+      <div class="score">77.87%</div>
+      <div class="score-sub">ICLR'26 · 四维 simple average · 1,421 题</div>
+      <div class="meta">AR 81.38 / CR 90.29 / TTL 80.35 / LRU 59.48<br/>&gt; GPT-5-mini 60.6%</div>
+    </div>
+    <div class="card">
+      <h3>支柱 4 · LongMemEval-V2</h3>
+      <div class="score">62.7%</div>
+      <div class="score-sub">4-model lazy OR · 451 题</div>
+      <div class="meta">保守下限 DS-V4-Flash 单模型 44.3%<br/>公开验证 <code>longmemeval-v2/verify_lmev2.py</code>（零依赖）</div>
+    </div>
+  </div>
+
+  <h2>② 为什么 BYOK 是安全的（也给评审者）</h2>
+  <ul>
+    <li><span class="ok">✓ 零密钥泄露</span>：所有脚本只读环境变量，缺失即报错；仓库内<b>无任何 key</b>。</li>
+    <li><span class="ok">✓ 费用自担</span>：调用全部计费到<b>你的</b> OpenRouter / 百炼账户，N1Mem 看不到用量。</li>
+    <li><span class="ok">✓ 可审计</span>：冻结产物带 SHA256；<code>verify_public.py</code> 输出完整性校验；<code>CLAIM.template.md</code> 供署名背书。</li>
+    <li><span class="ok">✓ 最小权限</span>：问答基准只需 Judge key；端到端模式才需 Reader key。</li>
+  </ul>
+
+  <h2>③ 三步跑起来</h2>
+  <pre># 1) 填你自己的 key（仅 OPENROUTER_API_KEY 必填）
+cp repro_byok/.env.example repro_byok/.env
+# 编辑 .env：OPENROUTER_API_KEY=sk-or-...
+
+# 2) LongMemEval（先构建官方 Gold，约 ~1h）
+python repro_byok/longmemeval/build_gold.py --data &lt;官方longmemeval目录&gt; --out repro_byok/longmemeval/inputs/lme_gold.json
+python repro_byok/longmemeval/run_judge_byok.py --gold repro_byok/longmemeval/inputs/lme_gold.json --full
+
+# 3) LoCoMo 主口径 95.52%（Checklist-CoT，~30min）
+python repro_byok/locomo/freeze_or10_checklist.py --smoke 10
+python repro_byok/locomo/freeze_or10_checklist.py --full
+
+# 4) MemoryAgentBench（干跑出脚手架；真跑需克隆官方仓库）
+python repro_byok/amb/run_agent_byok.py --dry-run
+
+# 5) LME-V2 零依赖校验
+python repro_byok/longmemeval-v2/verify_lmev2.py
+
+# 6) 全量中立校验（无需 API key）
+python verify_public.py</pre>
+
+  <h2>④ 验证费用说明</h2>
+  <div class="panel">
+    <p>所有复现/校验均在<b>你自己的 API key</b> 下运行，费用由你自行承担，N1Mem 看不到、也不承担这些费用。零依赖校验（<code>verify_public.py</code> / <code>verify_lmev2.py</code>）无需任何 API key。</p>
+  </div>
+
+  <div class="panel">
+    <p class="warn">ⓘ <b>关于「不依赖最终分数」</b>：本包是<b>复现骨架</b>——脚本与冻结产物已就绪，但最终分数由复现方运行后产生。<code>verify_public.py</code> 只做 SHA256 校验 + 计分 + 断言，不引入任何预置结论。</p>
+  </div>
+
+  <div class="foot">
+    包路径：<code>N1Mem-public/repro_byok/</code>　·　入口：<code>repro_byok/README.md</code>　·　中立校验：<code>verify_public.py</code><br/>
+    单一真相源：<code>claim_card.json</code> / <code>claim_card.html</code><br/>
+    本概览为交付预览文档；实际复现以包内代码与 README 为准。
+  </div>
+</div>
+</body>
+</html>

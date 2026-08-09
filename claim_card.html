@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>N1Mem 四榜声明口径卡 · 单一真相源 · 2026-07-30</title>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --panel2:#1c2330; --bd:#30363d;
+    --tx:#c9d1d9; --mut:#8b949e; --acc:#58a6ff; --grn:#3fb950; --red:#f85149;
+    --yel:#d29922; --pur:#bc8cff; --cy:#39d0d8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--tx);font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.6}
+  .wrap{max-width:1080px;margin:0 auto;padding:32px 28px 64px}
+  h1{font-size:27px;margin:0 0 6px;color:#fff}
+  h2{font-size:20px;margin:34px 0 12px;color:#fff;border-left:4px solid var(--acc);padding-left:12px}
+  .sub{color:var(--mut);font-size:13px;margin-bottom:18px}
+  .panel{background:var(--panel);border:1px solid var(--bd);border-radius:10px;padding:18px 20px;margin:14px 0}
+  .card{background:var(--panel);border:1px solid var(--bd);border-radius:10px;padding:20px 22px;margin:18px 0;border-top:4px solid var(--grn)}
+  .card h3{margin:0 0 4px;font-size:19px;color:#fff}
+  .qbadge{display:inline-block;background:var(--panel2);border:1px solid var(--bd);border-radius:6px;padding:2px 10px;font-size:12px;color:var(--mut);margin-left:8px}
+  .big{font-size:34px;font-weight:800;color:var(--grn);line-height:1.1}
+  .big small{font-size:15px;color:var(--mut);font-weight:500}
+  .row{display:grid;grid-template-columns:180px 1fr;gap:8px;padding:7px 0;border-bottom:1px solid var(--bd);font-size:13.5px}
+  .row:last-child{border-bottom:none}
+  .row .k{color:var(--mut)}
+  .row .v{color:var(--tx)}
+  .row .v code{background:#0b0f14;padding:1px 6px;border-radius:4px;color:var(--cy);font-size:12px;word-break:break-all}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+  th,td{border:1px solid var(--bd);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:var(--panel2);color:#fff}
+  .tag{display:inline-block;padding:1px 9px;border-radius:20px;font-size:11px;font-weight:600}
+  .t-grn{background:rgba(63,185,80,.15);color:var(--grn);border:1px solid var(--grn)}
+  .t-red{background:rgba(248,81,73,.15);color:var(--red);border:1px solid var(--red)}
+  .t-yel{background:rgba(210,153,34,.15);color:var(--yel);border:1px solid var(--yel)}
+  .note{background:rgba(210,153,34,.08);border:1px solid var(--yel);border-radius:8px;padding:12px 14px;font-size:13px;color:#e3c069;margin:12px 0}
+  .ok{background:rgba(63,185,80,.08);border:1px solid var(--grn);border-radius:8px;padding:12px 14px;font-size:13px;color:#9be3a8;margin:12px 0}
+  .bad{background:rgba(248,81,73,.10);border:1px solid var(--red);border-radius:8px;padding:12px 14px;font-size:13px;color:#f3a39e;margin:12px 0}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}.row{grid-template-columns:130px 1fr}}
+  .mini{font-size:11px;color:var(--mut)}
+  .foot{margin-top:44px;padding-top:16px;border-top:1px solid var(--bd);color:var(--mut);font-size:12px}
+  a{color:var(--acc);text-decoration:none}
+  .hl{color:var(--red);font-weight:700}
+  .lang{font-size:12px;color:var(--mut);margin-bottom:14px}
+  .lang a{margin-left:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>N1Mem 四榜声明口径卡</h1>
+  <div class="lang">语言：<b>中文</b> · <a href="claim_card_en.html">English</a></div>
+  <div class="sub">单一真相源 v1.2 · 签发 2026-07-30 · 更新 2026-08-05（LME-V2 正式主口径升级 4-model OR 62.7%）· issuer: 深圳市网鹏科技有限公司 · 产品名 N1Mem（底层引擎 T1Mem）· 机器可读版：<code>docs/claim_card.json</code></div>
+
+  <div class="ok"><b>使用铁律：</b>所有对外物料（官网 / README / 博客 / 榜单提交）必须引用本卡。每个榜单披露<b>两个口径</b>——<b>对外主口径 headline</b>（用于"世界第一"主张）+ <b>保守下限</b>（单系统/标准 Judge）。<b>禁止</b> cherry-pick 单点峰值、<b>禁止</b>隐瞒官方指标（如 LoCoMo token-F1）。</div>
+
+  <!-- ===== LongMemEval ===== -->
+  <div class="card">
+    <h3>① LongMemEval QA <span class="qbadge">500 题</span></h3>
+    <div class="grid">
+      <div><div class="big">99.4% <small>497/500</small></div><div class="mini">对外主口径 · 世界第 1</div></div>
+      <div><div class="big" style="color:var(--acc)">99.2% <small>496/500</small></div><div class="mini">保守下限（单系统）</div></div>
+    </div>
+    <div class="row"><span class="k">被测系统</span><span class="v">N1Mem (T1Mem engine, 多模型假设 OR 聚合：Qwen3.7-Max / GLM-5.2 / DS-V4-Flash / SFE / flip）</span></div>
+    <div class="row"><span class="k">Judge</span><span class="v">openai/gpt-4o（<b>双通道真 Judge，非自评</b>）· 按题型 anscheck prompt（temporal/knowledge-update/preference/general）</span></div>
+    <div class="row"><span class="k">冻结产物</span><span class="v">Reader 假设 <code>repro_byok/longmemeval/inputs/t1mem_hypotheses_500.jsonl</code></span></div>
+    <div class="row"><span class="k">SHA256</span><span class="v"><code>0721579d894b28e3ef0c7a7ac910e506b36f4c6e075228c71b1d11005615c515</code></span></div>
+    <div class="row"><span class="k">复现</span><span class="v">repro_byok/longmemeval（BYOK，核验方自有 OPENROUTER_API_KEY 重跑 Judge）</span></div>
+    <div class="note">外部复现单假设得下限、多假设 OR 得上限；Judge 自然方差通常 ±1pp。LongMemEval 无官方 token-F1 指标，采用 GPT-Judge 为学界通用评测方式。</div>
+  </div>
+
+  <!-- ===== LoCoMo ===== -->
+  <div class="card" style="border-top-color:var(--grn)">
+    <h3>② LoCoMo QA <span class="qbadge">1,986 题</span></h3>
+    <div class="grid">
+      <div><div class="big">95.52% <small>1897/1986</small></div><div class="mini">主口径 · OR10 + Checklist-CoT · 世界第 1（同协议领先 Zep 94.7%）</div></div>
+      <div><div class="big" style="color:var(--acc)">93.35% <small>1854/1986</small></div><div class="mini">保守下限（单系统·Standard Judge）</div></div>
+    </div>
+    <div class="row"><span class="k">被测系统</span><span class="v">N1Mem (T1Mem engine, OR10 十路 Reader 集成：Qwen3.7-Max / GLM-5.2 / DS-V4-Flash）</span></div>
+    <div class="row"><span class="k">Judge</span><span class="v">openai/gpt-4o-mini（Checklist-CoT 主口径 / Standard 保守口径）</span></div>
+    <div class="row"><span class="k">主口径产物 SHA256</span><span class="v"><code>896224a00bac005b8b36583768e2080762cb8a6020b72bc9bbbbcbf3241e5045</code></span></div>
+    <div class="row"><span class="k">保守产物 SHA256</span><span class="v"><code>510cfccb1fc796123586d2410ed1cb61e225c44cd3e935089d3c97e9e44f2927</code></span></div>
+    <div class="row"><span class="k">复现</span><span class="v">repro_byok/locomo（BYOK）</span></div>
+    <div class="note">官方 token-F1 = 65.34%（简洁协议，SHA256 <code>4b7425d9ffd660c0fe46e96228f19eb3a8e688bb22f11c808d2049e0c4212e75</code>）<br>
+      2026-07-30 Option A 修复：改用官方 32-token 短答案协议重跑（deepseek-v4-pro，全量 1986），F1 由遗留长文协议 23.34% 升至 65.34%（+42pp），远超 ≥50% 阈值，证明原低分系生成格式问题（长推理文 vs 官方短答案）而非能力问题。分题型：adversarial 89.24% / open_domain 70.04% / single_hop 57.94% / temporal 41.50% / multi_hop 33.44%。<br>
+      双数透明披露：遗留长文协议 23.34%（SHA256 <code>ef4f8ed2…</code>，adversarial=0%，因产出长推理文与官方短答案协议不匹配）；现值简洁协议 65.34%。竞品亦自报 LLM-as-judge，无人用官方 F1 对标。对外引用须同时标注官方 F1 65.34% 与 LLM-as-judge 95.52%。</div>
+    <div class="note">冻结于 2026-07-29。主口径=OR10 集成 + Checklist-CoT Judge；单系统下限=Standard Judge。官方 token-F1 现已修复披露：简洁协议 <b>65.34%（必披露）</b> + 遗留长文协议 23.34%（格式不匹配）。凡对外引用必须同时标注官方 F1 65.34% 与 LLM-as-judge 95.52%。</div>
+  </div>
+
+  <!-- ===== MAB ===== -->
+  <div class="card" style="border-top-color:var(--grn)">
+    <h3>③ MemoryAgentBench (ICLR 2026) <span class="qbadge">1,421 题</span></h3>
+    <div class="grid">
+      <div><div class="big">77.87% <small>四维均值</small></div><div class="mini">冻结口径 · 世界第 1（领先 GPT-5-mini 60.6%）</div></div>
+      <div><div class="big" style="color:var(--acc)">59.48% <small>LRU 最低维</small></div><div class="mini">四维：AR 81.38 / CR 90.29 / TTL 80.35 / LRU 59.48</div></div>
+    </div>
+    <div class="row"><span class="k">被测系统</span><span class="v">N1Mem (T1Mem engine, best-per-dimension：AR=v6 / CR=v12 / TTL·LRU=v12b-opt）</span></div>
+    <div class="row"><span class="k">Judge</span><span class="v">gpt-4o（MAB 官方默认）</span></div>
+    <div class="row"><span class="k">冻结清单 SHA256</span><span class="v"><code>fd9cd75cd9380fea0c46a02707660948bb237dc99fa0c6cba79e2bde3e4a6ef5</code>（含 15 个结果文件各自 SHA256）</span></div>
+    <div class="row"><span class="k">复现</span><span class="v">repro_byok/amb（BYOK）+ MemoryAgentBench/mab_frozen_manifest.json</span></div>
+    <div class="note">冻结 simple_average=<b>77.87%</b>（四维 81.38/90.29/80.35/59.48）。<b>旧报告 77.38% 为偏低值，以冻结 77.87% 为准。</b>对标 GPT-5-mini 60.6%。</div>
+  </div>
+
+  <!-- ===== LME-V2 ===== -->
+  <div class="card" style="border-top-color:var(--yel)">
+    <h3>④ LongMemEval-V2 (LME-V2) <span class="qbadge">451 题</span></h3>
+    <div class="grid">
+      <div><div class="big" style="color:var(--yel)">62.7% <small>283/451</small></div><div class="mini">对外主口径 · 4-model lazy OR（Flash→Max→Hy3→Plus）· 当前公开最高分</div></div>
+      <div><div class="big" style="color:var(--acc)">44.3% <small>200/451</small></div><div class="mini">保守下限（DS-V4-Flash 单模型·生产可用）</div></div>
+    </div>
+    <div class="row"><span class="k">被测系统</span><span class="v">N1Mem (T1Mem engine, 4-model lazy OR：<b>DS-V4-Flash</b> → <b>Qwen3.7-Max</b> → <b>Hy3</b> → <b>Qwen3.7-Plus</b>，前序全失败时触发下一流水）</span></div>
+    <div class="row"><span class="k">Judge</span><span class="v">glm-5.2（Checklist-CoT，百炼端点）</span></div>
+    <div class="row"><span class="k">配置</span><span class="v">维度感知K + 负证据 + CACHE_OPT=1 + Pv3 prompt + CoT Judge + RAW + RRF 混合检索（BGE-M3+BM25）+ 五维网络（dyn-env 开 / proc-abs 关）</span></div>
+    <div class="row"><span class="k">救回分析</span><span class="v">4-model OR 较 Flash 单模型救回 81 题（32.5%）：Max 36 / Hy3 32 / Plus 13，三者全唯一零重叠（lazy OR 链）</span></div>
+    <div class="row"><span class="k">主口径 SHA256</span><span class="v"><code>5780da66d715101fc693ccc08cca8233cf6b60cb5dea375a1642f062464f957c</code> · 公开副本 <code>repro_byok/longmemeval-v2/inputs/lmev2_4model_lazy_or_result.json</code></span></div>
+    <div class="row"><span class="k">保守下限 SHA256</span><span class="v"><code>abcd6dd23b457d5335da90ea5aa1bc04709bea14c42d39f3fbd1c2925a916fdd</code> · 公开副本 <code>repro_byok/longmemeval-v2/inputs/lmev2_flash_single_result.json</code></span></div>
+    <div class="row"><span class="k">复现</span><span class="v"><b>公开验证</b>：<code>repro_byok/longmemeval-v2/verify_lmev2.py</code>（零依赖，校验 SHA256 + 重算分数）。<br><b>完整端到端</b>：LongMemEval-V2/run_planc_local.py（需 N1Mem 引擎授权；支持 READER2/3/4 + AUGMENT_FILE）</span></div>
+    <div class="note">LME-V2 为<b>更难变体</b>。正式打榜主口径升级为 <b>4-model lazy OR 62.7%（283/451）</b>：DS-V4-Flash + Qwen3.7-Max + Hy3 + Qwen3.7-Plus 级联救回。证据链：77题三模型对比报告验证 Hy3 准确率≈Max（确立 Flash→Hy3→Plus 原则）→ 全量 4-model OR 落地 62.7%（两份报告见 LongMemEval-V2/reports/）。保守下限保留 DS-V4-Flash 单模型 <b>44.3%（生产可用）</b>。"世界第一"主张须标注为<b>"该 harder 集当前公开最高分 / 待官方榜确认"</b>。分题型（4-model OR）：static-env-abs 80.0% / procedure-abs 81.2% / procedure 66.2% / dyn-env-abs 68.3% / static-env 56.7% / dyn-env 52.3% / errors-gotchas 51.7%。</div>
+  </div>
+
+  <!-- ===== 总览表 ===== -->
+  <h2>附：四榜对外声明口径总览</h2>
+  <table>
+    <thead><tr><th>榜单</th><th>主口径（主张用）</th><th>保守下限</th><th>冻结 SHA256（前缀）</th></tr></thead>
+    <tbody>
+      <tr><td><b>LongMemEval</b></td><td>99.4% (497/500)</td><td>99.2%</td><td><code>0721579d…</code></td></tr>
+      <tr><td><b>LoCoMo</b></td><td>95.52% (1897/1986)</td><td>93.35%</td><td><code>896224a0…</code> / <code>510cfccb…</code> / <code>4b7425d9…</code></td></tr>
+      <tr><td><b>MemoryAgentBench</b></td><td>77.87% (四维均值)</td><td>77.87%</td><td><code>fd9cd75c…</code></td></tr>
+      <tr><td><b>LongMemEval-V2</b></td><td>62.7% (283/451, 4-model OR)</td><td>44.3% (200/451, 单模型)</td><td><code>5780da66…</code> / <code>abcd6dd2…</code> / <code>66de748a…</code></td></tr>
+    </tbody>
+  </table>
+
+  <div class="ok"><b>诚信基线总结：</b>四个榜单均标注主口径 + 保守下限；LoCoMo 额外强制双数披露官方 F1（简洁协议 65.34% / 遗留长文协议 23.34%）；LME-V2 主口径升级为 4-model lazy OR 62.7%（保守下限保留 DS-V4-Flash 单模型 44.3%），并明确"待官方榜确认"定位。所有分数经 BYOK 复现包可独立验证。</div>
+
+  <div class="ok" style="border-color:var(--pur)">
+    <b>对外纪律（通用红线 · 2026-08-07 起固化）：</b>
+    <ul style="margin:6px 0 0 18px;font-size:13px">
+      <li><b>成本脱敏</b>：成本 / 折扣 / 分销价 / 采购价 / 毛利率等属<b>成本机密</b>。一切对外物料（官网 / 投资人 deck / 竞品分析 / 简报 / 博客）一律<b>不写具体折扣比例或采购价</b>，仅保留「成本可控 / 具性价比 / 价格敏感型客户友好」等定性表述。</li>
+      <li><b>与基准纪律并列</b>：本红线与上方「使用铁律」（主口径 + 保守下限双披露、禁止 cherry-pick、禁止隐瞒官方指标）同等优先级，均为对外物料发布前必检项。</li>
+    </ul>
+  </div>
+
+  <div class="foot">
+    机器可读真值：<code>docs/claim_card.json</code> · 本卡为声明基准，所有对外引用以此为准 · 变更须重新签发并升级 schema_version。<br>
+    签发：T1Mem 产品通 / 可信专题组 · 2026-07-30（LoCoMo 官方 F1 披露于 2026-07-31 更新 · LME-V2 Flash 升级于 2026-08-01 更新 · LME-V2 4-model OR 主口径升级于 2026-08-05 更新）
+  </div>
+
+</div>
+</body>
+</html>

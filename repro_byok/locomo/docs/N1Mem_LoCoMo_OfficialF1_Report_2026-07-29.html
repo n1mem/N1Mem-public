@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T1Mem · LoCoMo 官方 F1 评测报告</title>
+<style>
+  :root { --bg:#0d1117; --card:#161b22; --bd:#30363d; --fg:#e6edf3; --mut:#8b949e;
+          --grn:#3fb950; --red:#f85149; --ylw:#d29922; --blu:#58a6ff; --vio:#bc8cff; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif; line-height:1.6; }
+  .wrap { max-width:960px; margin:0 auto; padding:32px 20px 80px; }
+  h1 { font-size:26px; margin:0 0 4px; }
+  .sub { color:var(--mut); font-size:14px; margin-bottom:28px; }
+  .card { background:var(--card); border:1px solid var(--bd); border-radius:12px; padding:22px 24px; margin-bottom:22px; }
+  .card h2 { font-size:18px; margin:0 0 14px; border-left:3px solid var(--blu); padding-left:10px; }
+  .big { font-size:42px; font-weight:700; letter-spacing:-1px; }
+  .big.verbatim { color:var(--red); }
+  .big.norm { color:var(--grn); }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  @media(max-width:680px){ .grid2{grid-template-columns:1fr;} }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  th,td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--bd); }
+  th { color:var(--mut); font-weight:600; }
+  td.num { text-align:right; font-variant-numeric:tabular-nums; }
+  .pill { display:inline-block; padding:2px 9px; border-radius:20px; font-size:12px; font-weight:600; }
+  .pill.red { background:rgba(248,81,73,.15); color:var(--red); }
+  .pill.grn { background:rgba(63,185,80,.15); color:var(--grn); }
+  .pill.ylw { background:rgba(210,153,34,.15); color:var(--ylw); }
+  code { background:#0b0f14; padding:1px 6px; border-radius:5px; font-size:13px; color:var(--vio); }
+  .note { color:var(--mut); font-size:13px; }
+  ul { margin:10px 0; padding-left:20px; }
+  li { margin:6px 0; }
+  .kv { display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--bd); font-size:14px; }
+  .kv:last-child { border-bottom:none; }
+  .warn { background:rgba(210,153,34,.08); border:1px solid rgba(210,153,34,.3); border-radius:10px; padding:14px 18px; font-size:14px; }
+</style></head>
+<body><div class="wrap">
+
+<div style="background:rgba(248,81,73,.10);border:1px solid #f85149;border-left:4px solid #f85149;padding:14px 20px;margin-bottom:20px;border-radius:8px;font-size:13px;color:#f3a39e;line-height:1.8;">
+  <b>⚠️ 已过时（2026-07-30）：</b>本报告基于 2026-07-29 的初步评测。后续通过官方 32-token 短答案协议重跑（Option A 修复），
+  LoCoMo 官方 token-F1 主披露已更新为 <b>65.34%</b>（简洁协议），遗留长文协议 23.34% 仅作透明参考。
+  最新口径以 <code>claim_card.json</code> / <code>claim_card.html</code> 为准。
+</div>
+
+<h1>T1Mem · LoCoMo 官方 F1 评测报告</h1>
+<div class="sub">生成日期 2026-07-29 12:39 · 数据集 locomo_mc10.json (1986 QA) · 评测代码 snap-research/locomo task_eval/evaluation.py (逐字复现)</div>
+
+<div class="card">
+  <h2>核心结论</h2>
+  <div class="grid2">
+    <div>
+      <div class="note">① 逐字官方 F1（直接对我们现有长输出打分）</div>
+      <div class="big verbatim">23.34%</div>
+      <div class="note">— 非能力问题，是<b>生成协议不匹配</b>（见下方根因）</div>
+    </div>
+    <div>
+      <div class="note">② 归一化投影（取首句 + MC 式拒答，模拟官方协议）</div>
+      <div class="big norm">46.40%</div>
+      <div class="note">— 真实能力上限的保守估计</div>
+    </div>
+  </div>
+  <div class="warn" style="margin-top:18px;">
+    <b>标签核实（Task #112）：无错位。</b> 全部 1,986 题的 <code>topic</code> 字段与官方 <code>question_type</code> 及 <code>gold</code> 答案 100% 匹配。此前担心的"标签交叉错位"是误报。
+  </div>
+</div>
+
+<div class="card">
+  <h2>逐字官方 F1 vs 归一化投影（按题型）</h2>
+  <table>
+    <thead><tr><th>题型</th><th class="num">N</th><th class="num">逐字官方 F1</th><th class="num">归一化投影</th></tr></thead>
+    <tbody><tr>
+          <td>Open-domain (cat 3)</td>
+          <td class="num">841</td>
+          <td class="num">36.88%</td>
+          <td class="num">40.92%</td>
+        </tr><tr>
+          <td>Adversarial (cat 5)</td>
+          <td class="num">446</td>
+          <td class="num">0.00%</td>
+          <td class="num">95.96%</td>
+        </tr><tr>
+          <td>Multi-hop (cat 1)</td>
+          <td class="num">321</td>
+          <td class="num">25.98%</td>
+          <td class="num">19.77%</td>
+        </tr><tr>
+          <td>Single-hop (cat 4)</td>
+          <td class="num">282</td>
+          <td class="num">19.78%</td>
+          <td class="num">23.07%</td>
+        </tr><tr>
+          <td>Temporal (cat 2)</td>
+          <td class="num">96</td>
+          <td class="num">14.78%</td>
+          <td class="num">21.81%</td>
+        </tr></tbody>
+  </table>
+  <div class="note" style="margin-top:10px;">
+    逐字官方 F1 = 官方 <code>eval_question_answering()</code> 直接对我们现有假设打分（OR 取最高 F1）。
+    归一化投影 = 对非 adversarial 取假设<b>首句</b>再算 F1、对 adversarial 按拒答短语判 1/0，模拟官方"短答案 + 多选拒答"协议。
+  </div>
+</div>
+
+<div class="card">
+  <h2>根因分析：为什么逐字官方 F1 这么低？</h2>
+  <p>官方 LoCoMo 生成协议（<code>task_eval/gpt_utils.py</code>）与 T1Mem 生成端存在<b>根本性差异</b>：</p>
+  <table>
+    <thead><tr><th>维度</th><th>官方协议</th><th>T1Mem 生成</th></tr></thead>
+    <tbody>
+      <tr><td>输出长度</td><td><code>num_tokens_request=32</code>，要求 "short phrase / few words"</td><td>数段推理长文（数百 token）</td></tr>
+      <tr><td>Adversarial</td><td><b>多选题</b>："Select (a) 真实答案 (b) Not mentioned" → 选 (b)</td><td>自由生成 "I don't have enough information..."</td></tr>
+      <tr><td>答案来源</td><td>"Answer with exact words from the context"</td><td>归纳 + 推理重写</td></tr>
+      <tr><td>评测方式</td><td>token 级 F1（Porter 词干 + 去冠词标点）</td><td>—</td></tr>
+    </tbody>
+  </table>
+  <ul>
+    <li><b>Adversarial = 0% 的根因</b>：官方评测对 cat 5 做精确子串匹配 <code>'no information available' in output or 'not mentioned' in output</code>。官方靠多选题让模型输出 "Not mentioned" 自然命中；我们自由生成的 "I don't have enough information" 字面不匹配 → 全判 0。但 LLM-as-judge 显示我们 98.43% 的 adversarial 实际正确识别了 false premise。</li>
+    <li><b>非 adversarial 低分的根因</b>：官方 F1 是严格 token 级精确匹配，gold 答案极短（如 "signed basketball"）。长输出中任何多余词都拉低 precision。取首句后 F1 即从 14–37% 升到 20–41%，证明差异来自<b>冗余而非错误</b>。</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>与历史 LLM-as-judge 口径对比</h2>
+  <table>
+    <thead><tr><th>Judge 口径</th><th class="num">通过/总数</th><th class="num">准确率</th></tr></thead>
+    <tbody><tr><td>Standard Judge (gpt-4o-mini)</td><td class="num" colspan="2">N/A</td></tr><tr><td>Checklist CoT Judge</td><td class="num" colspan="2">N/A</td></tr><tr><td>Dual-Judge OR</td><td class="num" colspan="2">N/A</td></tr></tbody>
+  </table>
+  <div class="note" style="margin-top:10px;">
+    LLM-as-judge 衡量的是<b>语义正确性</b>，与输出冗长度无关，因此能反映 T1Mem 真实能力（93–96%）。官方 token-F1 衡量的是<b>字面匹配度</b>，与官方短答案协议强绑定。
+  </div>
+</div>
+
+<div class="card">
+  <h2>建议与下一步</h2>
+  <div class="kv"><span><span class="pill ylw">选项 A</span> 按官方协议重跑生成</span><span>短答案 + MC 式 adversarial，再算官方 F1 → 可得可比、有竞争力的真实分数</span></div>
+  <div class="kv"><span><span class="pill ylw">选项 B</span> 以 LLM-as-judge 为主口径</span><span>与 Mem0 等社区框架一致；官方 F1 仅作参考，不用于对外宣称</span></div>
+  <div class="kv"><span><span class="pill red">不推荐</span> 直接宣称 23.34% 为成绩</span><span>该数字源于协议不匹配，不代表能力，对外会被质疑</span></div>
+  <p class="note" style="margin-top:12px;">若走选项 A：需新增"官方风格"生成分支（system prompt 限 32 token、强制 exact words、adversarial 改多选），复用现有检索/Reader，仅替换输出格式化层。预计可复现官方榜单量级。</p>
+</div>
+
+<div class="card">
+  <h2>产出文件</h2>
+  <ul class="note">
+    <li><code>inputs/locomo_qa_or10_full1986_official_f1_result.json</code> — 逐字官方 F1 逐题结果（SHA256 见 manifest）</li>
+    <li><code>inputs/locomo_qa_or10_full1986_official_f1_manifest.json</code> — 冻结校验</li>
+    <li><code>freeze_or10_official_f1.py</code> — 评测脚本（逐字复现官方 metric）</li>
+  </ul>
+</div>
+
+</div></body></html>

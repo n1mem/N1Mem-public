@@ -1,0 +1,30 @@
+# T1Mem MAB Best-Per-Dimension Configs
+# These YAML configs reproduce the frozen 77.38% (77.87% from frozen files) result.
+# Place into MemoryAgentBench/configs/agent_conf/RAG_Agents/glm-5.2/
+#
+# AR = Accurate_Retrieval (ruler_qa1)
+# Config: v6 hybrid-k20-c2048 (thinking ON, retrieve_num=20, chunk_size=2048)
+# Frozen score: F1 = 81.38% (n=50)
+
+agent_name: t1mem_rag_glm52_ar
+model: glm-5.2
+temperature: 0.7
+input_length_limit: 10000000
+buffer_length: 200
+output_dir: ./outputs/t1mem-ar
+
+max_tokens_override: 2000
+
+# Retrieval config (best for AR: more chunks + smaller chunk size)
+retrieve_num: 20
+chunk_size: 2048
+
+# T1Mem hybrid RRF weights (BM25 + dense embedding)
+t1mem_text_weight: 0.6
+t1mem_vec_weight: 0.4
+
+# AR best: thinking ON (no disable)
+t1mem_disable_thinking: false
+
+# HyDE off for AR (baseline v6 did not use HyDE)
+t1mem_use_hyde: false

@@ -1,0 +1,195 @@
+{
+  "title": "T1Mem MemoryAgentBench (MAB) Frozen Results",
+  "frozen_at": "2026-07-28 21:39:53",
+  "benchmark": "MemoryAgentBench (ICLR 2026)",
+  "model": "GLM-5.2 + DashScope",
+  "judge": "gpt-4o (MAB official default)",
+  "config_strategy": "best-per-dimension",
+  "total_questions": 1421,
+  "scores": {
+    "AR": 81.38,
+    "CR": 90.29,
+    "TTL": 80.35,
+    "LRU": 59.48,
+    "simple_average": 77.87
+  },
+  "scores_detail": {
+    "AR": {
+      "score": 81.38095238095238,
+      "n": 50,
+      "f1": 81.38095238095238,
+      "exact_match": 76.0,
+      "sub": "ruler_qa1_197K"
+    },
+    "CR": {
+      "score": 90.29166666666667,
+      "n": 600,
+      "detail": {
+        "factconsolidation_mh_6k": {
+          "f1": 90.19999999999999,
+          "n": 100
+        },
+        "factconsolidation_mh_32k": {
+          "f1": 79.66666666666666,
+          "n": 100
+        },
+        "factconsolidation_mh_64k": {
+          "f1": 80.06666666666666,
+          "n": 100
+        },
+        "factconsolidation_sh_6k": {
+          "f1": 98.48333333333333,
+          "n": 100
+        },
+        "factconsolidation_sh_32k": {
+          "f1": 96.33333333333333,
+          "n": 100
+        },
+        "factconsolidation_sh_64k": {
+          "f1": 97.00000000000001,
+          "n": 100
+        }
+      }
+    },
+    "TTL": {
+      "score": 80.34722222222221,
+      "icl_mean": 90.6,
+      "recsys_recall@10": 29.083333333333332,
+      "detail": {
+        "icl_banking77_5900shot_balance": {
+          "acc": 96.0,
+          "n": 100
+        },
+        "icl_clinic150_7050shot_balance": {
+          "acc": 95.0,
+          "n": 100
+        },
+        "icl_nlu_8296shot_balance": {
+          "acc": 88.0,
+          "n": 100
+        },
+        "icl_trec_coarse_6600shot_balance": {
+          "acc": 93.0,
+          "n": 100
+        },
+        "icl_trec_fine_6400shot_balance": {
+          "acc": 81.0,
+          "n": 100
+        },
+        "recsys_redial_full": {
+          "recall@10": 29.083333333333332,
+          "n": 200
+        }
+      }
+    },
+    "LRU": {
+      "score": 59.4772096453388,
+      "detective_acc": 87.32394366197182,
+      "infbench_rougeLsum": 31.63047562870579,
+      "detail": {
+        "detective_qa": {
+          "acc": 87.32394366197182,
+          "n": 71
+        },
+        "infbench_sum": {
+          "rougeLsum_f1": 31.63047562870579,
+          "n": 100
+        }
+      }
+    },
+    "_total": 77.87426272879502
+  },
+  "reported_in_report_html": {
+    "AR": 81.38,
+    "CR": 88.3,
+    "TTL": 80.35,
+    "LRU": 59.48,
+    "simple_average": 77.38
+  },
+  "discrepancy_note": "CR frozen-file score (90.29) is higher than reported in 四维最终报告.html (88.3). This is because the report's §3b table listed v12-best CR-SH=94.7/CR-MH=82.0, but the actual frozen v12 result files give CR-SH=97.27/CR-MH=83.31. The frozen files give a HIGHER total (77.88%) than reported (77.38%). All other dimensions (AR/TTL/LRU) match exactly.",
+  "files": {
+    "AR": [
+      {
+        "path": "outputs\\t1mem-v6-glm-hybrid-k20-c2048\\Accurate_Retrieval\\ruler_qa1_197K_unknown_in220000_size50_shots0_max_samples100_k20_chunk2048_results.json",
+        "sha256": "c94a168a7087b65f394cf408e3b47969712627c589b6a5b37ebaa33987b1c2de",
+        "size": 62970
+      }
+    ],
+    "CR": [
+      {
+        "path": "outputs\\t1mem-v12-glm-cr-mh-6k\\Conflict_Resolution\\factconsolidation_mh_6k_unknown_in6000_size10_shots0_max_samples1_k15_chunk4096_results.json",
+        "sha256": "286d13e8e62af17191fb66171ae26a6d1a93266853593da0ce71929c4f32262d",
+        "size": 184677
+      },
+      {
+        "path": "outputs\\t1mem-v12-glm-cr-mh-32k\\Conflict_Resolution\\factconsolidation_mh_32k_unknown_in32768_size10_shots0_max_samples1_k15_chunk4096_results.json",
+        "sha256": "ada100c14cc2ebcb0da4b372813e0dc4e4e626654a9e3023a891ae86a855f677",
+        "size": 185167
+      },
+      {
+        "path": "outputs\\t1mem-v12-glm-cr-64k-full\\Conflict_Resolution\\factconsolidation_mh_64k_unknown_in65536_size10_shots0_max_samples1_k15_chunk4096_results.json",
+        "sha256": "ef55d3e2b602c333a91aff4c43aad0dc78cce87a3271b55a5ae4e0cb36f65e71",
+        "size": 185033
+      },
+      {
+        "path": "outputs\\t1mem-v12-glm-cr-sh-6k\\Conflict_Resolution\\factconsolidation_sh_6k_unknown_in6000_size10_shots0_max_samples1_k15_chunk4096_results.json",
+        "sha256": "06630d96edc39555c073a95bc91f264848ee73668e27e4ae439c085cf35ef502",
+        "size": 180016
+      },
+      {
+        "path": "outputs\\t1mem-v12-glm-cr-sh-32k\\Conflict_Resolution\\factconsolidation_sh_32k_unknown_in32768_size10_shots0_max_samples1_k15_chunk4096_results.json",
+        "sha256": "736135cb757e341cf86d39503c2245cb67b9daa8f6611fc170c3fa4e8b2fa2df",
+        "size": 180926
+      },
+      {
+        "path": "outputs\\t1mem-v12-glm-cr-sh-64k\\Conflict_Resolution\\factconsolidation_sh_64k_unknown_in65536_size10_shots0_max_samples1_k15_chunk4096_results.json",
+        "sha256": "46e5c36c77e43d66ff559f195c85917780b4685067f0b71de105b3263971ff17",
+        "size": 180940
+      }
+    ],
+    "TTL": [
+      {
+        "path": "outputs\\t1mem-v12b-glm-rag-opt-ab\\Test_Time_Learning\\icl_banking77_5900shot_balance_unknown_in131072_size20_shots0_max_samples100_k10_chunk4096_results.json",
+        "sha256": "4e9412eeb2142e55a8a307af97f3a48e5dc2266a1151679af7e8bd1fe3cfec87",
+        "size": 119508
+      },
+      {
+        "path": "outputs\\t1mem-v12b-glm-rag-opt-ab\\Test_Time_Learning\\icl_clinic150_7050shot_balance_unknown_in131072_size20_shots0_max_samples100_k10_chunk4096_results.json",
+        "sha256": "557445b91946d43ac445119283aebcb9359aa626b4f05e69e52ab05c3911b575",
+        "size": 118061
+      },
+      {
+        "path": "outputs\\t1mem-v12b-glm-rag-opt-ab\\Test_Time_Learning\\icl_nlu_8296shot_balance_unknown_in131072_size20_shots0_max_samples100_k10_chunk4096_results.json",
+        "sha256": "e77ec7b2074f9af11d0d0b0c3788b77d12e175c8284cb29575e38ca345537e24",
+        "size": 116975
+      },
+      {
+        "path": "outputs\\t1mem-v12b-glm-rag-opt-ab\\Test_Time_Learning\\icl_trec_coarse_6600shot_balance_unknown_in131072_size20_shots0_max_samples100_k10_chunk4096_results.json",
+        "sha256": "2be21326c1acf4e22976794d175ee2ab8f3509d1ea52819caae6bb55bd452f74",
+        "size": 117794
+      },
+      {
+        "path": "outputs\\t1mem-v12b-glm-rag-opt-ab\\Test_Time_Learning\\icl_trec_fine_6400shot_balance_unknown_in131072_size20_shots0_max_samples100_k10_chunk4096_results.json",
+        "sha256": "813cc06911c77b86dffd92b4bdbf1ada50df8c1d45f506e2ba0e0971f38fb804",
+        "size": 117802
+      },
+      {
+        "path": "outputs\\t1mem-v12b-glm-rag-opt-ab\\Test_Time_Learning\\recsys_redial_full_unknown_in1480000_size300_shots0_max_samples1_k10_chunk4096_results.json",
+        "sha256": "2366515db5d6691d74d2cb123ec42c01cfb726a2517aab594331556e04e57533",
+        "size": 599465
+      }
+    ],
+    "LRU": [
+      {
+        "path": "outputs\\t1mem-v12b-glm-rag-opt-ab\\Long_Range_Understanding\\detective_qa_unknown_in200000_size2000_shotsunknown_max_samples10_k10_chunk4096_results.json",
+        "sha256": "16a026915499b68efa5bfaaa758d889e0e08a975dc7ec0b67b390b34aadb0870",
+        "size": 182413
+      },
+      {
+        "path": "outputs\\t1mem-v12b-glm-rag-opt-ab\\Long_Range_Understanding\\infbench_sum_eng_shots2_unknown_in1200000_size1200_shots2_max_samples100_k10_chunk4096_results.json",
+        "sha256": "f6f553dea77acdb8ebb486c14e1b0debddc279e38a7b74c60248053f0730ad66",
+        "size": 2316502
+      }
+    ]
+  }
+}

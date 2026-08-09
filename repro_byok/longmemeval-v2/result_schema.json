@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LME-V2 frozen result schema",
+  "description": "Frozen result file from LongMemEval-V2 run. score=0 means correct.",
+  "type": "object",
+  "required": ["summary", "results"],
+  "properties": {
+    "summary": {
+      "type": "object",
+      "required": ["total", "correct", "accuracy"],
+      "properties": {
+        "total": { "type": "integer" },
+        "correct": { "type": "integer" },
+        "accuracy": { "type": "number" }
+      }
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["qid", "type", "gold", "pred", "score"],
+        "properties": {
+          "qid": { "type": "string" },
+          "type": { "type": "string" },
+          "gold": { "type": "string" },
+          "pred": { "type": "string" },
+          "score": { "type": "number" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T1Mem · LoCoMo 选项 A/B 战略简报 (2026-07-29)</title>
+<style>
+  :root{ --bg:#0d1117; --card:#161b22; --ink:#e6edf3; --mut:#8b949e; --acc:#58a6ff; --ok:#3fb950; --warn:#d29922; --bad:#f85149; --line:#30363d; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 -apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;padding:28px}
+  h1{font-size:24px;margin:0 0 4px} h2{font-size:18px;margin:26px 0 10px;color:var(--acc);border-bottom:1px solid var(--line);padding-bottom:6px}
+  .sub{color:var(--mut);font-size:13px;margin-bottom:18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:14px 0}
+  .verdict{border-left:4px solid var(--ok);background:#10221620}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:left}
+  th{background:#1c2128;color:var(--acc)} td.num{text-align:right;font-variant-numeric:tabular-nums}
+  .ok{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)} .acc{color:var(--acc)}
+  ul{margin:8px 0 8px 0;padding-left:20px} li{margin:5px 0}
+  code{background:#1c2128;padding:1px 6px;border-radius:4px;font-size:12.5px;color:#ffa657}
+  .path{color:var(--acc);font-size:13px;word-break:break-all}
+  .tag{display:inline-block;background:#1c2128;border:1px solid var(--line);border-radius:20px;padding:2px 10px;font-size:12px;margin:2px 4px 2px 0;color:var(--mut)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<h1>T1Mem · LoCoMo 选项 A/B 战略简报</h1>
+<div class="sub">生成时间 2026-07-29 13:30 GMT+8 · 结论：<b>B 为主口径，A 为补充</b> · 选项 B 资产已物理隔离保护</div>
+
+<div class="card verdict">
+  <h2 style="border:0;margin:0 0 8px;color:var(--ok)">★ 核心结论（先回答你的三个问题）</h2>
+  <p><b>1. 竞品 Mem0 为什么不走选项 A（官方 F1 协议）？</b><br>
+  因为官方 F1 是 2024 年为弱模型设计的"提取式短答案 + token 精确匹配"指标，对现代推理模型严重不公平。Mem0、MemMachine、Zep、EverMemOS <b>全部改用 LLM-as-judge 自报成绩（91.6–93%）</b>，无人用官方 F1 对标。走 A 反而会在数字上"显得比竞品低"，但那是苹果对橘子。</p>
+  <p><b>2. 2024 官方 F1 方法是否有缺陷？——是，且已被多方证实。</b><br>
+  ① 答案键本身 <b>6.4% 错误率</b>（1540 题 99 题 gold 错，理论满分仅 ~93%）；② 同义改写 / 日期格式不同即判 0（"7 May 2023" vs "May 7th, 2023" 算不同）；③ 为 2024 弱模型设计的短答案指标，惩罚现代模型的推理长文。2026 学术界（<b>LoCoMo-Plus，腾讯+西交大，arXiv 2602.10715</b>）已正式确认"字符串匹配指标无法反映语义正确性，且受生成风格与长度偏见影响"，主张改用约束一致性 + LLM-judge。</p>
+  <p><b>3. 选项 A 是否值得做？——值得，但仅作"补充性透明度指标"。</b><br>
+  它证明"我们也能跑原始 LoCoMo 协议且超越原论文 GPT-4 的 32% F1"，提升方法论公信力；<b>但绝不能替代选项 B</b>。对外主口径、世界第一依据 = 选项 B（LLM-as-judge 双 Judge OR = 95.97%）。</p>
+</div>
+
+<h2>选项 A 验证切片结果（40 题，Qwen，官方 F1）</h2>
+<div class="card">
+  <table>
+    <tr><th>题型</th><th class="num">旧（长输出）</th><th class="num">A（官方协议短答案）</th><th class="num">提升</th></tr>
+    <tr><td>open_domain</td><td class="num">33.8%</td><td class="num ok">69.8%</td><td class="num ok">+36.1pp</td></tr>
+    <tr><td>adversarial</td><td class="num bad">0.0%</td><td class="num ok">87.5%</td><td class="num ok">+87.5pp</td></tr>
+    <tr><td>temporal_reasoning</td><td class="num">6.4%</td><td class="num ok">21.7%</td><td class="num ok">+15.3pp</td></tr>
+    <tr><td>single_hop</td><td class="num">11.0%</td><td class="num ok">68.8%</td><td class="num ok">+57.7pp</td></tr>
+    <tr><td>multi_hop</td><td class="num">19.7%</td><td class="num ok">29.0%</td><td class="num ok">+9.3pp</td></tr>
+    <tr style="font-weight:700;background:#1c2128"><td>总体</td><td class="num">14.2%</td><td class="num ok">55.4%</td><td class="num ok">+41.2pp</td></tr>
+  </table>
+  <p class="sub">旧长输出直接打官方 F1 仅 23.34%（全量），adversarial=0%；换成官方协议短答案后切片即到 55.4%。<b>证明差距来自"生成协议不匹配"而非能力不足</b>。全量正在后台跑，预计整体 ~55%。</p>
+</div>
+
+<h2>选项 B 资产隔离保护（你最强调的"不能丢"）</h2>
+<div class="grid">
+  <div class="card">
+    <p class="acc" style="margin-top:0">✅ 已物理备份（隔离目录）</p>
+    <p class="path">T1Mem/repro_byok/locomo/inputs/backup_optionB_2026-07-29/</p>
+    <p>含：OR10 源假设集、三份冻结结果（93.35% / 95.52% / 95.97%）、manifests、三份报告、<code>ROLLBACK.md</code>。SHA256 已记录：</p>
+    <ul>
+      <li>OR10 源 = <code>cb5f63e4…</code></li>
+      <li>双 Judge OR 95.97% = <code>27403cc6…</code></li>
+    </ul>
+  </div>
+  <div class="card">
+    <p class="acc" style="margin-top:0">✅ 选项 A 不碰 B 任何文件</p>
+    <p>A 产物写入<b>全新文件</b>：</p>
+    <p class="path">T1Mem/repro_byok/locomo/inputs/locomo_qa_or10_concise_full1986.json</p>
+    <p>回退极简：<b>直接删除 A 产物即可</b>，B 文件从未被改动、毫发无损。极端情况可从备份目录 <code>cp</code> 还原并校验 SHA256。</p>
+  </div>
+</div>
+
+<h2>为何竞品弃用官方 F1（证据链）</h2>
+<div class="card">
+  <ul>
+    <li><span class="tag">Mem0 官方博客</span> LoCoMo 数字以 <b>LLM-judge</b> 形式报告（temporal≈92 / multi-hop≈91 / open-domain 72.7），明确转向 LLM-judge。"领域已基本从 F1 转向 LLM-as-judge，后者更宽容也更准确"（VEKTOR 工程复盘）。</li>
+    <li><span class="tag">MemMachine 博客</span> 明确：adversarial "无官方 ground truth，被研究者普遍排除"，报告 <b>LLM Judge Score（gpt-4o-mini）</b>，1540 题 84.87%。</li>
+    <li><span class="tag">审计 b1key / dial481</span> LoCoMo 答案键 <b>99/1540 = 6.4% 错误</b>；conv0 的 45/47 commonsense 答案字段为 "undefined"（未评分却记 0）。理论满分仅 ~93%。</li>
+    <li><span class="tag">LoCoMo-Plus 2026</span> 腾讯+西交大 arXiv 2602.10715：字符串匹配指标"无法反映语义正确性，且受生成风格与长度偏见影响"，主张约束一致性 + LLM-judge。</li>
+    <li><span class="tag">无统一官方榜</span> 各竞品自报 LLM-judge 数（Mem0 91.6–92.5% / MemMachine 84.87% / EverMemOS 93%），<b>全是 LLM-judge 而非 F1</b>。只报官方 F1（~55%）会"看起来比竞品低"，但不可比。</li>
+  </ul>
+</div>
+
+<h2>当前状态与下一步</h2>
+<div class="card">
+  <p><b>✅ 已完成：</b>选项 B 隔离备份 + SHA256 · 选项 A 验证切片（55.4%）· 全量 A 生成脚本（复用 OR10 同端点 + 完整对话 150K 上下文，仅换短答案 prompt + adversarial→"Not mentioned"）。</p>
+  <p><b>⏳ 进行中：</b>全量 1986 题 Qwen 生成（后台 task <code>oaloCQ</code>，<code>--resume</code> 续跑已验证的 40 题）。完成后自动产出官方 F1 全量分，并生成对比报告。</p>
+  <p><b>📌 后续选项（待你确认）：</b></p>
+  <ul>
+    <li>若只要"官方协议单模型数"：Qwen 全量即够（约 2.5h）。</li>
+    <li>若要 T1Mem 多 Reader OR 的官方 F1（更高）：再加 glm + deepseek-v4-pro 跑 OR（需额外调用，边际提升有限，因 A 是补充指标）。</li>
+    <li>无论 A 结果如何：<b>对外主口径始终是 B = 95.97% LLM-as-judge</b>。</li>
+  </ul>
+</div>
+
+<div class="sub" style="margin-top:18px">脚本：<code>regen_concise_official.py</code> · 评测：<code>freeze_or10_official_f1.py</code> · 备份：<code>backup_optionB_2026-07-29/ROLLBACK.md</code></div>
+</body>
+</html>

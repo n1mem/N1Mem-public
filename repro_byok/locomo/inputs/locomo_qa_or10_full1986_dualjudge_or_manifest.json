@@ -1,0 +1,14 @@
+{
+  "artifact": "locomo_or10_dualjudge_or_frozen",
+  "frozen_at": "2026-07-29 11:26:18",
+  "hypotheses_file": "locomo_qa_or10_full1986.json",
+  "standard_judge_result": "locomo_qa_or10_full1986_frozen_result.json",
+  "cot_judge_result": "locomo_qa_or10_full1986_checklist_frozen_result.json",
+  "dualjudge_or_result": "locomo_qa_or10_full1986_dualjudge_or_result.json",
+  "dualjudge_or_sha256": "27403cc682e5ecde22e5a165c6a65e20ef6b5b39683fb4b7e4715970a81e7b1e",
+  "judge_model": "openai/gpt-4o-mini",
+  "judge_strategy": "OR(standard, checklist-cot)",
+  "score_pct": 95.97,
+  "n_questions": 1986,
+  "passed": 1906
+}

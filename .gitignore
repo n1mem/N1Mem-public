@@ -1,0 +1,27 @@
+# ===== N1Mem 公开仓 .gitignore（防泄漏红线）=====
+# 核心引擎绝不进此仓（本仓本就不含 src/t1mem-core，以下为双保险）
+src/
+t1mem-core/
+models/
+*.so
+*.pyd
+
+# 密钥 / 环境
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+secrets/
+
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# 运行产物 / 大文件
+runs/
+keys/
+*.log
+.DS_Store

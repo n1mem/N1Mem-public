@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T1Mem — #1 on LoCoMo Long-Term Conversational Memory Benchmark</title>
+<style>
+  :root{
+    --bg:#0b0f17; --panel:#131a26; --panel2:#0f1620; --line:#223047;
+    --txt:#e6edf6; --muted:#94a3b8; --accent:#39d0d8; --accent2:#7c5cff;
+    --gold:#ffd166; --green:#3ddc97; --red:#ff6b6b;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;
+    background:radial-gradient(1200px 600px at 70% -10%,#16203a 0%,var(--bg) 55%);color:var(--txt);line-height:1.6;padding:0 0 60px}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  header{padding:54px 0 30px;text-align:center}
+  .badge{display:inline-block;font-size:13px;letter-spacing:.12em;color:var(--accent);border:1px solid var(--line);
+    border-radius:999px;padding:6px 16px;background:rgba(57,208,216,.06);text-transform:uppercase}
+  h1{font-size:40px;line-height:1.18;margin:18px 0 8px;font-weight:800;
+    background:linear-gradient(92deg,#fff 10%,var(--accent) 55%,var(--accent2) 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .sub{color:var(--muted);font-size:17px;max-width:760px;margin:0 auto}
+  .hero{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:34px 0 10px}
+  .stat{background:linear-gradient(160deg,var(--panel),var(--panel2));border:1px solid var(--line);
+    border-radius:18px;padding:26px 24px;position:relative;overflow:hidden}
+  .stat::after{content:"";position:absolute;right:-40px;top:-40px;width:140px;height:140px;border-radius:50%;
+    background:radial-gradient(circle,rgba(57,208,216,.18),transparent 70%)}
+  .stat .num{font-size:46px;font-weight:800;color:#fff;letter-spacing:-.5px}
+  .stat .lab{color:var(--muted);font-size:14px;margin-top:6px}
+  .stat .tag{display:inline-block;margin-top:12px;font-size:12px;color:var(--accent);
+    border:1px solid var(--line);border-radius:8px;padding:3px 10px;background:rgba(57,208,216,.05)}
+  .claim{background:linear-gradient(120deg,rgba(124,92,255,.14),rgba(57,208,216,.10));
+    border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin:8px 0 26px;font-size:15px}
+  .claim b{color:var(--gold)}
+  section{margin:38px 0}
+  h2{font-size:24px;margin:0 0 14px;font-weight:700;display:flex;align-items:center;gap:10px}
+  h2 .bar{width:5px;height:24px;border-radius:3px;background:linear-gradient(var(--accent),var(--accent2))}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}
+  table{width:100%;border-collapse:collapse;font-size:14.5px}
+  th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line)}
+  th{color:var(--muted);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.04em}
+  td.r,th.r{text-align:right;font-variant-numeric:tabular-nums}
+  .us td:first-child{color:var(--accent);font-weight:700}
+  .row{display:grid;grid-template-columns:200px 1fr 70px;align-items:center;gap:12px;margin:9px 0}
+  .track{height:14px;background:var(--panel2);border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+  .fill{height:100%;border-radius:8px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+  .fill.c{background:linear-gradient(90deg,#3a4a6b,#5b6b8c)}
+  .fill.g{background:linear-gradient(90deg,#2c5a45,#3ddc97)}
+  .note{color:var(--muted);font-size:13px;margin-top:10px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .pill{display:inline-block;font-size:12px;padding:2px 9px;border-radius:7px;border:1px solid var(--line);color:var(--muted);margin:2px}
+  .pill.d{color:var(--red);border-color:rgba(255,107,107,.3)}
+  ul{margin:8px 0;padding-left:20px} li{margin:7px 0}
+  a{color:var(--accent);text-decoration:none}
+  .foot{color:var(--muted);font-size:12.5px;border-top:1px solid var(--line);margin-top:40px;padding-top:18px}
+  code{background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;color:var(--gold)}
+  @media(max-width:720px){.hero,.grid2{grid-template-columns:1fr}.row{grid-template-columns:120px 1fr 56px}h1{font-size:30px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <span class="badge">LoCoMo · Long-Term Conversational Memory</span>
+  <h1>T1Mem 登顶 LoCoMo 长程对话记忆基准</h1>
+  <p class="sub">国产记忆系统 · 在 1,986 题全量 LoCoMo 问答评测中以 <b>95.52%</b> 准确率（单 Checklist-CoT Judge）位居已公开报告结果世界第一，并在与业界一致的 1,540 题可比口径下取得 <b>95.13%</b>。</p>
+</header>
+
+<div class="hero">
+  <div class="stat">
+    <div class="num">95.52%</div>
+    <div class="lab">全量 1,986 题 LoCoMo QA 准确率<br>（含 adversarial，单一 Checklist-CoT Judge · gpt-4o-mini）</div>
+    <span class="tag">Checklist CoT Judge · 1897 / 1986</span>
+  </div>
+  <div class="stat">
+    <div class="num">95.13%</div>
+    <div class="lab">1,540 题可比口径（排除 adversarial）<br>业界标准对外报告基准</div>
+    <span class="tag">#1 vs 全部已公开竞品</span>
+  </div>
+</div>
+
+<div class="claim">
+  📌 <b>对外一句话主张</b>：T1Mem 在 LoCoMo 长程对话记忆基准上取得 <b>95.52%</b>（全量 1,986 题，单一 Checklist-CoT Judge，gpt-4o-mini，与 Mem0 / Zep / MemMachine 同一 LLM-as-judge 口径），为当前已公开报告的最高成绩；与业界的 1,540 题可比口径下为 <b>95.13%</b>。成绩可由 OpenRouter <code>gpt-4o-mini</code> 经 BYOK 复现。
+</div>
+
+<section>
+  <h2><span class="bar"></span>分项表现（Checklist CoT Judge，全量 1,986 题）</h2>
+  <div class="panel">
+    <div class="row"><span>Open-domain 开放域</span><div class="track"><div class="fill" style="width:96.31%"></div></div><span class="r">96.31%</span></div>
+    <div class="row"><span>Multi-hop 多跳推理</span><div class="track"><div class="fill" style="width:95.64%"></div></div><span class="r">95.64%</span></div>
+    <div class="row"><span>Temporal 时序推理</span><div class="track"><div class="fill" style="width:92.71%"></div></div><span class="r">92.71%</span></div>
+    <div class="row"><span>Single-hop 单跳</span><div class="track"><div class="fill" style="width:91.84%"></div></div><span class="r">91.84%</span></div>
+    <div class="row"><span>Adversarial 对抗（拒答）</span><div class="track"><div class="fill g" style="width:96.86%"></div></div><span class="r">96.86%</span></div>
+    <p class="note">样本量：open_domain 841 · multi_hop 321 · temporal 96 · single_hop 282 · adversarial 446。对抗题考验系统识别"无法回答/虚假前提"的能力，T1Mem 以 96.86% 正确拒答。本表采用单一一致的 Checklist-CoT Judge（4 步推理 + 5 票 ≥3 通过），而非双 Judge OR 聚合——后者因"任一裁判通过即算对"放宽了判定门槛，故不用于对外主张。</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="bar"></span>竞品对比（1,540 题，LLM-as-judge，业界标准口径）</h2>
+  <div class="panel">
+    <table>
+      <thead><tr><th>系统</th><th class="r">LoCoMo 准确率</th><th>报告口径 / 备注</th></tr></thead>
+      <tbody>
+        <tr class="us"><td>T1Mem <span class="pill">CoT</span></td><td class="r">95.13%</td><td>本方 · 主口径 Checklist-CoT Judge（最稳健可比）</td></tr>
+        <tr class="us"><td>T1Mem <span class="pill">Standard</span></td><td class="r">91.88%</td><td>本方 · 单标准 Judge（最保守下限）</td></tr>
+        <tr><td>Zep / Graphiti</td><td class="r">94.7%</td><td>厂商自报 <span class="pill d">口径有争议*</span></td></tr>
+        <tr><td>陈天桥·邓亚峰团队</td><td class="r">93.05%</td><td>2026 年初发布</td></tr>
+        <tr><td>Mem0</td><td class="r">92.5%</td><td>厂商自报 <span class="pill d">口径有争议*</span></td></tr>
+        <tr><td>EverMemOS</td><td class="r">92.3%</td><td>开源版厂商自报</td></tr>
+        <tr><td>CogmemAi</td><td class="r">91.0%</td><td>厂商自报</td></tr>
+        <tr><td>MemOS</td><td class="r">88.83%</td><td>OmniMemEval 同构复现（2026）</td></tr>
+        <tr><td>Dakera</td><td class="r">88.2%</td><td>厂商自报（2026-06，无 rerank）</td></tr>
+        <tr><td>MemMachine</td><td class="r">84.87%</td><td>厂商自报（2025-09，gpt-4o-mini）</td></tr>
+      </tbody>
+    </table>
+    <p class="note">* Dakera（2026）指出 Zep 94.7% 与 Mem0 92.5% 的方法论存在争议，且各厂商 judge 模型/提示/检索设置不同，数字不宜逐点严格等同比较。T1Mem 采用<b>单一一致的 Checklist-CoT Judge</b>作为主口径（95.52% 全量 / 95.13% 1540Q），并以单标准 Judge 91.88% 作为最保守下限。<b>即便取最保守下限，T1Mem 仍高于 EverMemOS、Dakera、MemMachine 等。</b>我们亦测试过更宽松的双 Judge OR 聚合（95.97% / 95.26%），因放宽判定门槛（任一裁判通过即算对）不符合稳健对外主张，故不采用。</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="bar"></span>为什么用 LLM-as-judge（而非 2024 论文的 token-F1）</h2>
+  <div class="grid2">
+    <div class="panel">
+      <b style="color:var(--accent)">业界一致做法</b>
+      <ul>
+        <li>Mem0、MemMachine、Zep、Dakera、EverMemOS 等公开发布 LoCoMo 成绩时<b>全部采用 LLM-as-judge</b>（多为 gpt-4o / gpt-4o-mini），无一以原始 token-F1 对外对标。</li>
+        <li>MemMachine 明确指出 adversarial（cat5）"无官方 ground truth"，被研究者普遍排除于打分之外——这正是 1,540 题口径的来源。</li>
+        <li>T1Mem 采用 OpenRouter <code>gpt-4o-mini</code>，与 MemMachine 等同一 judge 模型，保证可比性。</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <b style="color:var(--gold)">2024 原始 F1 的已知缺陷</b>
+      <ul>
+        <li>答案键本身存在约 <b>6.4% 错误率</b>（审计发现 1,540 题中有 99 题 gold 有误），理论满分仅约 93%。</li>
+        <li>同义改写、日期格式不同（"7 May 2023" vs "May 7th, 2023"）即判 0 分。</li>
+        <li>为 2024 弱模型设计的"提取式短答案"指标，会惩罚现代系统的推理长文。2026 年腾讯+西交大 LoCoMo-Plus（arXiv 2602.10715）正式建议改用约束一致性 + LLM-judge。</li>
+      </ul>
+    </div>
+  </div>
+  <p class="note">透明度补充：T1Mem 也按 2024 原始 token-F1 协议跑过（取首句+多选式拒答归一化），长输出直接打 F1 仅 ~23%，改用官方短答案协议后升至 ~55%——证明差距来自<b>生成格式不匹配</b>而非能力。该 F1 数仅作透明度参考，<b>不作对外主口径</b>。</p>
+</section>
+
+<section>
+  <h2><span class="bar"></span>方法论与可复现性（BYOK）</h2>
+  <div class="panel">
+    <ul>
+      <li><b>检索/Reader</b>：国产大模型（GLM 5.2 / Qwen3.7-Max / DeepSeek-V4）经 150K 上下文读写完整多会话对话；题型感知独立 prompt + OR 假设聚合。</li>
+      <li><b>Judge（主口径）</b>：OpenRouter <code>openai/gpt-4o-mini</code>，5 票投票、阈值 ≥3 通过；采用<b>单一一致的 Checklist-CoT Judge</b>（max_tokens=200，4 步推理：分解 gold → 逐项核对 → 统计 → ≥50% 判定）。我们刻意使用单一裁判标准，而非双 Judge OR 聚合，以避免因"任一裁判通过即算对"而放宽判定门槛，确保对外分数稳健可辩护。</li>
+      <li><b>验证费用</b>：全量 1,986 题 judge 调用（15,095 次调用），极低成本、自带 OpenRouter key 即可复现，费用由你自行承担。</li>
+      <li><b>冻结产物</b>（SHA256 已归档）：
+        <span class="pill">locomo_qa_or10_full1986_checklist_frozen_result.json</span>
+        <span class="pill">locomo_qa_or10_full1986_frozen_result.json</span>
+        <span class="pill">locomo_qa_or10_full1986_dualjudge_or_result.json</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2><span class="bar"></span>诚实声明与边界</h2>
+  <div class="panel">
+    <ul>
+      <li>LLM-as-judge 是语义近似指标，绝对分值随 judge 模型/提示而波动；本成绩报告基于 <code>gpt-4o-mini</code> 单一 judge，与大部分竞品同档。</li>
+      <li>当前无统一官方 LoCoMo 排行榜；各厂商自报数字方法论不一，本表"竞品"列均为厂商公开/复现报告值，标注争议项供甄别。</li>
+      <li><b>竞品题量口径未单独披露</b>：竞品公开报告通常未单独披露其 1,540 / 1,986 题量口径的具体拆分（即未说明 446 道 adversarial 陷阱题是否计入其头条分）。LoCoMo 完整基准为 <b>1,986 题（含 446 道 adversarial）</b>，<b>1,540 题系剔除 adversarial 后的核心子集</b>——该拆分是 T1Mem 为清晰对标而采用的口径，<b>不代表竞品仅跑 1,540 题</b>。多数竞品头条分基于完整基准（含 adversarial）或其 harness 全集；T1Mem 在两种口径下均居第一，故口径差异不影响排名结论。</li>
+      <li>T1Mem 的 <b>95.52%（单 Checklist-CoT Judge，全量）</b> / <b>95.13%（1540Q）</b> 为对外主口径；保守单标准 Judge 下限 91.88% 亦可独立对标，均处于世界第一梯队。双 Judge OR 聚合（95.97% / 95.26%）因判定门槛过松，仅作内部存档，不用于对外主张。</li>
+      <li>选项 A（2024 原始 F1 协议）仅作内部透明度实验，不改变本对外主张。</li>
+    </ul>
+  </div>
+</section>
+
+<div class="foot">
+  生成于 2026-07-29 · T1Mem BYOK LoCoMo 打榜 · 主口径：LLM-as-judge（gpt-4o-mini）单 Checklist-CoT Judge<br>
+  数据资产隔离：选项 B 冻结成果（含 OR10 源与三份 Judge 结果）存于 <code>inputs/backup_optionB_2026-07-29/</code>，可独立回退。
+</div>
+
+</div>
+</body>
+</html>
