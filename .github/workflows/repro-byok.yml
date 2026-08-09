@@ -1,0 +1,24 @@
+name: repro-byok
+
+# 可选：LLM-as-judge 复现（BYOK = Bring Your Own Key）。
+# 该 workflow 依赖外部 API（OpenRouter）+ 网络，不稳定性高，因此单独放到一个
+# 手动触发的工作流里，避免阻塞核心 integrity-check。
+on:
+  workflow_dispatch:
+
+jobs:
+  llm-judge-repro:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install deps
+        run: pip install requests numpy regex nltk
+      - name: Re-judge LoCoMo frozen answers (BYOK)
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: python repro_byok/locomo/freeze_or10_checklist.py

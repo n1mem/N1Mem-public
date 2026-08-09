@@ -21,24 +21,3 @@ jobs:
         run: pip install requests numpy regex nltk
       - name: Run integrity verification
         run: python verify_public.py
-
-  # 可选：LLM-as-judge 复现（需仓库 Secrets 配置 OPENROUTER_API_KEY 才跑）。
-  # 该 job 依赖外部 API + 网络，不稳定，故 continue-on-error 不阻塞整体 CI 状态；
-  # 完整性校验以 verify job 为准。
-  llm-judge-repro:
-    runs-on: ubuntu-latest
-    if: ${{ secrets.OPENROUTER_API_KEY != '' }}
-    continue-on-error: true
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          lfs: false
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - name: Install deps
-        run: pip install requests numpy regex nltk
-      - name: Re-judge LoCoMo frozen answers (BYOK)
-        env:
-          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-        run: python repro_byok/locomo/freeze_or10_checklist.py
