@@ -2,9 +2,9 @@
 
 [![integrity-check](https://github.com/n1mem/N1Mem-public/actions/workflows/ci.yml/badge.svg)](https://github.com/n1mem/N1Mem-public/actions/workflows/ci.yml)
 
-> **可极低成本在自己机器上验证的「世界第一」AI 记忆系统评测包。**
+> **可极低成本在自己机器上验证的 AI 记忆系统评测包（成绩截至对应统计日期）。**
 
-N1Mem（基于 T1Mem 引擎）在四个主流长期记忆/记忆智能体基准上取得 **内测世界第一** 成绩。本仓库是 **公开、可验证的评测与复现包（BYOK, Bring-Your-Own-Key）**——任何人都能用极低成本独立核验这些分数，但**不包含 T1Mem 核心引擎源码**（核心为闭源专利资产）。
+N1Mem（基于 T1Mem 引擎）在四个主流长期记忆/记忆智能体基准上取得 **截至各统计日期的内测世界第一** 成绩（排行榜持续动态变化，详见下方"统计日期与动态声明"）。本仓库是 **公开、可验证的评测与复现包（BYOK, Bring-Your-Own-Key）**——任何人都能用极低成本独立核验这些分数，但**不包含 T1Mem 核心引擎源码**（核心为闭源专利资产）。
 
 ---
 
@@ -21,16 +21,18 @@ N1Mem（基于 T1Mem 引擎）在四个主流长期记忆/记忆智能体基准�
 
 ---
 
-## 🏆 四榜成绩（双口径透明）
+## 🏆 四榜成绩（双口径透明 · 含统计日期）
 
-所有数字以 `claim_card.json`（机器可读单一真相源）为准。
+> **⏱ 统计日期与动态声明：** 本仓库所有成绩均为**截至对应"统计日期"的快照**。记忆系统排行榜持续动态变化，第三方系统后续可能发布更高分数。对外宣称"世界第一"须明确**统计日期 + 比较基准**，**不得暗示为永久性或当前实时第一**（类比：奥运冠军是某届比赛、某时刻的世界第一）。2026-08-11 复核：LoCoMo 第三方 ByteRover 自报 96.1%、MAB 第三方 TRACE 自报 83.8% 均已高于本仓库对应分数；LME-V2 官方榜 AgentRunbook-C 72.5% 已高于本仓库 62.7%。故各"世界第1"主张仅限其统计日期。
 
-| 基准 | 主口径（主张用） | 保守下限 | 冻结产物 SHA256（前 16 位） |
-|---|---|---|---|
-| **LongMemEval QA** | **99.4%** (497/500) | 99.2% | `0721579d…` (500 假设) |
-| **LoCoMo QA** | **95.52%** (1897/1986, Checklist-CoT Judge) | 93.35% (Std Judge) | `896224a0…` / `510cfccb…` / `4b7425d9…` / `ef4f8ed2…` |
-| **MemoryAgentBench** (ICLR'26) | **77.87%** (四维均值) | 77.87% | `fd9cd75c…` (manifest) |
-| **LongMemEval-V2** | **62.7%** (283/451, 4-model lazy OR: Flash→Max→Hy3→Plus) | 44.3% (200/451, DS-V4-Flash 单模型) | `5780da66…` / `abcd6dd2…` / `66de748a…` |
+所有数字以 `claim_card.json`（机器可读单一真相源，v1.3）为准。
+
+| 基准 | 统计日期 | 主口径（主张用） | 保守下限 | 冻结产物 SHA256（前 16 位） |
+|---|---|---|---|---|
+| **LongMemEval QA** | 2026-07 | **99.4%** (497/500) | 99.2% | `0721579d…` (500 假设) |
+| **LoCoMo QA** | 2026-07-29 | **95.52%** (1897/1986, Checklist-CoT Judge) | 93.35% (Std Judge) | `896224a0…` / `510cfccb…` / `4b7425d9…` / `ef4f8ed2…` |
+| **MemoryAgentBench** (ICLR'26) | 2026-07-28 | **77.87%** (四维均值) | 77.87% | `fd9cd75c…` (manifest) |
+| **LongMemEval-V2** | 2026-08-05 | **62.7%** (283/451, 4-model lazy OR: Flash→Max→Hy3→Plus) | 44.3% (200/451, DS-V4-Flash 单模型) | `5780da66…` / `abcd6dd2…` / `66de748a…` |
 
 > **LoCoMo 诚实双数：** 主口径 LLM-as-judge 95.52% 与 token 级 F1 双数披露并列：简洁协议 **65.34%**（Option A 修复，32-token 短答案协议重跑，+42pp）+ 遗留长文协议 23.34%（长推理文与短答案协议不匹配，adversarial=0%）。原 23.34% 非能力问题，协议对齐后已修复至 65.34%。我们不隐藏任一数字。
 
@@ -105,6 +107,7 @@ judge 用你自己的 OpenRouter key 调用 `openai/gpt-4o` / `gpt-4o-mini`，**
 ## 📎 引用
 ```
 N1Mem (powered by T1Mem engine). (2026). N1Mem Benchmark Evidence & Reproducibility Package.
-GitHub: n1mem/N1Mem-public. Four-benchmark world #1 (LongMemEval 99.4% / 
-LoCoMo 95.52% / MemoryAgentBench 77.87% / LongMemEval-V2 62.7% [4-model OR] / 44.3% [单模型]).
+GitHub: n1mem/N1Mem-public. Multi-benchmark world #1 as of stats dates (LongMemEval 99.4% [2026-07] / 
+LoCoMo 95.52% [2026-07-29] / MemoryAgentBench 77.87% [2026-07-28] / LongMemEval-V2 62.7% [2026-08-05, 4-model OR] / 44.3% [单模型]).
+Leaderboards are dynamic; each "#1" claim is valid only as of its stats date.
 ```

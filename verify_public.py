@@ -43,7 +43,7 @@ EXPECTED_SHA = {
     "repro_byok/longmemeval-v2/inputs/lmev2_historical_baseline_result.json":
         "66de748ac4ff18027cc71df1b6728e1fdca3362b6ac856d5ebd833ea16b0cd85",
     "claim_card.json":
-        "c0874eab69a991b25fd8db081441e4449f3c7d34e8d1d8409f587de5f39b43ae",
+        "c6c08d4a6611975f890b10a9b45c24ed9f600799ce18e3141c27d2f050502045",
 }
 
 # LoCoMo 官方 token 级 F1 双数披露发布值

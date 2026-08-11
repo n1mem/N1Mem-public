@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>N1Mem Four-Benchmark Claim Card · Single Source of Truth · 2026-07-30</title>
+<title>N1Mem Four-Benchmark Claim Card · Single Source of Truth · v1.3 (2026-08-11 re-check)</title>
 <style>
   :root{
     --bg:#0d1117; --panel:#161b22; --panel2:#1c2330; --bd:#30363d;
@@ -52,9 +52,11 @@
 
   <h1>N1Mem Four-Benchmark Claim Card</h1>
   <div class="lang">Language: <b>English</b> · <a href="claim_card.html">中文版</a></div>
-  <div class="sub">Single Source of Truth v1.2 · Issued 2026-07-30 · Updated 2026-08-05 (LME-V2 promoted to primary headline: 4-model OR 62.7%) · Issuer: Shenzhen Wangpeng Technology Co., Ltd. · Product: N1Mem (engine: T1Mem) · Machine-readable: <code>docs/claim_card.json</code></div>
+  <div class="sub">Single Source of Truth v1.3 · Issued 2026-07-30 · Updated 2026-08-11 (added "stats-date" iron rule + dynamic-leaderboard disclaimer) · Issuer: Shenzhen Wangpeng Technology Co., Ltd. · Product: N1Mem (engine: T1Mem) · Machine-readable: <code>claim_card.json</code></div>
 
   <div class="ok"><b>Usage Iron Rule:</b> All external materials (website / README / blog / leaderboard submissions) MUST reference this card. Each benchmark discloses <b>two calibrations</b> — the <b>primary headline</b> (used for the "world #1" claim) + the <b>conservative lower bound</b> (single-system / standard Judge). <b>Forbidden:</b> cherry-picking a single peak score; <b>forbidden:</b> hiding official metrics (e.g. LoCoMo token-F1).</div>
+
+  <div class="bad"><b>⏱ Stats-Date Iron Rule (added 2026-08-11):</b> All scores in this card are snapshots <b>as of each benchmark's "stats_date"</b>. Agent-memory leaderboards change continuously; third parties may publish higher scores later. Any "world #1" claim MUST state the <b>stats date + comparison basis</b> (same protocol / same leaderboard / pending official confirmation), and <b>must NOT imply permanence or current real-time #1</b>. Analogy: an Olympic champion is #1 for a specific games, at a specific moment. 2026-08-11 re-check: third-party ByteRover self-reports LoCoMo 96.1% and TRACE self-reports MAB 83.8%, both above our corresponding scores; the LME-V2 official leaderboard (AgentRunbook-C 72.5%) already exceeds our 62.7%. Hence each "world #1" claim is valid only as of its stats date.</div>
 
   <!-- ===== LongMemEval ===== -->
   <div class="card">
@@ -68,7 +70,7 @@
     <div class="row"><span class="k">Frozen artifact</span><span class="v">Reader hypotheses <code>repro_byok/longmemeval/inputs/t1mem_hypotheses_500.jsonl</code></span></div>
     <div class="row"><span class="k">SHA256</span><span class="v"><code>0721579d894b28e3ef0c7a7ac910e506b36f4c6e075228c71b1d11005615c515</code></span></div>
     <div class="row"><span class="k">Reproduce</span><span class="v">repro_byok/longmemeval (BYOK; verifier re-runs the Judge with their own OPENROUTER_API_KEY)</span></div>
-    <div class="note">External reproduction: a single hypothesis yields the lower bound, multi-hypothesis OR yields the upper bound; Judge natural variance is typically ±1pp. LongMemEval has no official token-F1 metric; GPT-Judge is the standard academic evaluation protocol.</div>
+    <div class="note">External reproduction: a single hypothesis yields the lower bound, multi-hypothesis OR yields the upper bound; Judge natural variance is typically ±1pp. LongMemEval has no official token-F1 metric; GPT-Judge is the standard academic evaluation protocol.<br><b>Stats date: 2026-07.</b> Third parties report higher single-system scores on the LongMemEval-S subset (e.g. OMEGA 95.4%), but not under the same full-set protocol; our 99.4% is the highest published full-500Q primary-caliber score.</div>
   </div>
 
   <!-- ===== LoCoMo ===== -->
@@ -86,7 +88,7 @@
     <div class="note">Official token-F1 = 65.34% (concise protocol, SHA256 <code>4b7425d9ffd660c0fe46e96228f19eb3a8e688bb22f11c808d2049e0c4212e75</code>)<br>
       2026-07-30 Option A fix: re-ran with the official 32-token short-answer protocol (deepseek-v4-pro, full 1986), F1 rose from the legacy long-form protocol 23.34% to 65.34% (+42pp), far exceeding the ≥50% threshold — proving the original low score was a generation-format issue (long reasoning text vs. official short answers), not a capability problem. By question type: adversarial 89.24% / open_domain 70.04% / single_hop 57.94% / temporal 41.50% / multi_hop 33.44%.<br>
       Dual-number transparent disclosure: legacy long-form protocol 23.34% (SHA256 <code>ef4f8ed2…</code>, adversarial=0%, because the long reasoning output mismatched the official short-answer protocol); current concise protocol 65.34%. Competitors also self-report LLM-as-judge; no one benchmarks against official F1. External references must cite BOTH official F1 65.34% and LLM-as-judge 95.52%.</div>
-    <div class="note">Frozen on 2026-07-29. Primary calibration = OR10 ensemble + Checklist-CoT Judge; single-system lower bound = Standard Judge. The official token-F1 is now fixed and disclosed: concise protocol 65.34% (must disclose) + legacy long-form protocol 23.34% (format mismatch). Any external reference must cite BOTH official F1 65.34% and LLM-as-judge 95.52%.</div>
+    <div class="note">Frozen on 2026-07-29 (stats date). Primary calibration = OR10 ensemble + Checklist-CoT Judge; single-system lower bound = Standard Judge. The official token-F1 is now fixed and disclosed: concise protocol 65.34% (must disclose) + legacy long-form protocol 23.34% (format mismatch). Any external reference must cite BOTH official F1 65.34% and LLM-as-judge 95.52%.<br><b>Stats date: 2026-07-29.</b> As of the 2026-08-11 re-check, third-party ByteRover self-reports LoCoMo 96.1%, above our 95.52%; the "world #1" claim is valid only as of this stats date.</div>
   </div>
 
   <!-- ===== MAB ===== -->
@@ -100,7 +102,7 @@
     <div class="row"><span class="k">Judge</span><span class="v">gpt-4o (MAB official default)</span></div>
     <div class="row"><span class="k">Frozen manifest SHA256</span><span class="v"><code>fd9cd75cd9380fea0c46a02707660948bb237dc99fa0c6cba79e2bde3e4a6ef5</code> (includes 15 result files each with its own SHA256)</span></div>
     <div class="row"><span class="k">Reproduce</span><span class="v">repro_byok/amb (BYOK) + MemoryAgentBench/mab_frozen_manifest.json</span></div>
-    <div class="note">Frozen simple_average = <b>77.87%</b> (four dims 81.38/90.29/80.35/59.48). The older report value 77.38% was a low estimate; the frozen 77.87% is authoritative. Benchmarked against GPT-5-mini 60.6%.</div>
+    <div class="note">Frozen simple_average = <b>77.87%</b> (four dims 81.38/90.29/80.35/59.48). The older report value 77.38% was a low estimate; the frozen 77.87% is authoritative. Benchmarked against GPT-5-mini 60.6%.<br><b>Stats date: 2026-07-28.</b> As of 2026-08-11 re-check, third-party TRACE self-reports MAB 83.8%, above our 77.87%; the "world #1" claim is valid only as of this stats date.</div>
   </div>
 
   <!-- ===== LME-V2 ===== -->
@@ -117,7 +119,7 @@
     <div class="row"><span class="k">Primary SHA256</span><span class="v"><code>5780da66d715101fc693ccc08cca8233cf6b60cb5dea375a1642f062464f957c</code> · public copy <code>repro_byok/longmemeval-v2/inputs/lmev2_4model_lazy_or_result.json</code></span></div>
     <div class="row"><span class="k">Conservative SHA256</span><span class="v"><code>abcd6dd23b457d5335da90ea5aa1bc04709bea14c42d39f3fbd1c2925a916fdd</code> · public copy <code>repro_byok/longmemeval-v2/inputs/lmev2_flash_single_result.json</code></span></div>
     <div class="row"><span class="k">Reproduce</span><span class="v"><b>Public verification:</b> <code>repro_byok/longmemeval-v2/verify_lmev2.py</code> (zero-dependency; verifies SHA256 + recomputes scores).<br><b>Full end-to-end:</b> LongMemEval-V2/run_planc_local.py (requires N1Mem engine authorization; supports READER2/3/4 + AUGMENT_FILE)</span></div>
-    <div class="note">LME-V2 is a <b>harder variant</b>. The official leaderboard primary calibration is upgraded to <b>4-model lazy OR 62.7% (283/451)</b>: DS-V4-Flash + Qwen3.7-Max + Hy3 + Qwen3.7-Plus cascade rescue. Evidence chain: a 77-question three-model comparison report verified Hy3 accuracy ≈ Max (establishing the Flash→Hy3→Plus principle) → full 4-model OR landed at 62.7% (two reports in LongMemEval-V2/reports/). The conservative lower bound retains the DS-V4-Flash single-model <b>44.3% (production-ready)</b>. The "world #1" claim must be labeled as <b>"current public best on this harder set / pending official leaderboard confirmation"</b>. By question type (4-model OR): static-env-abs 80.0% / procedure-abs 81.2% / procedure 66.2% / dyn-env-abs 68.3% / static-env 56.7% / dyn-env 52.3% / errors-gotchas 51.7%.</div>
+    <div class="note">LME-V2 is a <b>harder variant</b>. The official leaderboard primary calibration is upgraded to <b>4-model lazy OR 62.7% (283/451)</b>: DS-V4-Flash + Qwen3.7-Max + Hy3 + Qwen3.7-Plus cascade rescue. Evidence chain: a 77-question three-model comparison report verified Hy3 accuracy ≈ Max (establishing the Flash→Hy3→Plus principle) → full 4-model OR landed at 62.7% (two reports in LongMemEval-V2/reports/). The conservative lower bound retains the DS-V4-Flash single-model <b>44.3% (production-ready)</b>. The "world #1" claim must be labeled as <b>"current public best on this harder set / pending official leaderboard confirmation"</b>. By question type (4-model OR): static-env-abs 80.0% / procedure-abs 81.2% / procedure 66.2% / dyn-env-abs 68.3% / static-env 56.7% / dyn-env 52.3% / errors-gotchas 51.7%.<br><b>Stats date: 2026-08-05.</b> The official leaderboard (AgentRunbook-C 72.5%) already exceeds our 62.7%, so this is not the official-leaderboard #1; the score serves as an internal result and same-protocol reference.</div>
   </div>
 
   <!-- ===== Summary table ===== -->
@@ -132,11 +134,11 @@
     </tbody>
   </table>
 
-  <div class="ok"><b>Integrity baseline summary:</b> All four benchmarks disclose both the primary calibration + the conservative lower bound; LoCoMo additionally mandates dual-number disclosure of the official F1 (concise protocol 65.34% / legacy long-form protocol 23.34%); LME-V2 primary calibration is upgraded to 4-model lazy OR 62.7% (conservative lower bound retains the DS-V4-Flash single-model 44.3%), with explicit "pending official leaderboard confirmation" positioning. All scores are independently verifiable via the BYOK reproduction package.</div>
+  <div class="ok"><b>Integrity baseline summary:</b> All four benchmarks disclose both the primary calibration + the conservative lower bound; LoCoMo additionally mandates dual-number disclosure of the official F1 (concise protocol 65.34% / legacy long-form protocol 23.34%); LME-V2 primary calibration is upgraded to 4-model lazy OR 62.7% (conservative lower bound retains the DS-V4-Flash single-model 44.3%), with explicit "pending official leaderboard confirmation / not official-leaderboard #1" positioning. All four benchmarks now also carry a <b>stats date</b>. All scores are independently verifiable via the BYOK reproduction package. <b>Leaderboards change continuously; each "world #1" claim is valid only as of its stats date.</b></div>
 
   <div class="foot">
     Machine-readable truth: <code>docs/claim_card.json</code> · This card is the claim baseline; all external references must conform to it · Changes require re-issuance and a schema_version bump.<br>
-    Issued by: T1Mem Product Office / Trusted-Disclosure Task Group · 2026-07-30 (LoCoMo official F1 disclosed in the 2026-07-31 update · LME-V2 Flash upgrade in the 2026-08-01 update · LME-V2 4-model OR primary calibration upgraded in the 2026-08-05 update)
+    Issued by: T1Mem Product Office / Trusted-Disclosure Task Group · 2026-07-30 (LoCoMo official F1 disclosed in the 2026-07-31 update · LME-V2 Flash upgrade in the 2026-08-01 update · LME-V2 4-model OR primary calibration upgraded in the 2026-08-05 update · <b>v1.3 stats-date iron rule + dynamic-leaderboard disclaimer added 2026-08-11</b>)
   </div>
 
 </div>

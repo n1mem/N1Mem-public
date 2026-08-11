@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>N1Mem 四榜声明口径卡 · 单一真相源 · 2026-07-30</title>
+<title>N1Mem 四榜声明口径卡 · 单一真相源 · v1.3（2026-08-11 复核）</title>
 <style>
   :root{
     --bg:#0d1117; --panel:#161b22; --panel2:#1c2330; --bd:#30363d;
@@ -52,9 +52,11 @@
 
   <h1>N1Mem 四榜声明口径卡</h1>
   <div class="lang">语言：<b>中文</b> · <a href="claim_card_en.html">English</a></div>
-  <div class="sub">单一真相源 v1.2 · 签发 2026-07-30 · 更新 2026-08-05（LME-V2 正式主口径升级 4-model OR 62.7%）· issuer: 深圳市网鹏科技有限公司 · 产品名 N1Mem（底层引擎 T1Mem）· 机器可读版：<code>docs/claim_card.json</code></div>
+  <div class="sub">单一真相源 v1.3 · 签发 2026-07-30 · 更新 2026-08-11（新增"统计日期"铁律 + 动态排行榜免责声明）· issuer: 深圳市网鹏科技有限公司 · 产品名 N1Mem（底层引擎 T1Mem）· 机器可读版：<code>claim_card.json</code></div>
 
   <div class="ok"><b>使用铁律：</b>所有对外物料（官网 / README / 博客 / 榜单提交）必须引用本卡。每个榜单披露<b>两个口径</b>——<b>对外主口径 headline</b>（用于"世界第一"主张）+ <b>保守下限</b>（单系统/标准 Judge）。<b>禁止</b> cherry-pick 单点峰值、<b>禁止</b>隐瞒官方指标（如 LoCoMo token-F1）。</div>
+
+  <div class="bad"><b>⏱ 统计日期铁律（2026-08-11 新增）：</b>本卡所有成绩均为<b>截至对应"统计日期"的快照</b>。记忆系统排行榜持续动态变化，第三方系统后续可能发布更高分数。对外宣称"世界第一"须明确<b>统计日期 + 比较基准</b>（同协议 / 同榜单 / 待官方榜确认），<b>不得暗示为永久性或当前实时第一</b>。类比：奥运冠军是某届比赛、某时刻的世界第一。2026-08-11 复核：LoCoMo 第三方 ByteRover 自报 96.1%、MAB 第三方 TRACE 自报 83.8% 均已高于本卡对应分数；LME-V2 官方榜 AgentRunbook-C 72.5% 已高于本卡 62.7%。故各"世界第1"主张仅限其统计日期。</div>
 
   <!-- ===== LongMemEval ===== -->
   <div class="card">
@@ -68,7 +70,7 @@
     <div class="row"><span class="k">冻结产物</span><span class="v">Reader 假设 <code>repro_byok/longmemeval/inputs/t1mem_hypotheses_500.jsonl</code></span></div>
     <div class="row"><span class="k">SHA256</span><span class="v"><code>0721579d894b28e3ef0c7a7ac910e506b36f4c6e075228c71b1d11005615c515</code></span></div>
     <div class="row"><span class="k">复现</span><span class="v">repro_byok/longmemeval（BYOK，核验方自有 OPENROUTER_API_KEY 重跑 Judge）</span></div>
-    <div class="note">外部复现单假设得下限、多假设 OR 得上限；Judge 自然方差通常 ±1pp。LongMemEval 无官方 token-F1 指标，采用 GPT-Judge 为学界通用评测方式。</div>
+    <div class="note">外部复现单假设得下限、多假设 OR 得上限；Judge 自然方差通常 ±1pp。LongMemEval 无官方 token-F1 指标，采用 GPT-Judge 为学界通用评测方式。<br><b>统计日期：2026-07。</b>第三方 LongMemEval-S 子集有更高单系统分（如 OMEGA 95.4%），但非同协议全量对比，本 99.4% 为全量 500 题主口径公开最高值。</div>
   </div>
 
   <!-- ===== LoCoMo ===== -->
@@ -86,7 +88,7 @@
     <div class="note">官方 token-F1 = 65.34%（简洁协议，SHA256 <code>4b7425d9ffd660c0fe46e96228f19eb3a8e688bb22f11c808d2049e0c4212e75</code>）<br>
       2026-07-30 Option A 修复：改用官方 32-token 短答案协议重跑（deepseek-v4-pro，全量 1986），F1 由遗留长文协议 23.34% 升至 65.34%（+42pp），远超 ≥50% 阈值，证明原低分系生成格式问题（长推理文 vs 官方短答案）而非能力问题。分题型：adversarial 89.24% / open_domain 70.04% / single_hop 57.94% / temporal 41.50% / multi_hop 33.44%。<br>
       双数透明披露：遗留长文协议 23.34%（SHA256 <code>ef4f8ed2…</code>，adversarial=0%，因产出长推理文与官方短答案协议不匹配）；现值简洁协议 65.34%。竞品亦自报 LLM-as-judge，无人用官方 F1 对标。对外引用须同时标注官方 F1 65.34% 与 LLM-as-judge 95.52%。</div>
-    <div class="note">冻结于 2026-07-29。主口径=OR10 集成 + Checklist-CoT Judge；单系统下限=Standard Judge。官方 token-F1 现已修复披露：简洁协议 <b>65.34%（必披露）</b> + 遗留长文协议 23.34%（格式不匹配）。凡对外引用必须同时标注官方 F1 65.34% 与 LLM-as-judge 95.52%。</div>
+    <div class="note">冻结于 2026-07-29（统计日期）。主口径=OR10 集成 + Checklist-CoT Judge；单系统下限=Standard Judge。官方 token-F1 现已修复披露：简洁协议 <b>65.34%（必披露）</b> + 遗留长文协议 23.34%（格式不匹配）。凡对外引用必须同时标注官方 F1 65.34% 与 LLM-as-judge 95.52%。<br><b>动态提示：</b>截至 2026-08-11 复核，第三方 ByteRover 自报 LoCoMo 96.1% 已高于本 95.52%，"世界第1"主张仅限 2026-07-29 该统计日期。</div>
   </div>
 
   <!-- ===== MAB ===== -->
@@ -100,7 +102,7 @@
     <div class="row"><span class="k">Judge</span><span class="v">gpt-4o（MAB 官方默认）</span></div>
     <div class="row"><span class="k">冻结清单 SHA256</span><span class="v"><code>fd9cd75cd9380fea0c46a02707660948bb237dc99fa0c6cba79e2bde3e4a6ef5</code>（含 15 个结果文件各自 SHA256）</span></div>
     <div class="row"><span class="k">复现</span><span class="v">repro_byok/amb（BYOK）+ MemoryAgentBench/mab_frozen_manifest.json</span></div>
-    <div class="note">冻结 simple_average=<b>77.87%</b>（四维 81.38/90.29/80.35/59.48）。<b>旧报告 77.38% 为偏低值，以冻结 77.87% 为准。</b>对标 GPT-5-mini 60.6%。</div>
+    <div class="note">冻结 simple_average=<b>77.87%</b>（四维 81.38/90.29/80.35/59.48）。<b>旧报告 77.38% 为偏低值，以冻结 77.87% 为准。</b>对标 GPT-5-mini 60.6%。<br><b>统计日期：2026-07-28。</b>截至 2026-08-11 复核，第三方 TRACE 自报 MAB 83.8% 已超本 77.87%，"世界第1"主张仅限该统计日期。</div>
   </div>
 
   <!-- ===== LME-V2 ===== -->
@@ -117,7 +119,7 @@
     <div class="row"><span class="k">主口径 SHA256</span><span class="v"><code>5780da66d715101fc693ccc08cca8233cf6b60cb5dea375a1642f062464f957c</code> · 公开副本 <code>repro_byok/longmemeval-v2/inputs/lmev2_4model_lazy_or_result.json</code></span></div>
     <div class="row"><span class="k">保守下限 SHA256</span><span class="v"><code>abcd6dd23b457d5335da90ea5aa1bc04709bea14c42d39f3fbd1c2925a916fdd</code> · 公开副本 <code>repro_byok/longmemeval-v2/inputs/lmev2_flash_single_result.json</code></span></div>
     <div class="row"><span class="k">复现</span><span class="v"><b>公开验证</b>：<code>repro_byok/longmemeval-v2/verify_lmev2.py</code>（零依赖，校验 SHA256 + 重算分数）。<br><b>完整端到端</b>：LongMemEval-V2/run_planc_local.py（需 N1Mem 引擎授权；支持 READER2/3/4 + AUGMENT_FILE）</span></div>
-    <div class="note">LME-V2 为<b>更难变体</b>。正式打榜主口径升级为 <b>4-model lazy OR 62.7%（283/451）</b>：DS-V4-Flash + Qwen3.7-Max + Hy3 + Qwen3.7-Plus 级联救回。证据链：77题三模型对比报告验证 Hy3 准确率≈Max（确立 Flash→Hy3→Plus 原则）→ 全量 4-model OR 落地 62.7%（两份报告见 LongMemEval-V2/reports/）。保守下限保留 DS-V4-Flash 单模型 <b>44.3%（生产可用）</b>。"世界第一"主张须标注为<b>"该 harder 集当前公开最高分 / 待官方榜确认"</b>。分题型（4-model OR）：static-env-abs 80.0% / procedure-abs 81.2% / procedure 66.2% / dyn-env-abs 68.3% / static-env 56.7% / dyn-env 52.3% / errors-gotchas 51.7%。</div>
+    <div class="note">LME-V2 为<b>更难变体</b>。正式打榜主口径升级为 <b>4-model lazy OR 62.7%（283/451）</b>：DS-V4-Flash + Qwen3.7-Max + Hy3 + Qwen3.7-Plus 级联救回。证据链：77题三模型对比报告验证 Hy3 准确率≈Max（确立 Flash→Hy3→Plus 原则）→ 全量 4-model OR 落地 62.7%（两份报告见 LongMemEval-V2/reports/）。保守下限保留 DS-V4-Flash 单模型 <b>44.3%（生产可用）</b>。"世界第一"主张须标注为<b>"该 harder 集当前公开最高分 / 待官方榜确认"</b>。分题型（4-model OR）：static-env-abs 80.0% / procedure-abs 81.2% / procedure 66.2% / dyn-env-abs 68.3% / static-env 56.7% / dyn-env 52.3% / errors-gotchas 51.7%。<br><b>统计日期：2026-08-05。</b>官方 Leaderboard（AgentRunbook-C 72.5%）已高于本 62.7%，故非官方榜第一，本分数仅作内部战绩与同协议参考。</div>
   </div>
 
   <!-- ===== 总览表 ===== -->
@@ -132,7 +134,7 @@
     </tbody>
   </table>
 
-  <div class="ok"><b>诚信基线总结：</b>四个榜单均标注主口径 + 保守下限；LoCoMo 额外强制双数披露官方 F1（简洁协议 65.34% / 遗留长文协议 23.34%）；LME-V2 主口径升级为 4-model lazy OR 62.7%（保守下限保留 DS-V4-Flash 单模型 44.3%），并明确"待官方榜确认"定位。所有分数经 BYOK 复现包可独立验证。</div>
+  <div class="ok"><b>诚信基线总结：</b>四个榜单均标注主口径 + 保守下限 + <b>统计日期</b>；LoCoMo 额外强制双数披露官方 F1（简洁协议 65.34% / 遗留长文协议 23.34%）；LME-V2 主口径升级为 4-model lazy OR 62.7%（保守下限保留 DS-V4-Flash 单模型 44.3%），并明确"待官方榜确认 / 非官方榜第一"定位。所有分数经 BYOK 复现包可独立验证。<b>排行榜动态变化，各"世界第1"主张仅限其统计日期。</b></div>
 
   <div class="ok" style="border-color:var(--pur)">
     <b>对外纪律（通用红线 · 2026-08-07 起固化）：</b>
@@ -144,7 +146,7 @@
 
   <div class="foot">
     机器可读真值：<code>docs/claim_card.json</code> · 本卡为声明基准，所有对外引用以此为准 · 变更须重新签发并升级 schema_version。<br>
-    签发：T1Mem 产品通 / 可信专题组 · 2026-07-30（LoCoMo 官方 F1 披露于 2026-07-31 更新 · LME-V2 Flash 升级于 2026-08-01 更新 · LME-V2 4-model OR 主口径升级于 2026-08-05 更新）
+    签发：T1Mem 产品通 / 可信专题组 · 2026-07-30（LoCoMo 官方 F1 披露于 2026-07-31 更新 · LME-V2 Flash 升级于 2026-08-01 更新 · LME-V2 4-model OR 主口径升级于 2026-08-05 更新 · <b>v1.3 统计日期铁律 + 动态排行榜免责声明 2026-08-11 更新</b>）
   </div>
 
 </div>
