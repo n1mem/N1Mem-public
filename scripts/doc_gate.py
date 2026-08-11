@@ -14,6 +14,7 @@ import sys
 # 仓库根允许直接存在的文档/固定文件（白名单，大小写不敏感）
 WHITELIST = {
     "readme.md", "readme.rst", "readme.txt",
+    "readme.zh.md", "readme.zh-cn.md", "readme.cn.md",  # 双语 README 语言变体（GitHub 标准惯例）
     "license", "license.md", "license.txt",
     ".gitignore",
     "claim_card.html", "claim_card_en.html", "claim_card.json",
@@ -47,6 +48,9 @@ def main():
         base = os.path.basename(f).lower()
         ext = os.path.splitext(base)[1]
         if ext in DOC_EXTS and base not in WHITELIST:
+            # README 语言变体（README.zh.md / README.zh-CN.md 等）属 GitHub 标准双语惯例，放行
+            if base.startswith("readme.") and ext == ".md":
+                continue
             bad.append(f)
 
     if bad:
