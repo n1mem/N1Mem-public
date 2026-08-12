@@ -1,0 +1,43 @@
+#!/bin/sh
+# N1Mem-public pre-commit 文档治理闸门
+# 禁止在仓库根目录直接新增文档类文件（*.html/*.md/*.pdf/*.pptx），
+# 必须归入子目录（docs/ 或对应分类）。白名单见 scripts/doc_gate.py。
+# 公开仓额外禁止提交含内部标识（复盘/补齐/对照/战略/投资人/口径卡/
+# 进度追踪/PRD/架构/内部）或位于 docs/_archive/ 的文件。
+#
+# 绕过：设置 N1MEM_SKIP_GATE=1 或 git commit --no-verify。
+# 安装：仓库根执行 `bash install-hooks.sh`（详见该脚本）。
+
+if [ -n "$N1MEM_SKIP_GATE" ]; then
+  echo "[pre-commit] N1MEM_SKIP_GATE 已设置 — 跳过文档闸门。"
+  exit 0
+fi
+
+ROOT="$(git rev-parse --show-toplevel)"
+if [ -z "$ROOT" ]; then
+  echo "[pre-commit] 无法定位仓库根，跳过文档闸门（不阻挡）。" >&2
+  exit 0
+fi
+
+DOCGATE="$ROOT/scripts/doc_gate.py"
+if [ ! -f "$DOCGATE" ]; then
+  echo "[pre-commit] 未找到 $DOCGATE，跳过文档闸门（不阻挡）。" >&2
+  exit 0
+fi
+
+if command -v python >/dev/null 2>&1; then
+  PY="python"
+elif command -v python3 >/dev/null 2>&1; then
+  PY="python3"
+else
+  echo "[pre-commit] 找不到 python，跳过文档闸门（不阻挡）。" >&2
+  exit 0
+fi
+
+if ! "$PY" "$DOCGATE"; then
+  echo "[pre-commit] ✖ 文档治理闸门未通过（根目录散落 / 公开仓内部文档），提交已阻挡。" >&2
+  echo "[pre-commit]   请按 doc-gate 提示修正；紧急可用: git commit --no-verify" >&2
+  exit 1
+fi
+
+exit 0

@@ -60,8 +60,7 @@ N1Mem-public/
 │   ├── amb/                   # MemoryAgentBench：配置 + adapter + 冻结manifest
 │   └── common/                # OpenRouter judge 等共享脚本
 ├── docs/
-│   ├── N1Mem_BYOK复现包概览_2026-08-06.html
-│   └── N1Mem_LoCoMo_双Judge诚实对照_2026-07-28.html
+│   └── N1Mem_BYOK复现包概览_2026-08-06.html   # 对外 BYOK 复现包入口说明
 └── .github/workflows/ci.yml   # 推送时自动跑完整性校验（绿钩=信任信号）
 ```
 
@@ -100,6 +99,15 @@ judge 用你自己的 OpenRouter key 调用 `openai/gpt-4o` / `gpt-4o-mini`，**
 - **协议透明**：LoCoMo 官方 F1 双数披露（简洁 65.34% + 遗留 23.34%）不隐藏，并附协议对齐修复路径。
 - **judge 独立**：LLM-as-judge 用第三方 OpenRouter（GPT-4o），非 N1Mem 自证。
 - **CI 绿钩**：每次推送自动跑 `verify_public.py`，历史可查。
+
+---
+
+## 🛠 开发环境（贡献者必读）
+克隆仓库后，请先安装本地 git 钩子，使文档治理闸门在每次提交前自动生效：
+```sh
+bash install-hooks.sh
+```
+该脚本会把 `scripts/pre-commit` 复制到 `.git/hooks/` 并自检。闸门会拦截：(a) 仓库根目录散落的文档；(b) **内部文档**——文件名/路径含 复盘/补齐/对照/战略/投资人/口径卡/进度追踪/PRD/架构/内部，或位于 `docs/_archive/` —— 进入公开仓。确有需要时可用 `N1MEM_SKIP_GATE=1` 或 `git commit --no-verify` 绕过。
 
 ---
 

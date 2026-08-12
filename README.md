@@ -60,8 +60,7 @@ N1Mem-public/
 │   ├── amb/                   # MemoryAgentBench: config + adapter + frozen manifest
 │   └── common/                # Shared scripts (OpenRouter judge, etc.)
 ├── docs/
-│   ├── N1Mem_BYOK复现包概览_2026-08-06.html
-│   └── N1Mem_LoCoMo_双Judge诚实对照_2026-07-28.html
+│   └── N1Mem_BYOK复现包概览_2026-08-06.html   # Public BYOK reproduction-package entry doc
 └── .github/workflows/ci.yml   # Auto integrity check on push (green = trust signal)
 ```
 
@@ -100,6 +99,15 @@ The judge calls `openai/gpt-4o` / `gpt-4o-mini` via your own OpenRouter key, **n
 - **Protocol transparent**: LoCoMo official F1 dual numbers (concise 65.34% + legacy 23.34%) disclosed without hiding, with protocol-alignment fix path attached.
 - **Independent judge**: LLM-as-judge uses third-party OpenRouter (GPT-4o), not N1Mem self-assertion.
 - **CI green**: `verify_public.py` runs automatically on every push; history is auditable.
+
+---
+
+## 🛠 Dev Setup (for contributors)
+After cloning, install the local git hook so the document-governance gate runs automatically on every commit:
+```sh
+bash install-hooks.sh
+```
+This copies `scripts/pre-commit` into `.git/hooks/` and self-tests it. The gate blocks (a) stray documents in the repo root and (b) **internal documents** — filenames/paths containing 复盘/补齐/对照/战略/投资人/口径卡/进度追踪/PRD/架构/内部, or anything under `docs/_archive/` — from entering this public repo. Bypass only when intentional with `N1MEM_SKIP_GATE=1` or `git commit --no-verify`.
 
 ---
 
