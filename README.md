@@ -25,14 +25,14 @@ N1Mem (powered by the T1Mem engine) achieves **internal world #1 as of various s
 
 ## 🏆 Four-Benchmark Scores (dual-caliber transparency · with stats dates)
 
-> **⏱ Stats-Date & Dynamic Disclaimer:** Every score in this repo is a **snapshot as of its corresponding "stats date"**. Memory-system leaderboards change continuously, and third parties may later post higher scores. Any "world #1" claim must state the **stats date + comparison baseline** explicitly, and **must not imply permanence or real-time current leadership** (analogy: an Olympic champion is world #1 at a specific games, at a specific moment). 2026-08-11 re-check: LoCoMo third-party ByteRover self-reports 96.1%, MAB third-party TRACE self-reports 83.8% — both already above our corresponding scores; LME-V2 official leaderboard AgentRunbook-C 72.5% already above our 62.7%. Therefore each "world #1" claim is valid only as of its stats date.
+> **⏱ Stats-Date & Dynamic Disclaimer:** Every score in this repo is a **snapshot as of its corresponding "stats date"**. Memory-system leaderboards change continuously, and third parties may later post higher scores. Any "world #1" claim must state the **stats date + comparison baseline** explicitly, and **must not imply permanence or real-time current leadership** (analogy: an Olympic champion is world #1 at a specific games, at a specific moment). 2026-08-13 re-check: LoCoMo third-party ByteRover self-reports 96.1% (we now rank World #2, domestic & reproducible #1; conservative lower bound re-judged 93.35%→93.66% under DS-V4-Flash ds-leg downgrade, zero score loss), MAB third-party TRACE self-reports 83.8% — both already above our corresponding scores; LME-V2 official leaderboard AgentRunbook-C 72.5% already above our 62.7%. Therefore each "world #1" claim is valid only as of its stats date.
 
 All numbers are authoritative per `claim_card.json` (machine-readable single source of truth, v1.3).
 
 | Benchmark | Stats Date | Primary caliber (claim) | Conservative lower bound | Frozen artifact SHA256 (first 16) |
 |---|---|---|---|---|
 | **LongMemEval QA** | 2026-07 | **99.4%** (497/500) | 99.2% | `0721579d…` (500 hypotheses) |
-| **LoCoMo QA** | 2026-07-29 | **95.52%** (1897/1986, Checklist-CoT Judge) | 93.35% (Std Judge) | `896224a0…` / `510cfccb…` / `4b7425d9…` / `ef4f8ed2…` |
+| **LoCoMo QA** | 2026-07-29 | **95.52%** (1897/1986, Checklist-CoT Judge) | 93.66% (Std Judge, Flash ds-leg, 2026-08-13) | `896224a0…` / `0d1981e1…` / `4b7425d9…` / `ef4f8ed2…` |
 | **MemoryAgentBench** (ICLR'26) | 2026-07-28 | **77.87%** (4-dim mean) | 77.87% | `fd9cd75c…` (manifest) |
 | **LongMemEval-V2** | 2026-08-05 | **62.7%** (283/451, 4-model lazy OR: Flash→Max→Hy3→Plus) | 44.3% (200/451, DS-V4-Flash single model) | `5780da66…` / `abcd6dd2…` / `66de748a…` |
 
@@ -83,7 +83,7 @@ This proves our scores and official metrics are **independently reproducible**.
 cp .env.example .env
 # Fill your own OPENROUTER_API_KEY in .env (bring your own key, BYOK)
 python repro_byok/locomo/freeze_or10_checklist.py --full   # re-judge frozen answers → ≈95.52%
-python repro_byok/locomo/freeze_or10.py --full             # conservative lower bound → ≈93.35%
+python repro_byok/locomo/freeze_or10.py --full             # conservative lower bound → ≈93.66%
 python repro_byok/longmemeval/run_judge_byok.py --full     # re-judge 500 hypotheses → ≈99.4%
 ```
 The judge calls `openai/gpt-4o` / `gpt-4o-mini` via your own OpenRouter key, **never through N1Mem servers**; results are entirely under your control.

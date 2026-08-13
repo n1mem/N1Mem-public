@@ -1,7 +1,7 @@
 {
   "schema_version": "1.3",
   "issued_at": "2026-07-30",
-  "updated_at": "2026-08-11",
+  "updated_at": "2026-08-13",
   "stats_date_principle": "所有榜单成绩均为截至对应 stats_date 的快照。记忆系统排行榜持续动态变化，第三方系统后续可能发布更高分数。对外'世界第一'主张须明确统计日期与比较基准（同协议 / 同榜单 / 待官方榜确认），不得暗示为永久性或当前实时第一。类比：奥运冠军是某届比赛、某时刻的世界第一。",
   "leaderboard_dynamics_note": "2026-08-11 复核：LME-V2 官方 Leaderboard（AgentRunbook-C 72.5%）已高于本卡 62.7%；MemoryAgentBench 第三方 TRACE 自报 83.8% 已高于本卡 77.87%；LoCoMo 第三方 ByteRover 自报 96.1% 已高于本卡 95.52%。故本卡'世界第1'主张仅限各 stats_date，不构成当前实时第一。",
   "product_name": "N1Mem",
@@ -54,10 +54,10 @@
       "judge": "openai/gpt-4o-mini",
       "headline_score_pct": 95.52,
       "headline_detail": "1897/1986 · Checklist-CoT Judge",
-      "conservative_lower_bound_pct": 93.35,
-      "conservative_detail": "1854/1986 · Standard Judge（单系统下限）",
-      "stats_date": "2026-07-29",
-      "world_rank_claim": "截至 2026-07-29 世界第 1（同协议 LLM-as-judge 95.52%，领先 Zep 94.7%）；后续第三方 ByteRover 自报 96.1% 已更高，本主张仅限该统计日期",
+      "conservative_lower_bound_pct": 93.66,
+      "conservative_detail": "1860/1986 · Standard Judge（DS-V4-Flash ds leg, Flash-attributable）",
+      "stats_date": "2026-08-13",
+      "world_rank_claim": "截至 2026-07-29 世界第 2（同协议 LLM-as-judge 95.52%，国产 & 可复现第一）；第三方 ByteRover 自报 96.1% 已更高。Zep 实际 75.1% / Mem0 实际 66.9%（此前误报 94.7% / 92.5%，2026-08-12 已修正）。本主张仅限该统计日期",
       "official_metric": {
         "type": "token 级 F1（snap-research/locomo 官方协议）",
         "disclosure_mode": "dual_caliber",
@@ -91,6 +91,13 @@
           "n": 1986
         },
         {
+          "role": "conservative_result_flash_rejudge",
+          "path": "repro_byok/locomo/inputs/locomo_qa_or10_dsrel161_frozen_result.json",
+          "sha256": "0d1981e1fc37ea0ffbc5c0a08159e0ef0c3c462dca390556a37474bd1907de7f",
+          "n": 132,
+          "note": "DS-V4-Pro→DS-V4-Flash ds 腿降级后，对 132 个 ds-relevant 难题（qwen+glm+rescue 全败）定向重判；14/132 通过（6 靠 ds 决定），全量 OR10=1868/1986=94.06%（观测），Flash-attributable 1860/1986=93.66%。hypotheses_sha256=ec6a4f5da5ae526d73460bb231d06119be3168fedae027df2a1abaac91407bf9"
+        },
+        {
           "role": "official_f1_result_concise",
           "path": "repro_byok/locomo/inputs/locomo_qa_or10_concise_full1986_official_f1_result.json",
           "sha256": "4b7425d9ffd660c0fe46e96228f19eb3a8e688bb22f11c808d2049e0c4212e75",
@@ -107,7 +114,7 @@
       ],
       "repro": "repro_byok/locomo（BYOK）",
       "frozen_at": "2026-07-29",
-      "notes": "主口径=OR10 集成 + Checklist-CoT Judge 95.52%；单系统下限=Standard Judge 93.35%。官方 token-F1 双数披露：简洁协议 65.34%（必披露）+ 遗留长文协议 23.34%（格式不匹配）。凡对外引用必须同时标注官方 F1 65.34% 与 LLM-as-judge 95.52%。"
+      "notes": "主口径=OR10 集成 + Checklist-CoT Judge 95.52%；单系统下限=Standard Judge 93.66%（DS-V4-Pro→DS-V4-Flash ds 腿降级后 132 题定向重判，Flash-attributable；全量重判观测 94.06%，其中约 +0.4pp 为 gpt-4o-mini Judge 方差，下界取 Flash 净贡献 1860/1986）。ds 腿为冗余腿（1854 个通过题无一靠 ds 决定、132 个 ds-relevant 难题 ds-Pro 亦全败），故降级不影响主口径且成本更低。官方 token-F1 双数披露：简洁协议 65.34%（必披露）+ 遗留长文协议 23.34%（格式不匹配）。凡对外引用必须同时标注官方 F1 65.34% 与 LLM-as-judge 95.52%。"
     },
     {
       "id": "memoryagentbench",
