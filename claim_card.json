@@ -98,6 +98,13 @@
           "note": "DS-V4-Pro→DS-V4-Flash ds 腿降级后，对 132 个 ds-relevant 难题（qwen+glm+rescue 全败）定向重判；14/132 通过（6 靠 ds 决定），全量 OR10=1868/1986=94.06%（观测），Flash-attributable 1860/1986=93.66%。hypotheses_sha256=ec6a4f5da5ae526d73460bb231d06119be3168fedae027df2a1abaac91407bf9"
         },
         {
+          "role": "cot_flash_rejudge",
+          "path": "repro_byok/locomo/inputs/loco_qa_or10_dsrel161_checklist_frozen_result.json",
+          "sha256": "bf2d0bce92294e38b08a18d2f463876a40bf04ecfa4a4e5a3b63f7bebfdafab7",
+          "n": 132,
+          "note": "CoT 主口径 Flash 定向重判：DS-V4-Pro→DS-V4-Flash ds 腿降级后，对 132 个 ds-relevant 难题用 Checklist-CoT Judge 重判；54/132 通过（5 靠 ds 决定），全量 OR10 CoT=1899/1986=95.62%（观测），与 Pro 基线 95.52% 统计学持平（含 gpt-4o-mini Judge 方差 ±1pp）。主口径 headline 维持 95.52%。hypotheses_sha256=ec6a4f5da5ae526d73460bb231d06119be3168fedae027df2a1abaac91407bf9"
+        },
+        {
           "role": "official_f1_result_concise",
           "path": "repro_byok/locomo/inputs/locomo_qa_or10_concise_full1986_official_f1_result.json",
           "sha256": "4b7425d9ffd660c0fe46e96228f19eb3a8e688bb22f11c808d2049e0c4212e75",
@@ -114,7 +121,7 @@
       ],
       "repro": "repro_byok/locomo（BYOK）",
       "frozen_at": "2026-07-29",
-      "notes": "主口径=OR10 集成 + Checklist-CoT Judge 95.52%；单系统下限=Standard Judge 93.66%（DS-V4-Pro→DS-V4-Flash ds 腿降级后 132 题定向重判，Flash-attributable；全量重判观测 94.06%，其中约 +0.4pp 为 gpt-4o-mini Judge 方差，下界取 Flash 净贡献 1860/1986）。ds 腿为冗余腿（1854 个通过题无一靠 ds 决定、132 个 ds-relevant 难题 ds-Pro 亦全败），故降级不影响主口径且成本更低。官方 token-F1 双数披露：简洁协议 65.34%（必披露）+ 遗留长文协议 23.34%（格式不匹配）。凡对外引用必须同时标注官方 F1 65.34% 与 LLM-as-judge 95.52%。"
+      "notes": "主口径=OR10 集成 + Checklist-CoT Judge 95.52%；单系统下限=Standard Judge 93.66%（DS-V4-Pro→DS-V4-Flash ds 腿降级后 132 题定向重判，Flash-attributable；全量重判观测 94.06%，其中约 +0.4pp 为 gpt-4o-mini Judge 方差，下界取 Flash 净贡献 1860/1986）。ds 腿为冗余腿（1854 个通过题无一靠 ds 决定、132 个 ds-relevant 难题 ds-Pro 亦全败），故降级不影响主口径且成本更低。CoT 主口径 Flash 重判观测 95.62%（1899/1986），与 95.52% 统计学持平（含 gpt-4o-mini Judge 方差 ±1pp）。官方 token-F1 双数披露：简洁协议 65.34%（必披露）+ 遗留长文协议 23.34%（格式不匹配）。凡对外引用必须同时标注官方 F1 65.34% 与 LLM-as-judge 95.52%。"
     },
     {
       "id": "memoryagentbench",
