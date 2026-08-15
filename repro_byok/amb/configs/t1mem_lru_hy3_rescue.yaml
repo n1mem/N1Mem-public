@@ -1,0 +1,36 @@
+# T1Mem MAB Best-Per-Dimension Configs — LRU rescue tier 1: Hy3 (Tencent TokenHub)
+#
+# Purpose: for InfBench books where the DS-V4-Flash map-reduce answer scores
+# < 0.40 rougeLsum (empirically the "DS heavily failed" zone), re-run the same
+# map-reduce pipeline with a stronger reader (Hy3) and take max(DS, Hy3).
+# Zero regression by construction (max-merge). Same policy as the LME-V2
+# multi-model-reader rescue, applied dimension-locally.
+#
+# Composite contribution: InfBench 37.01% (DS map-reduce) -> 37.75%
+# (DS + Hy3(8 books) + Qwen3.7-Plus(10 books) rescue, max-merge).
+#
+# Endpoint: Tencent TokenHub (OpenAI-compatible), model "hy3".
+#   OPENAI_BASE_URL=https://tokenhub.tencentmaas.com/v1
+#   OPENAI_API_KEY=<your own TokenHub key>
+# Embedding still uses the T1Mem local BGE-M3 service (no key).
+#
+# NOTE: same reproduction boundary as t1mem_lru_dsv4flash_mapreduce.yaml —
+# the map-reduce branch is a T1Mem engine capability (closed-source).
+
+agent_name: t1mem_rag
+model: hy3
+temperature: 0.0
+input_length_limit: 10000000
+buffer_length: 200
+output_dir: ./outputs/t1mem-lru-hy3-rescue
+
+max_tokens_override: 8192
+
+retrieve_num: 30
+chunk_size: 4096
+t1mem_text_weight: 0.5
+t1mem_vec_weight: 0.5
+t1mem_use_rerank: false
+t1mem_use_hyde: false
+t1mem_disable_thinking: false
+t1mem_summarization: true

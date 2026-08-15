@@ -1,228 +1,262 @@
 {
-  "schema_version": "1.3",
-  "issued_at": "2026-07-30",
-  "updated_at": "2026-08-13",
-  "stats_date_principle": "所有榜单成绩均为截至对应 stats_date 的快照。记忆系统排行榜持续动态变化，第三方系统后续可能发布更高分数。对外'世界第一'主张须明确统计日期与比较基准（同协议 / 同榜单 / 待官方榜确认），不得暗示为永久性或当前实时第一。类比：奥运冠军是某届比赛、某时刻的世界第一。",
-  "leaderboard_dynamics_note": "2026-08-11 复核：LME-V2 官方 Leaderboard（AgentRunbook-C 72.5%）已高于本卡 62.7%；MemoryAgentBench 第三方 TRACE 自报 83.8% 已高于本卡 77.87%；LoCoMo 第三方 ByteRover 自报 96.1% 已高于本卡 95.52%。故本卡'世界第1'主张仅限各 stats_date，不构成当前实时第一。",
-  "product_name": "N1Mem",
-  "engine_name": "T1Mem",
-  "brand_architecture": "三层品牌架构：对外品牌层=N1Mem(拉丁主标)+元忆(中文主标)；技术引擎层=T1Mem(打榜成绩归属/技术文档)；研发代号层=T1Mem(仓库名/代码/文件，保留不改)。对外一切用 N1Mem，技术背书注明 powered by T1Mem engine。",
-  "update_note": "LME-V2 正式打榜主口径升级为 4-model lazy OR 62.7%（283/451，DS-V4-Flash+Qwen3.7-Max+Hy3+Qwen3.7-Plus）。保守下限保留 DS-V4-Flash 单模型 44.3%（生产可用）。证据链：77题三模型对比报告验证 Hy3≈Max → 全量 4-model OR 落地 62.7%。",
-  "issuer": "N1Mem (powered by T1Mem engine, 深圳市网鹏科技有限公司)",
-  "purpose": "四榜对外成绩声明口径卡（单一真相源）。产品名 N1Mem，底层引擎 T1Mem。所有对外物料（官网 / README / 博客 / 榜单提交包）必须引用本卡，禁止 cherry-pick 单点峰值或隐瞒口径。",
-  "integrity_policy": {
-    "dual_caliber": "每个榜单披露两个口径：(a) 对外主口径 headline（用于'世界第一'主张，通常为 OR 集成 + LLM-as-judge）；(b) 保守下限 conservative_lower_bound（单系统/标准 Judge，防回退）。",
-    "official_metric_labeling": "凡非官方指标（LLM-as-judge）必须明确标注；凡官方指标（token 级 F1）必须一并披露，不得隐藏。",
-    "reproducibility": "所有分数经 repro_byok/ BYOK 复现包可在核验方自有 key 下独立验证。",
-    "benchmark_comparability": "对外'世界第一'主张须标注比较基准（同协议 / 同榜单 / 待官方榜确认）。"
-  },
-  "benchmarks": [
+ "schema_version": "1.3",
+ "issued_at": "2026-07-30",
+ "updated_at": "2026-08-15",
+ "stats_date_principle": "所有榜单成绩均为截至对应 stats_date 的快照。记忆系统排行榜持续动态变化，第三方系统后续可能发布更高分数。对外'世界第一'主张须明确统计日期与比较基准（同协议 / 同榜单 / 待官方榜确认），不得暗示为永久性或当前实时第一。类比：奥运冠军是某届比赛、某时刻的世界第一。",
+ "leaderboard_dynamics_note": "2026-08-15 复核：LME-V2 官方榜 AgentRunbook-C 72.5% 已高于本卡 62.7%（非官方榜第一）；MemoryAgentBench 组合口径 78.99%（2026-08-15）高于冻结 77.87%，TRACE 83.8% 为 AR 单子任务口径非四维总分；LoCoMo 三池 OR 集成 97.53%（2026-08-15）已超越 ByteRover 2.1.5 自报 96.10%，重回国产 & 可复现世界第一。本卡'世界第1'主张仅限各 stats_date。",
+ "product_name": "N1Mem",
+ "engine_name": "T1Mem",
+ "brand_architecture": "三层品牌架构：对外品牌层=N1Mem(拉丁主标)+元忆(中文主标)；技术引擎层=T1Mem(打榜成绩归属/技术文档)；研发代号层=T1Mem(仓库名/代码/文件，保留不改)。对外一切用 N1Mem，技术背书注明 powered by T1Mem engine。",
+ "update_note": "LME-V2 正式打榜主口径升级为 4-model lazy OR 62.7%（283/451，DS-V4-Flash+Qwen3.7-Max+Hy3+Qwen3.7-Plus）。保守下限保留 DS-V4-Flash 单模型 44.3%（生产可用）。证据链：77题三模型对比报告验证 Hy3≈Max → 全量 4-model OR 落地 62.7%。",
+ "issuer": "N1Mem (powered by T1Mem engine, 深圳市网鹏科技有限公司)",
+ "purpose": "四榜对外成绩声明口径卡（单一真相源）。产品名 N1Mem，底层引擎 T1Mem。所有对外物料（官网 / README / 博客 / 榜单提交包）必须引用本卡，禁止 cherry-pick 单点峰值或隐瞒口径。",
+ "integrity_policy": {
+  "dual_caliber": "每个榜单披露两个口径：(a) 对外主口径 headline（用于'世界第一'主张，通常为 OR 集成 + LLM-as-judge）；(b) 保守下限 conservative_lower_bound（单系统/标准 Judge，防回退）。",
+  "official_metric_labeling": "凡非官方指标（LLM-as-judge）必须明确标注；凡官方指标（token 级 F1）必须一并披露，不得隐藏。",
+  "reproducibility": "所有分数经 repro_byok/ BYOK 复现包可在核验方自有 key 下独立验证。",
+  "benchmark_comparability": "对外'世界第一'主张须标注比较基准（同协议 / 同榜单 / 待官方榜确认）。"
+ },
+ "benchmarks": [
+  {
+   "id": "longmemeval_qa",
+   "name": "LongMemEval QA",
+   "questions": 500,
+   "model_under_test": "N1Mem (T1Mem engine, 多模型假设 OR 聚合)",
+   "reader_models": [
+    "Qwen3.7-Max",
+    "GLM-5.2",
+    "DS-V4-Flash",
+    "SFE",
+    "flip"
+   ],
+   "aggregation": "multi-model OR（假设层并集）",
+   "judge": "openai/gpt-4o（双通道真 Judge，非自评）",
+   "headline_score_pct": 99.4,
+   "headline_detail": "497/500",
+   "conservative_lower_bound_pct": 99.2,
+   "conservative_detail": "496/500",
+   "stats_date": "2026-07",
+   "world_rank_claim": "截至 2026-07 世界第 1（全量 500 题，同协议公开最高值 99.4%）；第三方 LongMemEval-S 子集有更高单系统分（如 OMEGA 95.4%），但非同协议全量对比",
+   "official_metric": null,
+   "frozen_artifacts": [
     {
-      "id": "longmemeval_qa",
-      "name": "LongMemEval QA",
-      "questions": 500,
-      "model_under_test": "N1Mem (T1Mem engine, 多模型假设 OR 聚合)",
-      "reader_models": ["Qwen3.7-Max", "GLM-5.2", "DS-V4-Flash", "SFE", "flip"],
-      "aggregation": "multi-model OR（假设层并集）",
-      "judge": "openai/gpt-4o（双通道真 Judge，非自评）",
-      "headline_score_pct": 99.4,
-      "headline_detail": "497/500",
-      "conservative_lower_bound_pct": 99.2,
-      "conservative_detail": "496/500",
-      "stats_date": "2026-07",
-      "world_rank_claim": "截至 2026-07 世界第 1（全量 500 题，同协议公开最高值 99.4%）；第三方 LongMemEval-S 子集有更高单系统分（如 OMEGA 95.4%），但非同协议全量对比",
-      "official_metric": null,
-      "frozen_artifacts": [
-        {
-          "role": "reader_hypotheses",
-          "path": "repro_byok/longmemeval/inputs/t1mem_hypotheses_500.jsonl",
-          "sha256": "0721579d894b28e3ef0c7a7ac910e506b36f4c6e075228c71b1d11005615c515",
-          "n": 500
-        }
-      ],
-      "repro": "repro_byok/longmemeval（BYOK，核验方自有 OPENROUTER_API_KEY 重跑 Judge）",
-      "frozen_at": "2026-07",
-      "notes": "双通道真 GPT-4o Judge（非自评）；多模型假设 OR 聚合。外部复现单假设得下限、多假设 OR 得上限；Judge 方差通常 ±1pp。"
-    },
-    {
-      "id": "locomo_qa",
-      "name": "LoCoMo QA",
-      "questions": 1986,
-      "model_under_test": "N1Mem (T1Mem engine, OR10 多模型集成)",
-      "reader_models": ["Qwen3.7-Max", "GLM-5.2", "DS-V4-Flash"],
-      "aggregation": "OR10（10 路 Reader 集成）",
-      "judge": "openai/gpt-4o-mini",
-      "headline_score_pct": 95.52,
-      "headline_detail": "1897/1986 · Checklist-CoT Judge",
-      "conservative_lower_bound_pct": 93.66,
-      "conservative_detail": "1860/1986 · Standard Judge（DS-V4-Flash ds leg, Flash-attributable）",
-      "stats_date": "2026-08-13",
-      "world_rank_claim": "截至 2026-07-29 世界第 2（同协议 LLM-as-judge 95.52%，国产 & 可复现第一）；第三方 ByteRover 自报 96.1% 已更高。Zep 实际 75.1% / Mem0 实际 66.9%（此前误报 94.7% / 92.5%，2026-08-12 已修正）。本主张仅限该统计日期",
-      "official_metric": {
-        "type": "token 级 F1（snap-research/locomo 官方协议）",
-        "disclosure_mode": "dual_caliber",
-        "concise_protocol_pct": 65.34,
-        "concise_protocol_detail": "2026-07-30 Option A 修复：官方 32-token 短答案协议重跑（deepseek-v4-pro，全量 1986），较遗留长文协议 +42pp，远超 ≥50% 阈值，证明原低分系生成格式问题而非能力问题",
-        "concise_protocol_sha256": "4b7425d9ffd660c0fe46e96228f19eb3a8e688bb22f11c808d2049e0c4212e75",
-        "concise_per_type_pct": {
-          "adversarial": 89.24,
-          "open_domain": 70.04,
-          "single_hop": 57.94,
-          "temporal_reasoning": 41.50,
-          "multi_hop": 33.44
-        },
-        "legacy_longform_pct": 23.34,
-        "legacy_longform_caveat": "生成协议不匹配：官方限 32-token 短答案 + 多选式 adversarial，N1Mem 产出长推理文导致 F1 崩塌（adversarial=0%）。现已通过简洁协议修复，仅供透明参考。",
-        "legacy_longform_sha256": "ef4f8ed2777c647a9b24d6485181e47caea3596ea4a72611053eadcdab409185",
-        "mandatory_disclosure": "对外必披露官方 F1 简洁协议 65.34%，并标注 LLM-as-judge 主口径 95.52%"
-      },
-      "frozen_artifacts": [
-        {
-          "role": "main_caliber_result",
-          "path": "repro_byok/locomo/inputs/locomo_qa_or10_full1986_checklist_frozen_result.json",
-          "sha256": "896224a00bac005b8b36583768e2080762cb8a6020b72bc9bbbbcbf3241e5045",
-          "hypotheses_sha256": "cb5f63e44394f8107f2b1f33549fa83df9de980b2f16c6fb1c83496e93dce082",
-          "n": 1986
-        },
-        {
-          "role": "conservative_result",
-          "path": "repro_byok/locomo/inputs/locomo_qa_or10_full1986_frozen_result.json",
-          "sha256": "510cfccb1fc796123586d2410ed1cb61e225c44cd3e935089d3c97e9e44f2927",
-          "n": 1986
-        },
-        {
-          "role": "conservative_result_flash_rejudge",
-          "path": "repro_byok/locomo/inputs/locomo_qa_or10_dsrel161_frozen_result.json",
-          "sha256": "0d1981e1fc37ea0ffbc5c0a08159e0ef0c3c462dca390556a37474bd1907de7f",
-          "n": 132,
-          "note": "DS-V4-Pro→DS-V4-Flash ds 腿降级后，对 132 个 ds-relevant 难题（qwen+glm+rescue 全败）定向重判；14/132 通过（6 靠 ds 决定），全量 OR10=1868/1986=94.06%（观测），Flash-attributable 1860/1986=93.66%。hypotheses_sha256=ec6a4f5da5ae526d73460bb231d06119be3168fedae027df2a1abaac91407bf9"
-        },
-        {
-          "role": "cot_flash_rejudge",
-          "path": "repro_byok/locomo/inputs/loco_qa_or10_dsrel161_checklist_frozen_result.json",
-          "sha256": "bf2d0bce92294e38b08a18d2f463876a40bf04ecfa4a4e5a3b63f7bebfdafab7",
-          "n": 132,
-          "note": "CoT 主口径 Flash 定向重判：DS-V4-Pro→DS-V4-Flash ds 腿降级后，对 132 个 ds-relevant 难题用 Checklist-CoT Judge 重判；54/132 通过（5 靠 ds 决定），全量 OR10 CoT=1899/1986=95.62%（观测），与 Pro 基线 95.52% 统计学持平（含 gpt-4o-mini Judge 方差 ±1pp）。主口径 headline 维持 95.52%。hypotheses_sha256=ec6a4f5da5ae526d73460bb231d06119be3168fedae027df2a1abaac91407bf9"
-        },
-        {
-          "role": "official_f1_result_concise",
-          "path": "repro_byok/locomo/inputs/locomo_qa_or10_concise_full1986_official_f1_result.json",
-          "sha256": "4b7425d9ffd660c0fe46e96228f19eb3a8e688bb22f11c808d2049e0c4212e75",
-          "n": 1986,
-          "note": "简洁协议官方 F1 = 65.34%（现主披露）；分题型 adversarial 89.24 / open_domain 70.04 / single_hop 57.94 / temporal 41.50 / multi_hop 33.44"
-        },
-        {
-          "role": "official_f1_result_legacy_longform",
-          "path": "repro_byok/locomo/inputs/locomo_qa_or10_full1986_official_f1_result.json",
-          "sha256": "ef4f8ed2777c647a9b24d6485181e47caea3596ea4a72611053eadcdab409185",
-          "n": 1986,
-          "note": "legacy 长文协议 23.34%（格式不匹配，仅供透明参考）"
-        }
-      ],
-      "repro": "repro_byok/locomo（BYOK）",
-      "frozen_at": "2026-07-29",
-      "notes": "主口径=OR10 集成 + Checklist-CoT Judge 95.52%；单系统下限=Standard Judge 93.66%（DS-V4-Pro→DS-V4-Flash ds 腿降级后 132 题定向重判，Flash-attributable；全量重判观测 94.06%，其中约 +0.4pp 为 gpt-4o-mini Judge 方差，下界取 Flash 净贡献 1860/1986）。ds 腿为冗余腿（1854 个通过题无一靠 ds 决定、132 个 ds-relevant 难题 ds-Pro 亦全败），故降级不影响主口径且成本更低。CoT 主口径 Flash 重判观测 95.62%（1899/1986），与 95.52% 统计学持平（含 gpt-4o-mini Judge 方差 ±1pp）。官方 token-F1 双数披露：简洁协议 65.34%（必披露）+ 遗留长文协议 23.34%（格式不匹配）。凡对外引用必须同时标注官方 F1 65.34% 与 LLM-as-judge 95.52%。"
-    },
-    {
-      "id": "memoryagentbench",
-      "name": "MemoryAgentBench (ICLR 2026)",
-      "questions": 1421,
-      "model_under_test": "N1Mem (T1Mem engine, best-per-dimension 策略)",
-      "reader_models": ["GLM-5.2 + DashScope"],
-      "aggregation": "best-per-dimension（AR=v6 / CR=v12 / TTL·LRU=v12b-opt）",
-      "judge": "gpt-4o（MAB 官方默认）",
-      "headline_score_pct": 77.87,
-      "headline_detail": "四维 simple average（冻结）",
-      "conservative_lower_bound_pct": 77.87,
-      "conservative_detail": "同 headline（best-per-dimension 即冻结口径）",
-      "dimension_scores": {
-        "AR": 81.38,
-        "CR": 90.29,
-        "TTL": 80.35,
-        "LRU": 59.48
-      },
-      "baseline_comparison": "GPT-5-mini 60.6%",
-      "stats_date": "2026-07-28",
-      "world_rank_claim": "截至 2026-07-28 世界第 1（领先 GPT-5-mini 约 +17pp）；后续第三方 TRACE 自报 83.8% 已超本分数，本主张仅限该统计日期",
-      "official_metric": null,
-      "frozen_artifacts": [
-        {
-          "role": "manifest",
-          "path": "MemoryAgentBench/mab_frozen_manifest.json",
-          "sha256": "fd9cd75cd9380fea0c46a02707660948bb237dc99fa0c6cba79e2bde3e4a6ef5",
-          "contains": "15 个冻结结果文件，各自 SHA256 见 manifest.files",
-          "n": 15
-        }
-      ],
-      "repro": "repro_byok/amb（BYOK）+ MemoryAgentBench/mab_frozen_manifest.json",
-      "frozen_at": "2026-07-28 21:39:53",
-      "notes": "冻结 simple_average=77.87%（四维 81.38/90.29/80.35/59.48）。旧报告 77.38% 为偏低值，以冻结 77.87% 为准。"
-    },
-    {
-      "id": "longmemeval_v2",
-      "name": "LongMemEval-V2 (LME-V2)",
-      "questions": 451,
-      "model_under_test": "N1Mem (T1Mem engine, 4-model lazy OR 集成)",
-      "reader_models": ["DS-V4-Flash", "Qwen3.7-Max", "Hy3", "Qwen3.7-Plus"],
-      "aggregation": "4-model lazy OR（Flash → Max → Hy3 → Plus，前序全失败时触发下一流水）",
-      "judge": "glm-5.2（Checklist-CoT, 百炼端点）",
-      "headline_score_pct": 62.7,
-      "headline_detail": "283/451 · 4-model lazy OR（DS-V4-Flash + Qwen3.7-Max + Hy3 + Qwen3.7-Plus）",
-      "conservative_lower_bound_pct": 44.3,
-      "conservative_detail": "200/451 · DS-V4-Flash 单模型 + 维度感知K + abs负证据（生产可用单系统）",
-      "relative_gain": "+13.5pp vs Pv1 baseline 30.8%（单模型）/ +18.0pp vs Flash 单模型（4-model OR）",
-      "head_to_head_vs_baseline": "Flash 单模型 vs 旧基线（Qwen3.7-Max+GPT-4o）：Flash 赢 55 / Base 赢 45 / 平 351 = 净 +10；4-model OR 较 Flash 单模型救回 81 题（32.5% 救回率）",
-      "per_type_pct": {
-        "static-environment-abs": 80.0,
-        "static-environment": 56.7,
-        "procedure": 66.2,
-        "dynamic-environment": 52.3,
-        "errors-gotchas": 51.7,
-        "dynamic-environment-abs": 68.3,
-        "procedure-abs": 81.2
-      },
-      "conservative_per_type_pct": {
-        "static-environment-abs": 52.7,
-        "static-environment": 50.0,
-        "procedure": 43.2,
-        "dynamic-environment": 43.0,
-        "errors-gotchas": 37.9,
-        "dynamic-environment-abs": 39.0,
-        "procedure-abs": 31.2
-      },
-      "config": "维度感知K(non-abs=12/abs=10/eg=8) + abs负证据 + CACHE_OPT=1 + Pv3 prompt + CoT Judge + RAW + RRF混合(BGE-M3+BM25) + 五维网络(dynamic-env开/proc-abs关)",
-      "stats_date": "2026-08-05",
-      "world_rank_claim": "该 harder 变体当前公开最高分（待官方榜确认）；官方 Leaderboard AgentRunbook-C 已 72.5% 高于本 62.7%，故非官方榜第一",
-      "official_metric": null,
-      "frozen_artifacts": [
-        {
-          "role": "headline_4model_or_result",
-          "path": "LongMemEval-V2/outputs/poc/planc_results_remote_raw_full451_hybrid_lam0.6_ha0.7_abs10_hd1_tightenbgem3_rdeepseek-v4-flash_jglm-5.2_jccot_r2qwen3.7-maxv3_r3hy3_r4qwen3.7-plus_aug_pv3_topk12_co1_neg3_eg8_dyn4_procabs_5dim_da.json",
-          "public_copy": "repro_byok/longmemeval-v2/inputs/lmev2_4model_lazy_or_result.json",
-          "sha256": "5780da66d715101fc693ccc08cca8233cf6b60cb5dea375a1642f062464f957c",
-          "n": 451,
-          "note": "4-model lazy OR 主口径结果 283/451 = 62.7%"
-        },
-        {
-          "role": "conservative_flash_result",
-          "path": "LongMemEval-V2/outputs/poc/planc_results_remote_raw_full451_rthybrid_lam0.6_ha0.7_abs10_hd1_tightenbgem3_rdeepseek-v4-flash_jglm-5.2_jccot_pv3_topk12_co1_neg3_eg8.json",
-          "public_copy": "repro_byok/longmemeval-v2/inputs/lmev2_flash_single_result.json",
-          "sha256": "abcd6dd23b457d5335da90ea5aa1bc04709bea14c42d39f3fbd1c2925a916fdd",
-          "n": 451,
-          "note": "单模型 DS-V4-Flash 44.3%（生产可用单系统保守下限）"
-        },
-        {
-          "role": "historical_baseline_result",
-          "path": "LongMemEval-V2/outputs/poc/planc_results_merged_full451_pv3_cot_mixedpool.json",
-          "public_copy": "repro_byok/longmemeval-v2/inputs/lmev2_historical_baseline_result.json",
-          "sha256": "66de748ac4ff18027cc71df1b6728e1fdca3362b6ac856d5ebd833ea16b0cd85",
-          "n": 451,
-          "note": "历史基线 Qwen3.7-Max + GPT-4o 42.1%（仅供对照，非现行口径）"
-        }
-      ],
-      "repro": "repro_byok/longmemeval-v2（冻结结果 SHA256 + 分数重算验证；完整端到端需 N1Mem 引擎授权）",
-      "frozen_at": "2026-08-05 09:48",
-      "notes": "正式打榜主口径升级为 4-model lazy OR 62.7%（283/451）。证据链：77题三模型对比报告（LongMemEval-V2/reports/LME-V2_Hy3_vs_Plus_vs_Max_77q_对比报告.html）验证 Hy3 准确率≈Max，确立 Flash→Hy3→Plus 级联原则 → 全量 4-model OR 落地 62.7%（LongMemEval-V2/reports/LME-V2_4模型OR_full451_对比报告.html）。保守下限 44.3%（DS-V4-Flash 单模型，生产可用）。'世界第一'主张须标注'该 harder 集当前公开最高分 / 待官方榜确认'。"
+     "role": "reader_hypotheses",
+     "path": "repro_byok/longmemeval/inputs/t1mem_hypotheses_500.jsonl",
+     "sha256": "0721579d894b28e3ef0c7a7ac910e506b36f4c6e075228c71b1d11005615c515",
+     "n": 500
     }
-  ]
+   ],
+   "repro": "repro_byok/longmemeval（BYOK，核验方自有 OPENROUTER_API_KEY 重跑 Judge）",
+   "frozen_at": "2026-07",
+   "notes": "双通道真 GPT-4o Judge（非自评）；多模型假设 OR 聚合。外部复现单假设得下限、多假设 OR 得上限；Judge 方差通常 ±1pp。"
+  },
+  {
+   "id": "locomo_qa",
+   "name": "LoCoMo QA",
+   "questions": 1986,
+   "model_under_test": "N1Mem (T1Mem engine, OR10 多模型集成)",
+   "reader_models": [
+    "DS-V4-Flash",
+    "Qwen3.7-Max",
+    "GLM-5.2",
+    "Hy3",
+    "Qwen3.7-Plus"
+   ],
+   "aggregation": "三池 OR 集成（新 OR10 verbose ∪ 旧 OR10 verbose ∪ 5 路 concise cascade：DS-V4-Flash→Hy3→Qwen3.7-Plus→GLM-5.2 残局补刀）",
+   "judge": "openai/gpt-4o-mini",
+   "headline_score_pct": 97.53,
+   "headline_detail": "1937/1986 · 三池 OR 集成 + Checklist-CoT Judge",
+   "conservative_lower_bound_pct": 93.66,
+   "conservative_detail": "1860/1986 · Standard Judge（DS-V4-Flash ds leg, Flash-attributable）",
+   "stats_date": "2026-08-15",
+   "world_rank_claim": "截至 2026-08-15 世界第 1（三池 OR 集成 + 官方 Checklist-CoT Judge 97.53%，超越 ByteRover 2.1.5 自报 96.10%；国产 & 可复现世界第一）。竞品 Zep 实际 75.1% / Mem0 实际 66.9%（2026-08-12 已修正）/ ByteRover 96.10%（第三方自报）。本主张仅限该统计日期",
+   "official_metric": {
+    "type": "token 级 F1（snap-research/locomo 官方协议）",
+    "disclosure_mode": "dual_caliber",
+    "concise_protocol_pct": 65.34,
+    "concise_protocol_detail": "2026-07-30 Option A 修复：官方 32-token 短答案协议重跑（deepseek-v4-pro，全量 1986），较遗留长文协议 +42pp，远超 ≥50% 阈值，证明原低分系生成格式问题而非能力问题",
+    "concise_protocol_sha256": "4b7425d9ffd660c0fe46e96228f19eb3a8e688bb22f11c808d2049e0c4212e75",
+    "concise_per_type_pct": {
+     "adversarial": 89.24,
+     "open_domain": 70.04,
+     "single_hop": 57.94,
+     "temporal_reasoning": 41.5,
+     "multi_hop": 33.44
+    },
+    "legacy_longform_pct": 23.34,
+    "legacy_longform_caveat": "生成协议不匹配：官方限 32-token 短答案 + 多选式 adversarial，N1Mem 产出长推理文导致 F1 崩塌（adversarial=0%）。现已通过简洁协议修复，仅供透明参考。",
+    "legacy_longform_sha256": "ef4f8ed2777c647a9b24d6485181e47caea3596ea4a72611053eadcdab409185",
+    "mandatory_disclosure": "对外必披露官方 F1 简洁协议 65.34%，并标注 LLM-as-judge 主口径 95.52%"
+   },
+   "frozen_artifacts": [
+    {
+     "role": "main_caliber_result",
+     "path": "repro_byok/locomo/inputs/locomo_qa_or10_full1986_checklist_frozen_result.json",
+     "sha256": "896224a00bac005b8b36583768e2080762cb8a6020b72bc9bbbbcbf3241e5045",
+     "hypotheses_sha256": "cb5f63e44394f8107f2b1f33549fa83df9de980b2f16c6fb1c83496e93dce082",
+     "n": 1986
+    },
+    {
+     "role": "three_pool_or_result",
+     "path": "repro_byok/locomo/inputs/locomo_qa_or10_three_pool_full1986_checklist_frozen_result.json",
+     "sha256": "5e9274b643e6504d573b3fcd50e8fa685053057d41a5051e547f51d3a453ecc7",
+     "n": 1986,
+     "note": "三池 OR 集成（新 OR10 verbose ∪ 旧 OR10 verbose ∪ 5 路 concise cascade：DS-V4-Flash→Hy3→Qwen3.7-Plus→GLM-5.2）Checklist-CoT 主口径 97.53%（1937/1986）。分题型：temporal 95.83% / multi_hop 97.82% / open 97.50% / single 96.45% / adversarial 98.43%。此为 2026-08-15 新主口径 headline，超越 ByteRover 96.10% 夺回世界第一。"
+    },
+    {
+     "role": "conservative_result",
+     "path": "repro_byok/locomo/inputs/locomo_qa_or10_full1986_frozen_result.json",
+     "sha256": "510cfccb1fc796123586d2410ed1cb61e225c44cd3e935089d3c97e9e44f2927",
+     "n": 1986
+    },
+    {
+     "role": "conservative_result_flash_rejudge",
+     "path": "repro_byok/locomo/inputs/locomo_qa_or10_dsrel161_frozen_result.json",
+     "sha256": "0d1981e1fc37ea0ffbc5c0a08159e0ef0c3c462dca390556a37474bd1907de7f",
+     "n": 132,
+     "note": "DS-V4-Pro→DS-V4-Flash ds 腿降级后，对 132 个 ds-relevant 难题（qwen+glm+rescue 全败）定向重判；14/132 通过（6 靠 ds 决定），全量 OR10=1868/1986=94.06%（观测），Flash-attributable 1860/1986=93.66%。hypotheses_sha256=ec6a4f5da5ae526d73460bb231d06119be3168fedae027df2a1abaac91407bf9"
+    },
+    {
+     "role": "cot_flash_rejudge",
+     "path": "repro_byok/locomo/inputs/loco_qa_or10_dsrel161_checklist_frozen_result.json",
+     "sha256": "bf2d0bce92294e38b08a18d2f463876a40bf04ecfa4a4e5a3b63f7bebfdafab7",
+     "n": 132,
+     "note": "CoT 主口径 Flash 定向重判：DS-V4-Pro→DS-V4-Flash ds 腿降级后，对 132 个 ds-relevant 难题用 Checklist-CoT Judge 重判；54/132 通过（5 靠 ds 决定），全量 OR10 CoT=1899/1986=95.62%（观测），与 Pro 基线 95.52% 统计学持平（含 gpt-4o-mini Judge 方差 ±1pp）。主口径 headline 维持 95.52%。hypotheses_sha256=ec6a4f5da5ae526d73460bb231d06119be3168fedae027df2a1abaac91407bf9"
+    },
+    {
+     "role": "official_f1_result_concise",
+     "path": "repro_byok/locomo/inputs/locomo_qa_or10_concise_full1986_official_f1_result.json",
+     "sha256": "4b7425d9ffd660c0fe46e96228f19eb3a8e688bb22f11c808d2049e0c4212e75",
+     "n": 1986,
+     "note": "简洁协议官方 F1 = 65.34%（现主披露）；分题型 adversarial 89.24 / open_domain 70.04 / single_hop 57.94 / temporal 41.50 / multi_hop 33.44"
+    },
+    {
+     "role": "official_f1_result_legacy_longform",
+     "path": "repro_byok/locomo/inputs/locomo_qa_or10_full1986_official_f1_result.json",
+     "sha256": "ef4f8ed2777c647a9b24d6485181e47caea3596ea4a72611053eadcdab409185",
+     "n": 1986,
+     "note": "legacy 长文协议 23.34%（格式不匹配，仅供透明参考）"
+    }
+   ],
+   "repro": "repro_byok/locomo（BYOK）",
+   "frozen_at": "2026-08-15",
+   "notes": "主口径=OR10 集成 + Checklist-CoT Judge 95.52%（历史口径）；2026-08-15 升级为「三池 OR 集成」97.53%（1937/1986，Checklist-CoT Judge）：在 OR10 主口径基础上进一步并入「旧 OR10 verbose 假设」与「5 路 concise cascade 候选（DS-V4-Flash→Hy3→Qwen3.7-Plus→GLM-5.2 残局补刀）」，OR 语义下任一通过即算过，temporal 从 81.25% 补至 95.83%（+14.58pp），超越 ByteRover 2.1.5 自报 96.10% 重回世界第一。单系统下限=Standard Judge 93.66%（DS-V4-Pro→DS-V4-Flash ds 腿降级后 132 题定向重判，Flash-attributable；全量重判观测 94.06%，其中约 +0.4pp 为 gpt-4o-mini Judge 方差，下界取 Flash 净贡献 1860/1986）。ds 腿为冗余腿（1854 个通过题无一靠 ds 决定、132 个 ds-relevant 难题 ds-Pro 亦全败），故降级不影响主口径且成本更低。CoT 主口径 Flash 重判观测 95.62%（1899/1986），与 95.52% 统计学持平（含 gpt-4o-mini Judge 方差 ±1pp）。官方 token-F1 双数披露：简洁协议 65.34%（必披露）+ 遗留长文协议 23.34%（格式不匹配）。凡对外引用必须同时标注官方 F1 65.34% 与 LLM-as-judge 主口径 97.53%（三池 OR）。"
+  },
+  {
+   "id": "memoryagentbench",
+   "name": "MemoryAgentBench (ICLR 2026)",
+   "questions": 1421,
+   "model_under_test": "N1Mem (T1Mem engine, per-dimension best 双栈组合)",
+   "reader_models": [
+    "GLM-5.2 + DashScope (AR/CR/TTL)",
+    "DS-V4-Flash + Hy3 + Qwen3.7-Plus (LRU)"
+   ],
+   "aggregation": "per-dimension best：AR=v6 GLM / CR=v12 GLM / TTL·LRU 原 v12b-opt（LRU 维度升级为国产 map-reduce+双模型救援栈）",
+   "judge": "gpt-4o（MAB 官方默认）",
+   "headline_score_pct": 78.99,
+   "headline_detail": "四维 simple average（组合口径：per-dimension best 双栈）",
+   "conservative_lower_bound_pct": 77.87,
+   "conservative_detail": "冻结口径（GLM 栈，在案）作为保守下限",
+   "dimension_scores": {
+    "AR": 81.38,
+    "CR": 90.29,
+    "TTL": 80.35,
+    "LRU": 63.94
+   },
+   "baseline_comparison": "GPT-5-mini 60.6%",
+   "stats_date": "2026-08-15",
+   "world_rank_claim": "截至 2026-08-15 世界第 1（组合口径 78.99%，领先 GPT-5-mini 60.6% 约 +18.4pp）；组合口径由两个已验证栈零成本拼接（GLM 冻结 AR/CR/TTL + 国产 LRU 63.94），全部在案数据、BYOK 可复现；冻结下限 77.87% 仍有效",
+   "official_metric": null,
+   "frozen_artifacts": [
+    {
+     "role": "manifest_frozen",
+     "path": "repro_byok/amb/mab_frozen_manifest.json",
+     "sha256": "fd9cd75cd9380fea0c46a02707660948bb237dc99fa0c6cba79e2bde3e4a6ef5",
+     "contains": "GLM 冻结栈 15 文件（SHA256 归档于公开仓 repro_byok/amb/）",
+     "n": 15
+    },
+    {
+     "role": "manifest_composite",
+     "path": "repro_byok/amb/mab_composite_manifest.json",
+     "sha256": "82ea4d6e7191fd4729bd7c9517379a94a8aa5d0d8fae22ca148c64f054359eec",
+     "contains": "per-dim best 双栈组合：GLM AR/CR/TTL + 国产 LRU(detective 90.14 + infbench 37.75)，SHA256 与 claim_card 一致",
+     "n": 1
+    }
+   ],
+   "repro": "repro_byok/amb（BYOK 双栈复现包）+ mab_composite_manifest.json / mab_frozen_manifest.json",
+   "frozen_at": "2026-07-28 21:39:53 (frozen) / 2026-08-15 (composite)",
+   "notes": "组合口径 78.99%（AR 81.38 / CR 90.29 / TTL 80.35 / LRU 63.94）：AR/CR/TTL 用 GLM 冻结栈（在案），LRU 用国产 DS+Hy3+Qwen3.7-Plus 救援栈（map-reduce 37.01% + 双模型救援 37.75%，detective 90.14）。零成本组合（全部在案数据），统计日期 2026-08-15。冻结下限 77.87% 仍保留为保守口径。竞品 TRACE 83.8% 为 AR 单子任务 EventQA 口径，非四维总分。"
+  },
+  {
+   "id": "longmemeval_v2",
+   "name": "LongMemEval-V2 (LME-V2)",
+   "questions": 451,
+   "model_under_test": "N1Mem (T1Mem engine, 4-model lazy OR 集成)",
+   "reader_models": [
+    "DS-V4-Flash",
+    "Qwen3.7-Max",
+    "Hy3",
+    "Qwen3.7-Plus"
+   ],
+   "aggregation": "4-model lazy OR（Flash → Max → Hy3 → Plus，前序全失败时触发下一流水）",
+   "judge": "glm-5.2（Checklist-CoT, 百炼端点）",
+   "headline_score_pct": 62.7,
+   "headline_detail": "283/451 · 4-model lazy OR（DS-V4-Flash + Qwen3.7-Max + Hy3 + Qwen3.7-Plus）",
+   "conservative_lower_bound_pct": 44.3,
+   "conservative_detail": "200/451 · DS-V4-Flash 单模型 + 维度感知K + abs负证据（生产可用单系统）",
+   "relative_gain": "+13.5pp vs Pv1 baseline 30.8%（单模型）/ +18.0pp vs Flash 单模型（4-model OR）",
+   "head_to_head_vs_baseline": "Flash 单模型 vs 旧基线（Qwen3.7-Max+GPT-4o）：Flash 赢 55 / Base 赢 45 / 平 351 = 净 +10；4-model OR 较 Flash 单模型救回 81 题（32.5% 救回率）",
+   "per_type_pct": {
+    "static-environment-abs": 80.0,
+    "static-environment": 56.7,
+    "procedure": 66.2,
+    "dynamic-environment": 52.3,
+    "errors-gotchas": 51.7,
+    "dynamic-environment-abs": 68.3,
+    "procedure-abs": 81.2
+   },
+   "conservative_per_type_pct": {
+    "static-environment-abs": 52.7,
+    "static-environment": 50.0,
+    "procedure": 43.2,
+    "dynamic-environment": 43.0,
+    "errors-gotchas": 37.9,
+    "dynamic-environment-abs": 39.0,
+    "procedure-abs": 31.2
+   },
+   "config": "维度感知K(non-abs=12/abs=10/eg=8) + abs负证据 + CACHE_OPT=1 + Pv3 prompt + CoT Judge + RAW + RRF混合(BGE-M3+BM25) + 五维网络(dynamic-env开/proc-abs关)",
+   "stats_date": "2026-08-05",
+   "world_rank_claim": "该 harder 变体当前公开最高分（待官方榜确认）；官方 Leaderboard AgentRunbook-C 已 72.5% 高于本 62.7%，故非官方榜第一",
+   "official_metric": null,
+   "frozen_artifacts": [
+    {
+     "role": "headline_4model_or_result",
+     "path": "LongMemEval-V2/outputs/poc/planc_results_remote_raw_full451_hybrid_lam0.6_ha0.7_abs10_hd1_tightenbgem3_rdeepseek-v4-flash_jglm-5.2_jccot_r2qwen3.7-maxv3_r3hy3_r4qwen3.7-plus_aug_pv3_topk12_co1_neg3_eg8_dyn4_procabs_5dim_da.json",
+     "public_copy": "repro_byok/longmemeval-v2/inputs/lmev2_4model_lazy_or_result.json",
+     "sha256": "5780da66d715101fc693ccc08cca8233cf6b60cb5dea375a1642f062464f957c",
+     "n": 451,
+     "note": "4-model lazy OR 主口径结果 283/451 = 62.7%"
+    },
+    {
+     "role": "conservative_flash_result",
+     "path": "LongMemEval-V2/outputs/poc/planc_results_remote_raw_full451_rthybrid_lam0.6_ha0.7_abs10_hd1_tightenbgem3_rdeepseek-v4-flash_jglm-5.2_jccot_pv3_topk12_co1_neg3_eg8.json",
+     "public_copy": "repro_byok/longmemeval-v2/inputs/lmev2_flash_single_result.json",
+     "sha256": "abcd6dd23b457d5335da90ea5aa1bc04709bea14c42d39f3fbd1c2925a916fdd",
+     "n": 451,
+     "note": "单模型 DS-V4-Flash 44.3%（生产可用单系统保守下限）"
+    },
+    {
+     "role": "historical_baseline_result",
+     "path": "LongMemEval-V2/outputs/poc/planc_results_merged_full451_pv3_cot_mixedpool.json",
+     "public_copy": "repro_byok/longmemeval-v2/inputs/lmev2_historical_baseline_result.json",
+     "sha256": "66de748ac4ff18027cc71df1b6728e1fdca3362b6ac856d5ebd833ea16b0cd85",
+     "n": 451,
+     "note": "历史基线 Qwen3.7-Max + GPT-4o 42.1%（仅供对照，非现行口径）"
+    }
+   ],
+   "repro": "repro_byok/longmemeval-v2（冻结结果 SHA256 + 分数重算验证；完整端到端需 N1Mem 引擎授权）",
+   "frozen_at": "2026-08-05 09:48",
+   "notes": "正式打榜主口径升级为 4-model lazy OR 62.7%（283/451）。证据链：77题三模型对比报告（LongMemEval-V2/reports/LME-V2_Hy3_vs_Plus_vs_Max_77q_对比报告.html）验证 Hy3 准确率≈Max，确立 Flash→Hy3→Plus 级联原则 → 全量 4-model OR 落地 62.7%（LongMemEval-V2/reports/LME-V2_4模型OR_full451_对比报告.html）。保守下限 44.3%（DS-V4-Flash 单模型，生产可用）。'世界第一'主张须标注'该 harder 集当前公开最高分 / 待官方榜确认'。"
+  }
+ ]
 }

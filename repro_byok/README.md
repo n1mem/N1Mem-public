@@ -19,7 +19,7 @@
 |------|------|------|------------------|----------|
 | 1 | **LongMemEval QA** | 500 | **99.2–99.4%**（双通道真 GPT-4o） | 冻结假设 + 官方 Gold + 你的 Judge key |
 | 2 | **LoCoMo QA**（MC10） | 1,986 | **95.52%**（OR10 + Checklist-CoT Judge） | 冻结假设 + 你的 Judge key |
-| 3 | **MemoryAgentBench**（ICLR'26） | 1,421 | **77.87%** 冻结值 > GPT-5-mini 60.6 | 官方 harness + 开源适配器 + best-per-dimension configs + 你的 key |
+| 3 | **MemoryAgentBench**（ICLR'26） | 1,421 | **78.99%**（per-dim best 双栈：GLM 栈 AR/CR/TTL + 国产栈 LRU）> GPT-5-mini 60.6 | 官方 harness + 开源适配器 + best-per-dimension configs（双栈）+ 你的 key |
 | 4 | **LongMemEval-V2** | 451 | **62.7%**（4-model lazy OR）/ 保守下限 44.3% | 冻结结果 + 零依赖校验；完整端到端需引擎授权 |
 
 > **Judge 口径说明（重要）**：
@@ -55,7 +55,6 @@ python locomo/freeze_or10.py --full
 # 支柱 3：MemoryAgentBench（干跑出脚手架；真跑需克隆官方仓库）
 python amb/run_agent_byok.py --dry-run
 python amb/run_agent_byok.py --run --harness-dir <官方MemoryAgentBench仓库>
-
 # 支柱 4：LME-V2（零依赖校验冻结结果）
 python longmemeval-v2/verify_lmev2.py
 
@@ -99,9 +98,11 @@ repro_byok/
 │   └── README.md
 ├── amb/                          # 支柱 3（智能体基准）
 │   ├── run_agent_byok.py
-│   ├── adapter/t1mem_adapter.py   # 开源适配器薄层
-│   ├── configs/                    # best-per-dimension YAML 配置
-│   ├── mab_frozen_manifest.json    # 15 文件 SHA256 清单
+│   ├── adapter/t1mem_adapter.py   # 开源适配器薄层（双栈指南 + build_agent 契约）
+│   ├── configs/                    # best-per-dimension YAML 配置（GLM 栈 AR/CR/TTL + 国产栈 LRU）
+│   ├── mab_composite_manifest.json # 组合口径 78.99% SHA256 清单（per-dim best 双栈）
+│   ├── mab_frozen_manifest.json    # GLM 单栈冻结 77.87% 清单（历史口径）
+│   ├── amb_byok_composite_reference.json  # 组合口径参考快照（claim hash 对比）
 │   ├── result_schema.json
 │   └── README.md
 └── longmemeval-v2/               # 支柱 4

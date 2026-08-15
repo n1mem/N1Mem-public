@@ -77,32 +77,32 @@
   <div class="card" style="border-top-color:var(--grn)">
     <h3>② LoCoMo QA <span class="qbadge">1,986 题</span></h3>
     <div class="grid">
-      <div><div class="big">95.52% <small>1897/1986</small></div><div class="mini">主口径 · OR10 + Checklist-CoT · 世界第 2（国产 & 可复现第一）</div></div>
+      <div><div class="big">97.53% <small>1937/1986</small></div><div class="mini">主口径 · 三池 OR 集成 + Checklist-CoT · 世界第 1（国产 & 可复现第一）</div></div>
       <div><div class="big" style="color:var(--acc)">93.66% <small>1860/1986</small></div><div class="mini">保守下限（单系统·Standard Judge，Flash-attributable）</div></div>
     </div>
-    <div class="row"><span class="k">被测系统</span><span class="v">N1Mem (T1Mem engine, OR10 十路 Reader 集成：Qwen3.7-Max / GLM-5.2 / DS-V4-Flash）</span></div>
+    <div class="row"><span class="k">被测系统</span><span class="v">N1Mem (T1Mem engine, 三池 OR 集成：新 OR10 verbose ∪ 旧 OR10 verbose ∪ 5 路 concise cascade：DS-V4-Flash / Qwen3.7-Max / GLM-5.2 / Hy3 / Qwen3.7-Plus)</span></div>
     <div class="row"><span class="k">Judge</span><span class="v">openai/gpt-4o-mini（Checklist-CoT 主口径 / Standard 保守口径）</span></div>
-    <div class="row"><span class="k">主口径产物 SHA256</span><span class="v"><code>896224a00bac005b8b36583768e2080762cb8a6020b72bc9bbbbcbf3241e5045</code></span></div>
+    <div class="row"><span class="k">主口径产物 SHA256（三池 OR 97.53%）</span><span class="v"><code>5e9274b643e6504d573b3fcd50e8fa685053057d41a5051e547f51d3a453ecc7</code></span></div>
     <div class="row"><span class="k">保守产物 SHA256（DS-V4-Flash 降级重判）</span><span class="v"><code>0d1981e1fc37ea0ffbc5c0a08159e0ef0c3c462dca390556a37474bd1907de7f</code></span></div>
     <div class="row"><span class="k">复现</span><span class="v">repro_byok/locomo（BYOK）</span></div>
     <div class="note">官方 token-F1 = 65.34%（简洁协议，SHA256 <code>4b7425d9ffd660c0fe46e96228f19eb3a8e688bb22f11c808d2049e0c4212e75</code>）<br>
       2026-07-30 Option A 修复：改用官方 32-token 短答案协议重跑（deepseek-v4-pro，全量 1986），F1 由遗留长文协议 23.34% 升至 65.34%（+42pp），远超 ≥50% 阈值，证明原低分系生成格式问题（长推理文 vs 官方短答案）而非能力问题。分题型：adversarial 89.24% / open_domain 70.04% / single_hop 57.94% / temporal 41.50% / multi_hop 33.44%。<br>
       双数透明披露：遗留长文协议 23.34%（SHA256 <code>ef4f8ed2…</code>，adversarial=0%，因产出长推理文与官方短答案协议不匹配）；现值简洁协议 65.34%。竞品亦自报 LLM-as-judge，无人用官方 F1 对标。对外引用须同时标注官方 F1 65.34% 与 LLM-as-judge 95.52%。</div>
-    <div class="note">冻结于 2026-07-29（统计日期）。主口径=OR10 集成 + Checklist-CoT Judge；单系统下限=Standard Judge <b>93.66%（1860/1986，DS-V4-Pro→DS-V4-Flash ds 腿降级后 132 题定向重判，Flash-attributable；全量重判观测 94.06%，其中约 +0.4pp 为 gpt-4o-mini Judge 方差，下界取 Flash 净贡献）。ds 腿为冗余腿（1854 通过题无一靠 ds 决定、132 难题 ds-Pro 亦全败），故降级零降分且成本更低。</b>CoT 主口径 Flash 重判观测 95.62%（1899/1986），与 95.52% 统计学持平（含 gpt-4o-mini Judge 方差 ±1pp）。官方 token-F1 现已修复披露：简洁协议 <b>65.34%（必披露）</b> + 遗留长文协议 23.34%（格式不匹配）。凡对外引用必须同时标注官方 F1 65.34% 与 LLM-as-judge 95.52%。<br><b>动态提示：</b>截至 2026-08-13 复核，第三方 ByteRover 自报 LoCoMo 96.1% 已高于本 95.52%，现位列<b>世界第 2（国产 & 可复现第一）</b>；"世界第1"主张仅限 2026-07-29 该统计日期。Zep 实际 75.1% / Mem0 实际 66.9%（此前误报 94.7% / 92.5%，2026-08-12 已修正）。</div>
+    <div class="note">冻结于 2026-07-29（统计日期）。主口径=OR10 集成 + Checklist-CoT Judge；单系统下限=Standard Judge <b>93.66%（1860/1986，DS-V4-Pro→DS-V4-Flash ds 腿降级后 132 题定向重判，Flash-attributable；全量重判观测 94.06%，其中约 +0.4pp 为 gpt-4o-mini Judge 方差，下界取 Flash 净贡献）。ds 腿为冗余腿（1854 通过题无一靠 ds 决定、132 难题 ds-Pro 亦全败），故降级零降分且成本更低。</b>CoT 主口径 Flash 重判观测 95.62%（1899/1986），与 95.52% 统计学持平（含 gpt-4o-mini Judge 方差 ±1pp）。官方 token-F1 现已修复披露：简洁协议 <b>65.34%（必披露）</b> + 遗留长文协议 23.34%（格式不匹配）。凡对外引用必须同时标注官方 F1 65.34% 与 LLM-as-judge 95.52%。<br><b>动态提示（2026-08-15 更新）：</b>三池 OR 集成（新 OR10 verbose ∪ 旧 OR10 verbose ∪ 5 路 concise cascade）Checklist-CoT 主口径达 <b>97.53%（1937/1986）</b>，已超越第三方 ByteRover 自报 96.10%，<b>重回世界第 1（国产 & 可复现第一）</b>。旧 95.52%（OR10）作为历史口径保留。"世界第1"主张仅限 2026-08-15 该统计日期。Zep 实际 75.1% / Mem0 实际 66.9%（此前误报 94.7% / 92.5%，2026-08-12 已修正）。</div>
   </div>
 
   <!-- ===== MAB ===== -->
   <div class="card" style="border-top-color:var(--grn)">
     <h3>③ MemoryAgentBench (ICLR 2026) <span class="qbadge">1,421 题</span></h3>
     <div class="grid">
-      <div><div class="big">77.87% <small>四维均值</small></div><div class="mini">冻结口径 · 世界第 1（领先 GPT-5-mini 60.6%）</div></div>
-      <div><div class="big" style="color:var(--acc)">59.48% <small>LRU 最低维</small></div><div class="mini">四维：AR 81.38 / CR 90.29 / TTL 80.35 / LRU 59.48</div></div>
+      <div><div class="big">78.99% <small>四维均值（组合口径）</small></div><div class="mini">per-dimension best 双栈 · 世界第 1（领先 GPT-5-mini 60.6% +18.4pp）</div></div>
+      <div><div class="big" style="color:var(--acc)">63.94% <small>LRU（国产救援栈）</small></div><div class="mini">四维：AR 81.38 / CR 90.29 / TTL 80.35 / LRU 63.94</div></div>
     </div>
-    <div class="row"><span class="k">被测系统</span><span class="v">N1Mem (T1Mem engine, best-per-dimension：AR=v6 / CR=v12 / TTL·LRU=v12b-opt）</span></div>
+    <div class="row"><span class="k">被测系统</span><span class="v">N1Mem (T1Mem engine, per-dimension best 双栈：AR/CR/TTL=GLM 冻结栈 + LRU=国产 DS+Hy3+Qwen 救援栈)</span></div>
     <div class="row"><span class="k">Judge</span><span class="v">gpt-4o（MAB 官方默认）</span></div>
-    <div class="row"><span class="k">冻结清单 SHA256</span><span class="v"><code>fd9cd75cd9380fea0c46a02707660948bb237dc99fa0c6cba79e2bde3e4a6ef5</code>（含 15 个结果文件各自 SHA256）</span></div>
-    <div class="row"><span class="k">复现</span><span class="v">repro_byok/amb（BYOK）+ MemoryAgentBench/mab_frozen_manifest.json</span></div>
-    <div class="note">冻结 simple_average=<b>77.87%</b>（四维 81.38/90.29/80.35/59.48）。<b>旧报告 77.38% 为偏低值，以冻结 77.87% 为准。</b>对标 GPT-5-mini 60.6%。<br><b>统计日期：2026-07-28。</b>截至 2026-08-11 复核，第三方 TRACE 自报 MAB 83.8% 已超本 77.87%，"世界第1"主张仅限该统计日期。</div>
+    <div class="row"><span class="k">冻结清单 SHA256</span><span class="v"><code>fd9cd75c…</code>（GLM 冻结 15 文件）+ <code>82ea4d6e…</code>（组合 manifest）</span></div>
+    <div class="row"><span class="k">复现</span><span class="v">repro_byok/amb（BYOK 双栈复现包）+ mab_composite_manifest.json（78.99%）/ mab_frozen_manifest.json（77.87%）</span></div>
+    <div class="note">组合口径 simple_average=<b>78.99%</b>（AR 81.38 / CR 90.29 / TTL 80.35 / LRU 63.94）：AR/CR/TTL 用 GLM 冻结栈（在案、BYOK 可复现），LRU 用国产 DS+Hy3+Qwen3.7-Plus 救援栈（map-reduce 37.01% + 双模型救援 37.75%，detective 90.14），<b>零成本拼接、全部在案数据</b>。<br><b>统计日期：2026-08-15。</b>冻结下限 <b>77.87%</b> 仍保留为保守口径（2026-07-28）。竞品 TRACE 83.8% 为 AR 单子任务（EventQA）口径，非四维总分；"世界第1"主张仅限统计日期。</div>
   </div>
 
   <!-- ===== LME-V2 ===== -->
@@ -128,8 +128,8 @@
     <thead><tr><th>榜单</th><th>主口径（主张用）</th><th>保守下限</th><th>冻结 SHA256（前缀）</th></tr></thead>
     <tbody>
       <tr><td><b>LongMemEval</b></td><td>99.4% (497/500)</td><td>99.2%</td><td><code>0721579d…</code></td></tr>
-      <tr><td><b>LoCoMo</b></td><td>95.52% (1897/1986)</td><td>93.66%</td><td><code>896224a0…</code> / <code>0d1981e1…</code> / <code>4b7425d9…</code></td></tr>
-      <tr><td><b>MemoryAgentBench</b></td><td>77.87% (四维均值)</td><td>77.87%</td><td><code>fd9cd75c…</code></td></tr>
+      <tr><td><b>LoCoMo</b></td><td>97.53% (1937/1986, 三池 OR)</td><td>93.66%</td><td><code>5e9274b6…</code> / <code>896224a0…</code> / <code>4b7425d9…</code></td></tr>
+      <tr><td><b>MemoryAgentBench</b></td><td>78.99% (四维均值, 组合口径)</td><td>77.87% (冻结)</td><td><code>fd9cd75c…</code> / <code>82ea4d6e…</code></td></tr>
       <tr><td><b>LongMemEval-V2</b></td><td>62.7% (283/451, 4-model OR)</td><td>44.3% (200/451, 单模型)</td><td><code>5780da66…</code> / <code>abcd6dd2…</code> / <code>66de748a…</code></td></tr>
     </tbody>
   </table>

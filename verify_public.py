@@ -36,6 +36,10 @@ EXPECTED_SHA = {
         "0721579d894b28e3ef0c7a7ac910e506b36f4c6e075228c71b1d11005615c515",
     "repro_byok/amb/mab_frozen_manifest.json":
         "fd9cd75cd9380fea0c46a02707660948bb237dc99fa0c6cba79e2bde3e4a6ef5",
+    "repro_byok/amb/mab_composite_manifest.json":
+        "82ea4d6e7191fd4729bd7c9517379a94a8aa5d0d8fae22ca148c64f054359eec",
+    "repro_byok/amb/amb_byok_composite_reference.json":
+        "973c6f28f32c7bae2095ac37defaaa96e6880b06c06595b7fa21975c4a5193d8",
     "repro_byok/longmemeval-v2/inputs/lmev2_4model_lazy_or_result.json":
         "5780da66d715101fc693ccc08cca8233cf6b60cb5dea375a1642f062464f957c",
     "repro_byok/longmemeval-v2/inputs/lmev2_flash_single_result.json":
@@ -43,7 +47,7 @@ EXPECTED_SHA = {
     "repro_byok/longmemeval-v2/inputs/lmev2_historical_baseline_result.json":
         "66de748ac4ff18027cc71df1b6728e1fdca3362b6ac856d5ebd833ea16b0cd85",
     "claim_card.json":
-        "c6c08d4a6611975f890b10a9b45c24ed9f600799ce18e3141c27d2f050502045",
+        "c72fe4e9f51626515fd1eea1ec7d8e49e22dda10ca5ab738e854c44a9e0297ca",
 }
 
 # LoCoMo 官方 token 级 F1 双数披露发布值

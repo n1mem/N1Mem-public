@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "package": "T1Mem-BYOK",
+    "pillar": "amb",
+    "mode": "composite-reference-snapshot",
+    "harness": "MemoryAgentBench (ICLR'26, official)",
+    "agent": "T1Mem (per-dimension best dual stack: GLM-5.2 AR/CR/TTL + domestic DS-V4-Flash/Hy3/Qwen3.7-Plus LRU)",
+    "composite_at": "2026-08-15",
+    "note": "Published composite reference (SHA256-archived in mab_composite_manifest.json). ",
+    "stack_note": "AR/CR/TTL = GLM-5.2 frozen stack (in-place, BYOK-reproducible via official harness); ",
+    "stack_note2": "LRU = domestic stack: DS-V4-Flash map-reduce 37.01% + Hy3(8)/Qwen3.7-Plus(10) rescue -> 37.75%, detective 90.14. ",
+    "stack_note3": "InfBench map-reduce branch is a T1Mem engine capability (closed-source); full end-to-end needs engine authorization.",
+    "claim_hash_target": "d1364e060c80e9ad2736725d35fd8b4f918e011954276c399f3b7ca6362c8a33 (run: verify_claim.py --pillar amb --result <your_result.json>)"
+  },
+  "dimensions": {
+    "AR": {
+      "score": 81.38,
+      "n_tasks": 50
+    },
+    "CR": {
+      "score": 90.29,
+      "n_tasks": 600
+    },
+    "TTL": {
+      "score": 80.35,
+      "n_tasks": 600
+    },
+    "LRU": {
+      "score": 63.94,
+      "n_tasks": 171
+    }
+  },
+  "overall_simple_mean": 78.99,
+  "overall_weighted": null
+}

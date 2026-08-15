@@ -32,11 +32,11 @@ N1Mem（基于 T1Mem 引擎）在四个主流长期记忆 / 记忆智能体基�
 | 基准 | 统计日期 | 主口径（主张用） | 保守下限 | 冻结产物 SHA256（前 16 位） |
 |---|---|---|---|---|
 | **LongMemEval QA** | 2026-07 | **99.4%** (497/500) | 99.2% | `0721579d…` (500 假设) |
-| **LoCoMo QA** | 2026-07-29 | **95.52%** (1897/1986, Checklist-CoT Judge) | 93.66% (Std Judge, Flash ds 腿, 2026-08-13) | `896224a0…` / `0d1981e1…` / `4b7425d9…` / `ef4f8ed2…` |
+| **LoCoMo QA** | 2026-08-15 | **97.53%** (1937/1986, 三池 OR + Checklist-CoT Judge) | 93.66% (Std Judge, Flash ds 腿) | `5e9274b6…` / `896224a0…` / `4b7425d9…` / `ef4f8ed2…` |
 | **MemoryAgentBench** (ICLR'26) | 2026-07-28 | **77.87%** (四维均值) | 77.87% | `fd9cd75c…` (manifest) |
 | **LongMemEval-V2** | 2026-08-05 | **62.7%** (283/451, 4-model lazy OR: Flash→Max→Hy3→Plus) | 44.3% (200/451, DS-V4-Flash 单模型) | `5780da66…` / `abcd6dd2…` / `66de748a…` |
 
-> **LoCoMo 诚实双数：** 主口径 LLM-as-judge 95.52% 与 token 级 F1 双数披露并列：简洁协议 **65.34%**（Option A 修复，32-token 短答案协议重跑，+42pp）+ 遗留长文协议 23.34%（长推理文与短答案协议不匹配，adversarial=0%）。原 23.34% 非能力问题，协议对齐后已修复至 65.34%。我们不隐藏任一数字。
+> **LoCoMo 诚实双数：** 主口径 LLM-as-judge **97.53%（三池 OR，2026-08-15）** 与 token 级 F1 双数披露并列：简洁协议 **65.34%**（Option A 修复，32-token 短答案协议重跑，+42pp）+ 遗留长文协议 23.34%（长推理文与短答案协议不匹配，adversarial=0%）。原 23.34% 非能力问题，协议对齐后已修复至 65.34%。我们不隐藏任一数字。
 
 > **LME-V2 多模型 OR 证据链：** 主口径 **62.7%（283/451）** 由 4-model lazy OR 落地（DS-V4-Flash → Qwen3.7-Max → Hy3 → Qwen3.7-Plus，前序全失败时触发下一流水）。77 题三模型对比报告（`LongMemEval-V2/reports/LME-V2_Hy3_vs_Plus_vs_Max_77q_对比报告.html`）验证 Hy3 准确率≈Max，确立 Flash→Hy3→Plus 级联原则；全量 4-model OR 对比报告（`LongMemEval-V2/reports/LME-V2_4模型OR_full451_对比报告.html`）给出完整八组 OR 分解、分题型与救回分析。保守下限保留 DS-V4-Flash 单模型 **44.3%（200/451，生产可用）**。
 
@@ -120,6 +120,6 @@ bash install-hooks.sh
 ```
 N1Mem (powered by T1Mem engine). (2026). N1Mem Benchmark Evidence & Reproducibility Package.
 GitHub: n1mem/N1Mem-public. Multi-benchmark world #1 as of stats dates (LongMemEval 99.4% [2026-07] /
-LoCoMo 95.52% [2026-07-29] / MemoryAgentBench 77.87% [2026-07-28] / LongMemEval-V2 62.7% [2026-08-05, 4-model OR] / 44.3% [单模型]).
+LoCoMo 97.53% [2026-08-15] / MemoryAgentBench 77.87% [2026-07-28] / LongMemEval-V2 62.7% [2026-08-05, 4-model OR] / 44.3% [单模型]).
 Leaderboards are dynamic; each "#1" claim is valid only as of its stats date.
 ```

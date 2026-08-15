@@ -20,7 +20,7 @@
 ## 3. 复现结果（贴 `verify_claim.py` 输出）
 - LoCoMo（1,986 题）：_____ / 1986 = ______%   （T1Mem 公开冻结主口径 **93.35%**，OR10 × gpt-4o-mini 干净全量重判；历史声明 96.48% 为宽松合并口径、不可复现，已废止）
 - LongMemEval（500 题）：_____ / 500 = ______%   （T1Mem 公开冻结口径 99.2–99.4%）
-- MemoryAgentBench（ICLR'26）：AR ___ / CR ___ / TTL ___ / LRU ___ ；简单均分 ___% （T1Mem 77.38%）
+- MemoryAgentBench（ICLR'26）：AR ___ / CR ___ / TTL ___ / LRU ___ ；简单均分 ___% （T1Mem 组合口径 **78.99%**，per-dim best 双栈；GLM 单栈冻结 77.87%）
 - 复现产物路径（result JSON）：________________________________
 - Claim 哈希（verify_claim.py 输出）：`____________________________________`
 

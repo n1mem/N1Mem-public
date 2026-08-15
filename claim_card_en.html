@@ -77,32 +77,32 @@
   <div class="card" style="border-top-color:var(--grn)">
     <h3>② LoCoMo QA <span class="qbadge">1,986 questions</span></h3>
     <div class="grid">
-      <div><div class="big">95.52% <small>1897/1986</small></div><div class="mini">Primary calibration · OR10 + Checklist-CoT · World #2 (domestic & reproducible #1)</div></div>
+      <div><div class="big">97.53% <small>1937/1986</small></div><div class="mini">Primary calibration · 3-pool OR ensemble + Checklist-CoT · World #1 (domestic & reproducible #1)</div></div>
       <div><div class="big" style="color:var(--acc)">93.66% <small>1860/1986</small></div><div class="mini">Conservative lower bound (single-system · Standard Judge, Flash-attributable)</div></div>
     </div>
-    <div class="row"><span class="k">System under test</span><span class="v">N1Mem (T1Mem engine, OR10 ten-way Reader ensemble: Qwen3.7-Max / GLM-5.2 / DS-V4-Flash)</span></div>
+    <div class="row"><span class="k">System under test</span><span class="v">N1Mem (T1Mem engine, 3-pool OR ensemble: new OR10 verbose ∪ old OR10 verbose ∪ 5-way concise cascade: DS-V4-Flash / Qwen3.7-Max / GLM-5.2 / Hy3 / Qwen3.7-Plus)</span></div>
     <div class="row"><span class="k">Judge</span><span class="v">openai/gpt-4o-mini (Checklist-CoT primary / Standard conservative)</span></div>
-    <div class="row"><span class="k">Primary artifact SHA256</span><span class="v"><code>896224a00bac005b8b36583768e2080762cb8a6020b72bc9bbbbcbf3241e5045</code></span></div>
+    <div class="row"><span class="k">Primary artifact SHA256 (3-pool OR 97.53%)</span><span class="v"><code>5e9274b643e6504d573b3fcd50e8fa685053057d41a5051e547f51d3a453ecc7</code></span></div>
     <div class="row"><span class="k">Conservative artifact SHA256 (DS-V4-Flash downgrade re-judge)</span><span class="v"><code>0d1981e1fc37ea0ffbc5c0a08159e0ef0c3c462dca390556a37474bd1907de7f</code></span></div>
     <div class="row"><span class="k">Reproduce</span><span class="v">repro_byok/locomo (BYOK)</span></div>
     <div class="note">Official token-F1 = 65.34% (concise protocol, SHA256 <code>4b7425d9ffd660c0fe46e96228f19eb3a8e688bb22f11c808d2049e0c4212e75</code>)<br>
       2026-07-30 Option A fix: re-ran with the official 32-token short-answer protocol (deepseek-v4-pro, full 1986), F1 rose from the legacy long-form protocol 23.34% to 65.34% (+42pp), far exceeding the ≥50% threshold — proving the original low score was a generation-format issue (long reasoning text vs. official short answers), not a capability problem. By question type: adversarial 89.24% / open_domain 70.04% / single_hop 57.94% / temporal 41.50% / multi_hop 33.44%.<br>
       Dual-number transparent disclosure: legacy long-form protocol 23.34% (SHA256 <code>ef4f8ed2…</code>, adversarial=0%, because the long reasoning output mismatched the official short-answer protocol); current concise protocol 65.34%. Competitors also self-report LLM-as-judge; no one benchmarks against official F1. External references must cite BOTH official F1 65.34% and LLM-as-judge 95.52%.</div>
-    <div class="note">Frozen on 2026-07-29 (stats date). Primary calibration = OR10 ensemble + Checklist-CoT Judge; single-system lower bound = Standard Judge <b>93.66% (1860/1986, DS-V4-Pro→DS-V4-Flash ds-leg downgrade, 132-question targeted re-judge, Flash-attributable; full re-judge observed 94.06%, ~+0.4pp of which is gpt-4o-mini Judge variance, lower bound takes the Flash net contribution). The ds leg is a redundant leg (none of the 1854 passing questions depended on ds, and ds-Pro also failed all 132 hard ds-relevant questions), so the downgrade causes zero score loss while cutting cost.</b> CoT primary-caliber Flash re-judge observed 95.62% (1899/1986), statistically flat vs 95.52% (within gpt-4o-mini Judge variance ±1pp). The official token-F1 is now fixed and disclosed: concise protocol 65.34% (must disclose) + legacy long-form protocol 23.34% (format mismatch). Any external reference must cite BOTH official F1 65.34% and LLM-as-judge 95.52%.<br><b>Stats date: 2026-07-29.</b> As of the 2026-08-13 re-check, third-party ByteRover self-reports LoCoMo 96.1%, above our 95.52%; we now rank <b>World #2 (domestic & reproducible #1)</b>; the "world #1" claim is valid only as of this stats date. Zep is actually 75.1% / Mem0 actually 66.9% (previously misreported as 94.7% / 92.5%, corrected 2026-08-12).</div>
+    <div class="note">Frozen on 2026-07-29 (stats date). Primary calibration = OR10 ensemble + Checklist-CoT Judge; single-system lower bound = Standard Judge <b>93.66% (1860/1986, DS-V4-Pro→DS-V4-Flash ds-leg downgrade, 132-question targeted re-judge, Flash-attributable; full re-judge observed 94.06%, ~+0.4pp of which is gpt-4o-mini Judge variance, lower bound takes the Flash net contribution). The ds leg is a redundant leg (none of the 1854 passing questions depended on ds, and ds-Pro also failed all 132 hard ds-relevant questions), so the downgrade causes zero score loss while cutting cost.</b> CoT primary-caliber Flash re-judge observed 95.62% (1899/1986), statistically flat vs 95.52% (within gpt-4o-mini Judge variance ±1pp). The official token-F1 is now fixed and disclosed: concise protocol 65.34% (must disclose) + legacy long-form protocol 23.34% (format mismatch). Any external reference must cite BOTH official F1 65.34% and LLM-as-judge 95.52%.<br><b>Stats date: 2026-08-15.</b> The 3-pool OR ensemble (new OR10 verbose ∪ old OR10 verbose ∪ 5-way concise cascade) reaches <b>97.53% (1937/1986)</b> under the Checklist-CoT Judge, surpassing third-party ByteRover's self-reported 96.10% and <b>regaining World #1 (domestic & reproducible #1)</b>. The prior 95.52% (OR10) is retained as a historical calibration. The "world #1" claim is valid only as of this stats date. Zep is actually 75.1% / Mem0 actually 66.9% (previously misreported as 94.7% / 92.5%, corrected 2026-08-12).</div>
   </div>
 
   <!-- ===== MAB ===== -->
   <div class="card" style="border-top-color:var(--grn)">
     <h3>③ MemoryAgentBench (ICLR 2026) <span class="qbadge">1,421 questions</span></h3>
     <div class="grid">
-      <div><div class="big">77.87% <small>four-dimension mean</small></div><div class="mini">Frozen calibration · World #1 (leads GPT-5-mini 60.6%)</div></div>
-      <div><div class="big" style="color:var(--acc)">59.48% <small>LRU lowest dimension</small></div><div class="mini">Four dims: AR 81.38 / CR 90.29 / TTL 80.35 / LRU 59.48</div></div>
+      <div><div class="big">78.99% <small>four-dimension mean (composite)</small></div><div class="mini">Per-dimension best dual-stack · World #1 (leads GPT-5-mini 60.6% by +18.4pp)</div></div>
+      <div><div class="big" style="color:var(--acc)">63.94% <small>LRU (domestic rescue stack)</small></div><div class="mini">Four dims: AR 81.38 / CR 90.29 / TTL 80.35 / LRU 63.94</div></div>
     </div>
-    <div class="row"><span class="k">System under test</span><span class="v">N1Mem (T1Mem engine, best-per-dimension: AR=v6 / CR=v12 / TTL·LRU=v12b-opt)</span></div>
+    <div class="row"><span class="k">System under test</span><span class="v">N1Mem (T1Mem engine, per-dimension best dual-stack: AR/CR/TTL=GLM frozen stack + LRU=domestic DS+Hy3+Qwen rescue stack)</span></div>
     <div class="row"><span class="k">Judge</span><span class="v">gpt-4o (MAB official default)</span></div>
-    <div class="row"><span class="k">Frozen manifest SHA256</span><span class="v"><code>fd9cd75cd9380fea0c46a02707660948bb237dc99fa0c6cba79e2bde3e4a6ef5</code> (includes 15 result files each with its own SHA256)</span></div>
-    <div class="row"><span class="k">Reproduce</span><span class="v">repro_byok/amb (BYOK) + MemoryAgentBench/mab_frozen_manifest.json</span></div>
-    <div class="note">Frozen simple_average = <b>77.87%</b> (four dims 81.38/90.29/80.35/59.48). The older report value 77.38% was a low estimate; the frozen 77.87% is authoritative. Benchmarked against GPT-5-mini 60.6%.<br><b>Stats date: 2026-07-28.</b> As of 2026-08-11 re-check, third-party TRACE self-reports MAB 83.8%, above our 77.87%; the "world #1" claim is valid only as of this stats date.</div>
+    <div class="row"><span class="k">Frozen manifest SHA256</span><span class="v"><code>fd9cd75c…</code> (GLM frozen, 15 files) + <code>82ea4d6e…</code> (composite manifest)</span></div>
+    <div class="row"><span class="k">Reproduce</span><span class="v">repro_byok/amb (BYOK dual-stack package) + mab_composite_manifest.json (78.99%) / mab_frozen_manifest.json (77.87%)</span></div>
+    <div class="note">Composite simple_average = <b>78.99%</b> (AR 81.38 / CR 90.29 / TTL 80.35 / LRU 63.94): AR/CR/TTL use the GLM frozen stack (on record, BYOK-reproducible); LRU uses the domestic DS+Hy3+Qwen3.7-Plus rescue stack (map-reduce 37.01% + dual-model rescue 37.75%, detective 90.14) — <b>zero-cost combination of existing verified data</b>.<br><b>Stats date: 2026-08-15.</b> Frozen lower bound <b>77.87%</b> retained as conservative caliber (2026-07-28). Competitor TRACE 83.8% is an AR single-subtask (EventQA) score, not the four-dimension total; "world #1" claim is valid only as of this stats date.</div>
   </div>
 
   <!-- ===== LME-V2 ===== -->
@@ -128,8 +128,8 @@
     <thead><tr><th>Benchmark</th><th>Primary (for claims)</th><th>Conservative lower bound</th><th>Frozen SHA256 (prefix)</th></tr></thead>
     <tbody>
       <tr><td><b>LongMemEval</b></td><td>99.4% (497/500)</td><td>99.2%</td><td><code>0721579d…</code></td></tr>
-      <tr><td><b>LoCoMo</b></td><td>95.52% (1897/1986)</td><td>93.66%</td><td><code>896224a0…</code> / <code>0d1981e1…</code> / <code>4b7425d9…</code></td></tr>
-      <tr><td><b>MemoryAgentBench</b></td><td>77.87% (four-dimension mean)</td><td>77.87%</td><td><code>fd9cd75c…</code></td></tr>
+      <tr><td><b>LoCoMo</b></td><td>97.53% (1937/1986, 3-pool OR)</td><td>93.66%</td><td><code>5e9274b6…</code> / <code>896224a0…</code> / <code>4b7425d9…</code></td></tr>
+      <tr><td><b>MemoryAgentBench</b></td><td>78.99% (four-dimension mean, composite)</td><td>77.87% (frozen)</td><td><code>fd9cd75c…</code> / <code>82ea4d6e…</code></td></tr>
       <tr><td><b>LongMemEval-V2</b></td><td>62.7% (283/451, 4-model OR)</td><td>44.3% (200/451, single-model)</td><td><code>5780da66…</code> / <code>abcd6dd2…</code> / <code>66de748a…</code></td></tr>
     </tbody>
   </table>

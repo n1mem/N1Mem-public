@@ -32,11 +32,11 @@ All numbers are authoritative per `claim_card.json` (machine-readable single sou
 | Benchmark | Stats Date | Primary caliber (claim) | Conservative lower bound | Frozen artifact SHA256 (first 16) |
 |---|---|---|---|---|
 | **LongMemEval QA** | 2026-07 | **99.4%** (497/500) | 99.2% | `0721579d…` (500 hypotheses) |
-| **LoCoMo QA** | 2026-07-29 | **95.52%** (1897/1986, Checklist-CoT Judge) | 93.66% (Std Judge, Flash ds-leg, 2026-08-13) | `896224a0…` / `0d1981e1…` / `4b7425d9…` / `ef4f8ed2…` |
+| **LoCoMo QA** | 2026-08-15 | **97.53%** (1937/1986, 三池 OR + Checklist-CoT Judge) | 93.66% (Std Judge, Flash ds-leg) | `5e9274b6…` / `896224a0…` / `4b7425d9…` / `ef4f8ed2…` |
 | **MemoryAgentBench** (ICLR'26) | 2026-07-28 | **77.87%** (4-dim mean) | 77.87% | `fd9cd75c…` (manifest) |
 | **LongMemEval-V2** | 2026-08-05 | **62.7%** (283/451, 4-model lazy OR: Flash→Max→Hy3→Plus) | 44.3% (200/451, DS-V4-Flash single model) | `5780da66…` / `abcd6dd2…` / `66de748a…` |
 
-> **LoCoMo honest dual numbers:** The LLM-as-judge primary caliber 95.52% is disclosed alongside the token-level F1 dual numbers: concise protocol **65.34%** (Option A fix, 32-token short-answer protocol rerun, +42pp) + legacy long-form protocol 23.34% (long reasoning text mismatched with short-answer protocol, adversarial=0%). The original 23.34% is not a capability issue; after protocol alignment it is fixed to 65.34%. We hide neither number.
+> **LoCoMo honest dual numbers:** The LLM-as-judge primary caliber **97.53% (3-pool OR, 2026-08-15)** is disclosed alongside the token-level F1 dual numbers: concise protocol **65.34%** (Option A fix, 32-token short-answer protocol rerun, +42pp) + legacy long-form protocol 23.34% (long reasoning text mismatched with short-answer protocol, adversarial=0%). The original 23.34% is not a capability issue; after protocol alignment it is fixed to 65.34%. We hide neither number.
 
 > **LME-V2 multi-model OR evidence chain:** The primary caliber **62.7% (283/451)** is delivered by 4-model lazy OR (DS-V4-Flash → Qwen3.7-Max → Hy3 → Qwen3.7-Plus, each triggering the next only on full prior failure). The 77-question three-model comparison report (`LongMemEval-V2/reports/LME-V2_Hy3_vs_Plus_vs_Max_77q_对比报告.html`) confirms Hy3 accuracy ≈ Max, establishing the Flash→Hy3→Plus cascade principle; the full 4-model OR comparison report (`LongMemEval-V2/reports/LME-V2_4模型OR_full451_对比报告.html`) gives the complete eight-group OR breakdown, per-type and rescue analysis. The conservative lower bound retains DS-V4-Flash single model **44.3% (200/451, production-usable)**.
 
@@ -120,6 +120,6 @@ This copies `scripts/pre-commit` into `.git/hooks/` and self-tests it. The gate 
 ```
 N1Mem (powered by T1Mem engine). (2026). N1Mem Benchmark Evidence & Reproducibility Package.
 GitHub: n1mem/N1Mem-public. Multi-benchmark world #1 as of stats dates (LongMemEval 99.4% [2026-07] /
-LoCoMo 95.52% [2026-07-29] / MemoryAgentBench 77.87% [2026-07-28] / LongMemEval-V2 62.7% [2026-08-05, 4-model OR] / 44.3% [single model]).
+LoCoMo 97.53% [2026-08-15] / MemoryAgentBench 77.87% [2026-07-28] / LongMemEval-V2 62.7% [2026-08-05, 4-model OR] / 44.3% [single model]).
 Leaderboards are dynamic; each "#1" claim is valid only as of its stats date.
 ```

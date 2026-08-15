@@ -1,0 +1,41 @@
+# T1Mem MAB Best-Per-Dimension Configs — LRU (Long_Range_Understanding)
+# Domestic stack: DS-V4-Flash reader + whole-book map-reduce structured summary.
+#
+# Composite score: 63.94% = mean(detective_acc 90.14, infbench_rougeLsum 37.75)
+#   - Detective QA (71 q): choice-letter matching accuracy = 90.14% (DS-V4-Flash)
+#   - InfBench En.Sum (100 q): official rougeLsum F1 = 37.75%
+#       = map-reduce base 37.01% + Hy3/Qwen3.7-Plus rescue on low-scoring books (max-merge, zero regression)
+#
+# IMPORTANT — reproduction boundary:
+#   The InfBench branch uses T1Mem engine's whole-book map-reduce summarization
+#   (CLOSED-SOURCE engine capability, triggered internally for sub_dataset
+#   "infbench_sum_eng_shots2"). With the official harness + these YAML params you
+#   can reproduce the Reader/retrieval path and Detective QA exactly; the map-reduce
+#   summary branch requires the T1Mem engine (BYOK end-to-end mode needs engine
+#   authorization, same policy as the LME-V2 pillar). Frozen scores are archived
+#   in mab_composite_manifest.json with SHA256.
+
+agent_name: t1mem_rag
+model: deepseek-v4-flash
+temperature: 0.0
+input_length_limit: 10000000
+buffer_length: 200
+output_dir: ./outputs/t1mem-lru-dsv4flash-mapreduce
+
+max_tokens_override: 8192
+
+# Retrieval (k=30 hybrid, no rerank/query-expansion for summary task)
+retrieve_num: 30
+chunk_size: 4096
+
+# T1Mem hybrid RRF weights (text/dense balanced)
+t1mem_text_weight: 0.5
+t1mem_vec_weight: 0.5
+t1mem_use_rerank: false
+t1mem_use_hyde: false
+
+# Thinking ON: helps long-context global summarization (greedy decoding)
+t1mem_disable_thinking: false
+
+# Engine summarization mode: whole-book map-reduce structured summary (closed-source)
+t1mem_summarization: true

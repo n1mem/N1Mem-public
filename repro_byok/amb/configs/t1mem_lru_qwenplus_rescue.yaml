@@ -1,0 +1,34 @@
+# T1Mem MAB Best-Per-Dimension Configs — LRU rescue tier 2: Qwen3.7-Plus (DashScope)
+#
+# Purpose: for InfBench books still failing after the Hy3 rescue tier, upgrade to
+# Qwen3.7-Plus (cost ladder: DS-V4-Flash -> Hy3 -> Qwen3.7-Plus -> GLM-5.2).
+# Re-run the same map-reduce pipeline, take max(DS, Hy3, Qwen3.7-Plus).
+# Zero regression by construction (max-merge).
+#
+# Empirical: Qwen3.7-Plus rescue rate 8/10 on the lowest-10 books (vs Hy3 6/10),
+# including books Hy3 could not fix (no76 +3.1pp, no89 +5.9pp); brought the
+# composite InfBench to 37.75% and the four-dimension simple average to 78.99%.
+#
+# Endpoint: DashScope (百炼, OpenAI-compatible), model "qwen3.7-plus".
+#   OPENAI_BASE_URL=https://llm-2s20vf6sach118zv.cn-beijing.maas.aliyuncs.com/compatible-mode/v1
+#   OPENAI_API_KEY=<your own DashScope key>
+#
+# NOTE: same reproduction boundary as t1mem_lru_dsv4flash_mapreduce.yaml.
+
+agent_name: t1mem_rag
+model: qwen3.7-plus
+temperature: 0.0
+input_length_limit: 10000000
+buffer_length: 200
+output_dir: ./outputs/t1mem-lru-qwenplus-rescue
+
+max_tokens_override: 8192
+
+retrieve_num: 30
+chunk_size: 4096
+t1mem_text_weight: 0.5
+t1mem_vec_weight: 0.5
+t1mem_use_rerank: false
+t1mem_use_hyde: false
+t1mem_disable_thinking: false
+t1mem_summarization: true

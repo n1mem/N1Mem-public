@@ -1,0 +1,13 @@
+{
+  "artifact": "locomo_or10_checklist_cot_frozen",
+  "frozen_at": "2026-08-15 17:15:03",
+  "hypotheses_file": "locomo_qa_or10_three_pool_full1986.json",
+  "hypotheses_sha256": "ec03ad09c7582c441bd18ac6f03e79a938fccf2eef20bda90d680cd36bb0cd74",
+  "result_file": "locomo_qa_or10_three_pool_full1986_checklist_frozen_result.json",
+  "result_sha256": "5e9274b643e6504d573b3fcd50e8fa685053057d41a5051e547f51d3a453ecc7",
+  "judge_model": "openai/gpt-4o-mini",
+  "judge_prompt": "checklist_cot_4step_max200",
+  "score_pct": 97.53,
+  "n_questions": 1986,
+  "passed": 1937
+}
