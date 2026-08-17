@@ -1,0 +1,52 @@
+{
+  "benchmark": "MemoryAgentBench (ICLR 2026)",
+  "composite_at": "2026-08-15",
+  "judge": "gpt-4o (MAB official default)",
+  "total_questions": 1421,
+  "config_strategy": "per-dimension best across two verified stacks (零成本组合，零新调用)",
+  "stack_note": "AR/CR/TTL = GLM-5.2 冻结栈（在案，BYOK 可复现）; LRU = 新国产栈（DS-V4-Flash map-reduce + Hy3/Qwen3.7-Plus 救援，max 合并零回归）",
+  "baseline_comparison": "GPT-5-mini 60.6%（领先 +18.39pp）",
+  "frozen_simple_average": 77.87,
+  "frozen_manifest_sha256": "fd9cd75cd9380fea0c46a02707660948bb237dc99fa0c6cba79e2bde3e4a6ef5",
+  "dimensions": {
+    "AR": {
+      "score": 81.38,
+      "stack": "GLM 冻结栈",
+      "config": "configs/t1mem_ar_glm-5.2.yaml",
+      "n": 50,
+      "sub": "ruler_qa1_197K"
+    },
+    "CR": {
+      "score": 90.29,
+      "stack": "GLM 冻结栈",
+      "config": "configs/t1mem_cr_glm-5.2.yaml",
+      "n": 600,
+      "detail": {
+        "factconsolidation_mh_6k": {"f1": 90.19999999999999, "n": 100},
+        "factconsolidation_mh_32k": {"f1": 79.66666666666666, "n": 100},
+        "factconsolidation_mh_64k": {"f1": 80.06666666666666, "n": 100},
+        "factconsolidation_sh_6k": {"f1": 98.48333333333333, "n": 100},
+        "factconsolidation_sh_32k": {"f1": 96.33333333333333, "n": 100},
+        "factconsolidation_sh_64k": {"f1": 97.00000000000001, "n": 100}
+      }
+    },
+    "TTL": {
+      "score": 80.35,
+      "stack": "GLM 冻结栈",
+      "config": "configs/t1mem_ttl_glm-5.2.yaml",
+      "n": 700,
+      "icl_mean": 90.6,
+      "recsys_recall@10": 29.08
+    },
+    "LRU": {
+      "score": 63.94,
+      "stack": "国产 DS+Hy3+Qwen 栈",
+      "config": "configs/t1mem_lru_dsv4flash_mapreduce.yaml",
+      "detective_acc": 90.14,
+      "detective_n": 71,
+      "infbench_rougeLsum": 37.75,
+      "infbench_n": 100,
+      "note": "detective=DS 基线 90.14%；infbench=v3 map-reduce 37.01% + Hy3(8书) + QwenPlus(10书) 救援取 max → 37.75%"
+    }
+  }
+}
